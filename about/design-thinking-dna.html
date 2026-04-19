@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Design Thinking DNA — Hexatech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../css/theme-v2.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../index-v2.html" class="nlogo">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#ngabout_design)" stroke-width="2.2"/>
+        <line x1="13" y1="11" x2="13" y2="25" stroke="url(#ngabout_design)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="23" y1="11" x2="23" y2="25" stroke="url(#ngabout_design)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="13" y1="18" x2="23" y2="18" stroke="url(#ngabout_design)" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ngabout_design" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/>
+        </linearGradient></defs>
+      </svg>
+      <span class="lwm">Hexatech</span>
+    </a>
+    <ul class="nlinks">
+      <li>
+        <button class="nt" onclick="location.href='../products.html'">Products <span class="nc">▾</span></button>
+        <div class="dd dd-mega">
+          <div class="dd-sidebar">
+            <div class="dd-sidebar-title">Product Suite</div>
+            <button class="dd-cat active" data-panel="coreabout_design"><div class="dd-cat-icon">🏛️</div><span class="dd-cat-label">Core Banking</span></button>
+            <button class="dd-cat" data-panel="lendingabout_design"><div class="dd-cat-icon">📈</div><span class="dd-cat-label">Lending</span></button>
+            <button class="dd-cat" data-panel="cardsabout_design"><div class="dd-cat-icon">💳</div><span class="dd-cat-label">Cards</span></button>
+            <button class="dd-cat" data-panel="digitalabout_design"><div class="dd-cat-icon">📱</div><span class="dd-cat-label">Digital Engagement</span></button>
+            <button class="dd-cat" data-panel="wealthabout_design"><div class="dd-cat-icon">💼</div><span class="dd-cat-label">Wealth &amp; Capital</span></button>
+            <button class="dd-cat" data-panel="treasuryabout_design"><div class="dd-cat-icon">🏦</div><span class="dd-cat-label">Treasury</span></button>
+          </div>
+          <div class="dd-panels">
+            <div class="dd-panel active" id="dd-coreabout_design">
+              <div class="dd-panel-title">Core Banking</div>
+              <div class="dd-links">
+                <a href="../pages/core-banking/consumer-core-banking.html" class="dd-link">Consumer Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/core-banking/corporate-core-banking.html" class="dd-link">Corporate Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/core-banking/central-core-banking.html" class="dd-link">Central Core Banking <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-lendingabout_design">
+              <div class="dd-panel-title">Lending</div>
+              <div class="dd-links">
+                <a href="../pages/lending/consumer-originations.html" class="dd-link">Consumer Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/lending/consumer-loan-management.html" class="dd-link">Consumer Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/lending/sme-corporate-originations.html" class="dd-link">SME &amp; Corporate Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/lending/sme-corporate-loan-management.html" class="dd-link">SME Corporate Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/lending/debt-collections.html" class="dd-link">Debt Collections <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-cardsabout_design">
+              <div class="dd-panel-title">Cards</div>
+              <div class="dd-links">
+                <a href="../pages/cards/consumer-cards.html" class="dd-link">Consumer Cards <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/cards/corporate-cards.html" class="dd-link">Corporate Cards <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-digitalabout_design">
+              <div class="dd-panel-title">Digital Engagement</div>
+              <div class="dd-links">
+                <a href="../pages/digital-engagement/consumers-sme.html" class="dd-link">Digital Engagement — Consumers &amp; SME <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/digital-engagement/corporate-exchange.html" class="dd-link">CBX — Corporate Exchange <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-wealthabout_design">
+              <div class="dd-panel-title">Wealth &amp; Capital Markets</div>
+              <div class="dd-links">
+                <a href="../pages/wealth-capital-markets/wealth-management.html" class="dd-link">Wealth Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/wealth-capital-markets/financial-advisor.html" class="dd-link">Financial Advisor <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/wealth-capital-markets/brokerage.html" class="dd-link">Brokerage <span class="dd-link-arrow">↗</span></a>
+                <a href="../pages/wealth-capital-markets/custody.html" class="dd-link">Custody <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-treasuryabout_design">
+              <div class="dd-panel-title">Treasury &amp; Payments</div>
+              <div class="dd-links">
+                <a href="../pages/treasury-payments/virtual-accounts-management.html" class="dd-link">Virtual Accounts Management <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Solutions <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#94a3b8;font-weight:700;padding:8px 12px 6px">By Segment</div>
+          <a href="#" class="ddi"><span class="ddn">🏦</span>Commercial Banks</a>
+          <a href="#" class="ddi"><span class="ddn">📱</span>Digital &amp; Neo Banks</a>
+          <a href="#" class="ddi"><span class="ddn">💼</span>NBFCs &amp; Fintechs</a>
+          <a href="#" class="ddi"><span class="ddn">🌍</span>Central Banks</a>
+        </div></div>
+      </li>
+      <li><a href="../technology.html">Technology</a></li>
+      <li><a href="../partners.html">Partners</a></li>
+      <li>
+        <a href="#">Resources <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="#" class="ddi"><span class="ddn">📊</span>Analyst Recognitions</a>
+          <a href="#" class="ddi"><span class="ddn">🏆</span>Awards</a>
+          <a href="#" class="ddi"><span class="ddn">📅</span>Events</a>
+          <a href="#" class="ddi"><span class="ddn">📰</span>Newsroom</a>
+        </div></div>
+      </li>
+      <li>
+        <a href="#">About Us <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="../about/our-story.html" class="ddi"><span class="ddn">📖</span>Our Story</a>
+          <a href="../about/our-leadership.html" class="ddi"><span class="ddn">👥</span>Our Leadership</a>
+          <a href="../about/design-thinking-dna.html" class="ddi"><span class="ddn">🎯</span>Design Thinking DNA</a>
+          <div class="dddiv"></div>
+          <a href="../about/our-investors.html" class="ddi"><span class="ddn">📈</span>Investors</a>
+          <a href="../about/social-impact.html" class="ddi"><span class="ddn">🌱</span>Social Impact</a>
+          <a href="../about/careers.html" class="ddi"><span class="ddn">💼</span>Careers</a>
+        </div></div>
+      </li>
+    </ul>
+    <div class="nav-acts-area">
+      <a href="#" style="padding:7px 16px;border-radius:7px;font-size:14px;font-weight:500;color:#475569;border:1px solid #e2e8f0;transition:all .15s;font-family:var(--fb);background:#fff;text-decoration:none">Sign In</a>
+      <a href="#contact" class="btn bp" style="padding:8px 20px;font-size:14px">Get Started →</a>
+    </div>
+  </div>
+</nav>
+<section class="about-hero">
+  <div class="about-hero-overlay"></div>
+  <div class="about-hero-img"></div>
+  <div class="inner">
+    <div class="about-hero-content">
+      <div class="about-breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="#">About Us</a><span>›</span><span class="active">Design Thinking DNA</span></div>
+      <div class="about-badge">Our Design Thinking DNA</div>
+      <h1>Innovation Born from First Principles Refined Through Design Thinking</h1>
+      <p class="about-hero-sub">At Hexatech, we don't just apply technology. We leverage complete system frameworks to build truly intelligent, composable solutions for transformative banking.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-sec dark">
+  <div class="inner">
+    <span class="sec-label">The Hexatech Difference</span>
+    <h2 class="sec-title">The Hexatech Difference</h2>
+    <p class="sec-sub">A first-principles approach to banking — where complexity is broken down to its elemental truths and built up as intelligent, composable platforms for lasting transformation.</p>
+
+    <div class="dna-diff-grid">
+      <div class="dna-diff-text">
+        <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px">Most fintech companies build what banks ask for. <strong style="color:var(--navy)">We ask why banks need it.</strong></p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px">Unlike others who keep applying solutions, we deconstruct complex financial problems to their fundamental truths.</p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px">By applying first-principles thinking, we create breakthrough, composable platforms that unlock what has never been imagined.</p>
+        <p style="font-size:16px;color:var(--navy);font-weight:600;margin-bottom:28px">This is the Hexatech way. <span class="gt">This is our culture.</span></p>
+        <a href="#" class="btn bp">Learn More →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="dna-approach-card">
+          <div class="dna-approach-label">Traditional Approach</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+            <span class="dna-chip dim">Solutions → Problems → Solutions</span>
+          </div>
+        </div>
+        <div class="dna-approach-card active">
+          <div class="dna-approach-label" style="color:var(--cyan)">Hexatech Approach</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+            <span class="dna-chip">✦</span><span class="dna-chip">●</span><span class="dna-chip">▲</span><span class="dna-chip">★</span><span class="dna-chip">◆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-sec mid">
+  <div class="inner">
+    <span class="sec-label">Innovation Framework</span>
+    <h2 class="sec-title">The Three Pillars of Innovation</h2>
+    <p class="sec-sub">Our whole culture sits on three foundational pillars that drive breakthrough thinking.</p>
+
+    <div class="pillars3-grid">
+      <div class="pillars3-card">
+        <div class="pillars3-num">1</div>
+        <div class="pillars3-title">First Principles Thinking</div>
+        <div class="pillars3-desc">Breaking complex problems to fundamentals to fully understand complex financial challenges as their atomic assumptions, questioning assumptions, conventions, and reducing problems to their most basic elements.</div>
+      </div>
+      <div class="pillars3-card">
+        <div class="pillars3-num">2</div>
+        <div class="pillars3-title">Design Thinking</div>
+        <div class="pillars3-desc">The bridge from idea to reality — empathy-driven methodology for getting to elegant and highly functional solutions, on the floor, define problems, ideate on them, prototype, test and iterate, and communicate with impact.</div>
+      </div>
+      <div class="pillars3-card highlight">
+        <div class="pillars3-num">3</div>
+        <div class="pillars3-title">Design Centre</div>
+        <div class="pillars3-desc">The DCTC/Tech Design Center from our all-physical space in the celebration of our culture. Possess designed empathy tools, powerful systems, specialised business innovations in diverse banks for measurable business outcomes.</div>
+      </div>
+    </div>
+
+    <div class="dna-env-grid" style="margin-top:44px">
+      <div class="dna-env-card">
+        <div class="dna-env-title">Design Mind + Design Space</div>
+        <div class="dna-env-sub">Preparing the Mind for Breakthrough</div>
+        <div class="dna-env-desc" style="margin:12px 0">Launch in Design Thinking at 10 specific schools in these specific with a culture of excellence.</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Our solutions strategies</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Quantum Group assessments</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>See platform solutions</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Finals in solutions and plan</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Build on authentic intelligence</li>
+        </ul>
+      </div>
+      <div class="dna-env-card accent">
+        <div class="dna-env-title" style="color:var(--navy)">Engineering Environments for Innovation</div>
+        <div class="dna-env-sub">Space Scientifically Impacts the Human mind, the Design System develops space elements for creation</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin:14px 0">
+          <li style="font-size:13px;color:rgba(255,255,255,.7);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Gross Functional collaboration</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Generate creation platform thinking</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Visual politics solving</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Report prototyping</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);display:flex;gap:7px"><span style="color:var(--cyan)">→</span>Innovatory customer empathy</li>
+        </ul>
+        <div style="font-family:var(--fd);font-size:32px;font-weight:800;color:rgba(255,255,255,.1)">8012</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4)">Sq ft in Design Center</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-sec dark">
+  <div class="inner">
+    <h2 class="sec-title">Transform Your Bank with Hexatech's Methodology</h2>
+    <p class="sec-sub">Bring your team to the Hexatech Design Center for an immersive problem-solving session.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px">
+      <div class="dna-workshop-card">
+        <div class="dna-workshop-title">Design Thinking Workshop</div>
+        <div class="dna-workshop-sub">Bring your team and your top 4 CPO Full Design Center for an immersive problem-solving session.</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin:14px 0">
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>2-3 day intensive workshop</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>Facilitated by Hexatech innovation experts</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>Solve your most complex fintech challenges</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>Leave with actionable prototypes</li>
+        </ul>
+        <a href="#" class="btn bp" style="font-size:13px;padding:9px 20px">Request Workshop →</a>
+      </div>
+      <div class="dna-workshop-card">
+        <div class="dna-workshop-title">Innovation Consultation</div>
+        <div class="dna-workshop-sub">Let us prepare and Prove First Feasibility to your strategic challenges.</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin:14px 0">
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>1-2 day innovation consultation</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>Hexatech Innovation experts assigned</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>Deep dive into your innovation agenda</li>
+          <li style="font-size:13px;color:var(--dim);display:flex;gap:7px"><span style="color:var(--cyan)">✓</span>Leave with an actionable framework</li>
+        </ul>
+        <a href="#" class="btn bg2" style="font-size:13px;padding:9px 20px">Book Consultation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-sec light-dark" id="contact">
+  <div class="inner">
+    <h2 class="sec-title" style="margin-bottom:40px">Start a Conversation</h2>
+    <div class="about-contact-grid">
+      <div class="about-form-wrap">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="arow"><div class="afield"><label class="alabel">First Name*</label><input class="ainput" type="text" placeholder="First Name*"></div><div class="afield"><label class="alabel">Last Name*</label><input class="ainput" type="text" placeholder="Last Name*"></div></div>
+          <div class="arow"><div class="afield"><label class="alabel">Company Name*</label><input class="ainput" type="text" placeholder="Company Name*"></div><div class="afield"><label class="alabel">Designation*</label><input class="ainput" type="text" placeholder="Designation*"></div></div>
+          <div class="arow"><div class="afield"><label class="alabel">Country</label><select class="ainput" style="background:#fff"><option>Nigeria</option><option>Kenya</option><option>South Africa</option><option>UAE</option><option>UK</option><option>Singapore</option><option>Other</option></select></div><div class="afield"><label class="alabel">Phone</label><input class="ainput" type="text" placeholder="+234"></div></div>
+          <div class="afield"><label class="alabel">Work Email*</label><input class="ainput" type="email" placeholder="Work Email*"></div>
+          <div class="afield"><label class="alabel">Queries</label><textarea class="ainput" placeholder="Queries" style="min-height:80px;resize:vertical"></textarea></div>
+          <a href="#" class="btn bp" style="width:100%;justify-content:center;padding:13px;font-size:15px;margin-top:4px">Submit →</a>
+        </div>
+      </div>
+      <div class="about-contact-img">
+        <img src="https://placehold.co/700x600/0d1f4a/00c8e8" alt="Contact">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about-newsletter">
+  <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <div style="font-size:15px;color:var(--muted)">Stay updated with the latest at Hexatech</div>
+    <div style="display:flex;gap:10px">
+      <input type="email" placeholder="Work Email*" style="background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;color:var(--navy);font-family:var(--fb);font-size:14px;outline:none;min-width:240px">
+      <a href="#" class="btn bp" style="padding:10px 22px">Submit</a>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:22px 0">
+    <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="font-size:15px;color:#64748b">Stay updated with the latest at Hexatech</div>
+      <div style="display:flex;gap:10px">
+        <input type="email" placeholder="Work Email*" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 16px;font-size:14px;color:#0d1f4a;outline:none;min-width:240px;transition:border-color .2s;font-family:'DM Sans',sans-serif">
+        <a href="#" class="btn bp" style="padding:10px 22px;font-size:14px">Submit</a>
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <div class="ftop">
+      <div class="fbrand">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#fgv2)" stroke-width="2.2"/>
+            <line x1="13" y1="11" x2="13" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="23" y1="11" x2="23" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="13" y1="18" x2="23" y2="18" stroke="url(#fgv2)" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="fgv2" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/></linearGradient></defs>
+          </svg>
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#0d1f4a">Hexatech</span>
+        </div>
+        <p>The composable Open Finance Platform for banks, fintechs, and financial institutions worldwide.</p>
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <div class="fsb">𝕏</div><div class="fsb">in</div><div class="fsb">▶</div>
+        </div>
+      </div>
+      <div class="fcols">
+        <div class="fcol"><h4>Products</h4><ul>
+          <li><a href="../pages/core-banking/consumer-core-banking.html">Consumer Core Banking</a></li>
+          <li><a href="../pages/core-banking/corporate-core-banking.html">Corporate Core Banking</a></li>
+          <li><a href="../pages/lending/consumer-originations.html">Consumer Originations</a></li>
+          <li><a href="../pages/cards/consumer-cards.html">Consumer Cards</a></li>
+          <li><a href="../pages/wealth-capital-markets/wealth-management.html">Wealth Management</a></li>
+          <li><a href="../products.html">View All Products</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Solutions</h4><ul>
+          <li><a href="#">Commercial Banks</a></li>
+          <li><a href="#">Digital Banks</a></li>
+          <li><a href="#">NBFCs &amp; Fintechs</a></li>
+          <li><a href="#">Central Banks</a></li>
+          <li><a href="#">Insurance Companies</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Technology</h4><ul>
+          <li><a href="../technology.html">Overview</a></li>
+          <li><a href="../partners.html">Partners</a></li>
+          <li><a href="../docs/index.html">Developer Portal</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Security</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Company</h4><ul>
+          <li><a href="../about/our-story.html">About Us</a></li>
+          <li><a href="../about/our-leadership.html">Leadership</a></li>
+          <li><a href="../about/careers.html">Careers</a></li>
+          <li><a href="../about/our-investors.html">Investors</a></li>
+          <li><a href="../about/social-impact.html">Social Impact</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 Hexatech Inc. All rights reserved.</p>
+      <div class="fleg">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.acc-btn').forEach(function(b){
+    b.addEventListener('click',function(e){e.stopPropagation();var i=b.closest('.acc-item'),l=b.closest('.acc-list'),o=i.classList.contains('open');if(l)l.querySelectorAll('.acc-item').forEach(function(x){x.classList.remove('open');});if(!o)i.classList.add('open');});
+  });
+  document.querySelectorAll('[data-tab-group]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var g=btn.dataset.tabGroup,k=btn.dataset.tab;
+      document.querySelectorAll('[data-tab-group="'+g+'"]').forEach(function(b){b.classList.remove('active');});
+      document.querySelectorAll('[data-tab-panel="'+g+'"]').forEach(function(p){p.classList.remove('active');});
+      btn.classList.add('active');
+      var t=document.querySelector('[data-tab-panel="'+g+'"][data-tab="'+k+'"]');
+      if(t)t.classList.add('active');
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — hexCore Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="../index.html" class="tb-logo">
+      <div class="tb-logo-mark">H</div>
+      hexCore
+    </a>
+    <span class="tb-version">v2</span>
+    <div class="tb-nav">
+      <a href="../index.html"><span>🏠</span> Home</a>
+      <a href="welcome.html" class="active"><span>📄</span> Documentation</a>
+      <a href="../reference/introduction.html"><span>&lt;/&gt;</span> API Reference</a>
+    </div>
+    <div class="tb-actions">
+      <div class="tb-search" tabindex="0">
+        <span>🔍</span><span>Search</span><kbd>CTRL·K</kbd>
+      </div>
+      <button class="tb-btn-login">Log In</button>
+      <div class="tb-theme-btn">⚙</div>
+    </div>
+  </div>
+</nav>
+
+<div class="docs-shell">
+
+  <!-- ── LEFT SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sb-group">
+      <div class="sb-group-label"><span class="sb-ico">📄</span> DOCUMENTATION</div>
+      <a href="welcome.html" class="sb-item active">Welcome</a>
+      <a href="getting-started.html" class="sb-item">Getting Started</a>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">SERVICES</div>
+      <div class="sb-item" data-expand="account">Account <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="account">
+        <a href="#" class="sb-sub-item">Account Creation</a>
+        <a href="#" class="sb-sub-item">Account Details</a>
+        <a href="#" class="sb-sub-item">Account Balance</a>
+      </div>
+
+      <div class="sb-item" data-expand="customer">Customer <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="customer">
+        <a href="#" class="sb-sub-item">Create Customer</a>
+        <a href="#" class="sb-sub-item">Get Customer</a>
+        <a href="#" class="sb-sub-item">Update Customer</a>
+      </div>
+
+      <div class="sb-item" data-expand="loans">Loans <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="loans">
+        <a href="#" class="sb-sub-item">Loan Request</a>
+        <a href="#" class="sb-sub-item">Loan Approval</a>
+        <a href="#" class="sb-sub-item">Loan Disbursement</a>
+        <a href="#" class="sb-sub-item">Repayment Schedule</a>
+      </div>
+
+      <div class="sb-item" data-expand="standing-order">Standing Order <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="standing-order">
+        <a href="#" class="sb-sub-item">Create Standing Order</a>
+        <a href="#" class="sb-sub-item">Get Standing Order</a>
+        <a href="#" class="sb-sub-item">Cancel Standing Order</a>
+      </div>
+
+      <div class="sb-item" data-expand="fixed-deposit">Fixed Deposit <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="fixed-deposit">
+        <a href="#" class="sb-sub-item">Create Fixed Deposit</a>
+        <a href="#" class="sb-sub-item">Liquidate</a>
+      </div>
+
+      <div class="sb-item" data-expand="interbank">Interbank Transaction <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="interbank">
+        <a href="#" class="sb-sub-item">Initiate Transfer</a>
+        <a href="#" class="sb-sub-item">Query Transfer</a>
+      </div>
+
+      <div class="sb-item" data-expand="local-txn">Local Transactions <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="local-txn">
+        <a href="#" class="sb-sub-item">Get Transactions</a>
+        <a href="#" class="sb-sub-item">Transaction Details</a>
+      </div>
+
+      <div class="sb-item" data-expand="cards">Cards <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="cards">
+        <a href="#" class="sb-sub-item">Issue Card</a>
+        <a href="#" class="sb-sub-item">Block Card</a>
+        <a href="#" class="sb-sub-item">Delivery Options</a>
+      </div>
+
+      <div class="sb-item" data-expand="overdraft">Overdraft <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="overdraft">
+        <a href="#" class="sb-sub-item">Get Overdraft</a>
+        <a href="#" class="sb-sub-item">Set Limit</a>
+      </div>
+
+      <div class="sb-item" data-expand="bills">Bills Payment <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="bills">
+        <a href="#" class="sb-sub-item">Pay Bill</a>
+        <a href="#" class="sb-sub-item">Bill Categories</a>
+      </div>
+
+      <div class="sb-item" data-expand="messaging">Messaging <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="messaging">
+        <a href="#" class="sb-sub-item">Send SMS <span class="sb-item-badge post">POST</span></a>
+      </div>
+
+      <div class="sb-item" data-expand="account-officer">Account Officer <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="account-officer">
+        <a href="#" class="sb-sub-item">Get Account Officer</a>
+      </div>
+
+      <div class="sb-item" data-expand="products">Products <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="products">
+        <a href="#" class="sb-sub-item">List Products</a>
+        <a href="#" class="sb-sub-item">Product Details</a>
+      </div>
+
+      <div class="sb-item" data-expand="go-live">Go Live Activities <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="go-live">
+        <a href="#" class="sb-sub-item">Checklist</a>
+        <a href="#" class="sb-sub-item">UAT Sign-off</a>
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">TROUBLESHOOTING</div>
+      <a href="#" class="sb-item">Frequently Asked Question</a>
+    </div>
+
+    <div class="sb-divider"></div>
+    <div style="padding:14px 20px;font-size:11px;color:var(--dim)">Powered by <span style="color:var(--cyan);font-weight:600">hexCore</span></div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="docs-main">
+    <div class="docs-content">
+
+      <!-- Page Header -->
+      <div class="doc-h1" id="top">Welcome</div>
+      <div class="doc-tagline">hexCore documentation guide</div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="hexcore-documentation">hexCore Documentation</h2>
+      <p class="doc-p">
+        Welcome to hexCore documentation, where we have well-detailed guides to help you get started
+        on integrating your app with our API.
+      </p>
+
+      <!-- Illustrative banner -->
+      <div style="margin:28px 0;border-radius:14px;overflow:hidden;border:1px solid var(--bdr);background:linear-gradient(135deg,#06102a,#0a1535)">
+        <div style="display:flex;align-items:center;gap:0">
+          <div style="flex:1;padding:36px 40px">
+            <div style="font-family:var(--fd);font-size:28px;font-weight:800;color:var(--cyan);line-height:1.1;margin-bottom:6px">Welcome to<br>hexCore's<br>Documentation</div>
+          </div>
+          <div style="width:180px;height:150px;background:linear-gradient(135deg,rgba(0,200,232,.15),rgba(26,111,212,.15));display:flex;align-items:center;justify-content:center;font-size:64px;flex-shrink:0">⬡</div>
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="introduction">Introduction</h2>
+      <p class="doc-p">
+        In the past, integration experiences used to be cumbersome for developers and support staff,
+        as there were unusual backups and a lack of clarity during the integration process.
+      </p>
+      <p class="doc-p">
+        As the fintech world is evolving, organisations are beginning to automate and create seamless
+        experiences for their developer communities. hexCore, as an MFB, Fintech and Neobank enabler,
+        has structured its API such that it is easy for developers and non-developers to understand how
+        our APIs work and how to build your digital banking products by leveraging on our Corebanking System.
+      </p>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="our-proposal">Our Proposal</h2>
+      <p class="doc-p">
+        hexCore APIs enables Banks (Commercial &amp; Microfinance), Fintechs, Neobanks and other
+        players in the payment space extend digital payment applications to its customers. Our APIs are
+        built to suit varieties of use cases. With the hexCore API partners are able to build products
+        such as: Loan Products, Digital Banking Products, E-commerce, BNPL products amongst others.
+      </p>
+
+      <h3 class="doc-h3" id="benefits">Benefits of using hexCore API</h3>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-card-title">🎯 User Experience</div>
+          <div class="benefit-card-desc">Seamless user experience for our clients' developers — clean, predictable APIs with consistent patterns throughout.</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card-title">⚡ Less Down-time</div>
+          <div class="benefit-card-desc">Less burden on our technical support as they would be able to focus on critical issues rather than integration queries.</div>
+        </div>
+        <div class="benefit-card" style="grid-column:1/-1">
+          <div class="benefit-card-title">🔄 Faster Development Cycle</div>
+          <div class="benefit-card-desc">Faster development cycle and improved time to market for our customers. Our SDKs, code samples, and sandbox environment help you ship in days, not months.</div>
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="building-with-api">Building with hexCore Core API</h2>
+      <p class="doc-p">
+        The hexCore APIs support varieties of functionalities depending on your use-case. Outlined below
+        are key APIs that are widely used to suit a typical digital banking application:
+      </p>
+
+      <h3 class="doc-h3" id="account-creation">Account Creation</h3>
+      <p class="doc-p">
+        Create your customers with just one API call. Our account creation APIs enables you to onboard
+        and generate a unique account number for your customers. Our API also provides the flexibility of
+        waiving any of the KYC details based on your KYC policy.
+      </p>
+
+      <h3 class="doc-h3" id="loans">Loans</h3>
+      <p class="doc-p">
+        Build an end-to-end loan process using our Loan API. Your users can make a loan request, get
+        approval as set by your institution, and get the loan disbursed to their designated account.
+      </p>
+
+      <h3 class="doc-h3" id="fixed-deposit">Fixed Deposit</h3>
+      <p class="doc-p">
+        Build an end-to-end fixed deposit process using our Fixed Deposit API. Your users can make a
+        fixed deposit request, get approval as set by your institution, and get the deposit confirmed
+        to their designated account.
+      </p>
+
+      <h3 class="doc-h3" id="fund-transfer">Fund Transfer</h3>
+      <p class="doc-p">
+        Our fund transfer APIs enables interbank, intrabank transfer. Your users can send money to another
+        user within the MFB or account holders in other banks.
+      </p>
+
+      <h3 class="doc-h3" id="cards">Cards</h3>
+      <p class="doc-p">
+        hexCore Card APIs enables your customer request for cards, block cards and also avail the flexibility
+        of determining delivery options of such cards. With just one integration you can issue both batch
+        and instant cards to your customers.
+      </p>
+
+      <h3 class="doc-h3" id="overdraft">Overdraft</h3>
+      <p class="doc-p">
+        Our Overdraft API your business is able to offer customers the ability to spend beyond their available
+        balance (i.e Users can transfer funds even when their account balance is zero). This API enables
+        flexibility to set limit per customer, set interest and get list of available overdrafts.
+      </p>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="use-cases">Explore Possible Use Cases</h2>
+      <p class="doc-p">Not sure which APIs to use? Here are common use cases and the APIs that power them:</p>
+
+      <div class="doc-table-wrap">
+        <table class="usecase-table">
+          <thead>
+            <tr>
+              <th>Use cases</th>
+              <th>APIs to consider</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Digital Banking Application</td>
+              <td>
+                <span class="api-tag">Account</span>
+                <span class="api-tag">Customer</span>
+                <span class="api-tag">Loan</span>
+                <span class="api-tag">Standing Order</span>
+                <span class="api-tag">Fixed Deposit</span>
+                <span class="api-tag">Transfer</span>
+                <span class="api-tag">Transaction</span>
+                <span class="api-tag">Overdraft</span>
+                <span class="api-tag">Bills Payment</span>
+                <span class="api-tag">Pay with Transfer</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Loan Application</td>
+              <td>
+                <span class="api-tag">Account</span>
+                <span class="api-tag">Customer</span>
+                <span class="api-tag">Loan</span>
+                <span class="api-tag">Standing Order</span>
+                <span class="api-tag">Transfer</span>
+                <span class="api-tag">Transaction</span>
+                <span class="api-tag">Overdraft</span>
+                <span class="api-tag">Standing Order</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Pay With Transfer</td>
+              <td>
+                <span class="api-tag">Create Virtual Account</span>
+                <span class="api-tag">Initiate Payment</span>
+                <span class="api-tag">Verify Transaction</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Savings &amp; Investment Application</td>
+              <td>
+                <span class="api-tag">Account</span>
+                <span class="api-tag">Customer</span>
+                <span class="api-tag">Fixed Deposit</span>
+                <span class="api-tag">Transfer</span>
+                <span class="api-tag">Transaction</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Agency Banking Application</td>
+              <td>
+                <span class="api-tag">Account</span>
+                <span class="api-tag">Customer</span>
+                <span class="api-tag">Transfer</span>
+                <span class="api-tag">Transaction</span>
+                <span class="api-tag">Bills Payment</span>
+                <span class="api-tag">Pay with Transfer</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── PAGE NAV ── -->
+      <div class="page-nav">
+        <div></div>
+        <a href="getting-started.html" class="page-nav-next">
+          <div>
+            <div class="pn-dir">Next</div>
+            <div class="pn-title">Getting Started →</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ── HELPFUL ── -->
+      <div class="doc-helpful">
+        Did this page help you?
+        <button class="helpful-btn">👍 Yes</button>
+        <button class="helpful-btn">👎 No</button>
+        <span class="helpful-last-updated">Updated about 3 years ago</span>
+      </div>
+
+    </div><!-- /docs-content -->
+
+    <!-- ── TABLE OF CONTENTS ── -->
+    <div class="toc-panel">
+      <div class="toc-panel-inner">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#hexcore-documentation">hexCore Documentation</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#our-proposal">Our Proposal</a></li>
+          <li><a href="#benefits">Benefits of using hexCore API</a></li>
+          <li><a href="#building-with-api">Building with hexCore Core API</a></li>
+          <li><a href="#account-creation">Account Creation</a></li>
+          <li><a href="#loans">Loans</a></li>
+          <li><a href="#fixed-deposit">Fixed deposit</a></li>
+          <li><a href="#fund-transfer">Fund Transfer</a></li>
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#overdraft">Overdraft</a></li>
+          <li><a href="#use-cases">Explore Possible Use Cases</a></li>
+        </ul>
+        <div class="toc-actions">
+          <div class="toc-action-btn">✏️ Suggest Edits</div>
+          <div class="toc-action-btn">🤖 Ask AI ▾</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

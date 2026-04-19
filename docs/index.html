@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hexCore Developer Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="tb-logo">
+      <div class="tb-logo-mark">H</div>
+      hexCore
+    </a>
+    <span class="tb-version">v2</span>
+    <div class="tb-nav">
+      <a href="index.html" class="active">
+        <span>🏠</span> Home
+      </a>
+      <a href="docs/welcome.html">
+        <span>📄</span> Documentation
+      </a>
+      <a href="reference/introduction.html">
+        <span>&lt;/&gt;</span> API Reference
+      </a>
+    </div>
+    <div class="tb-actions">
+      <div class="tb-search" tabindex="0">
+        <span>🔍</span>
+        <span>Search</span>
+        <kbd>CTRL·K</kbd>
+      </div>
+      <button class="tb-btn-login">Log In</button>
+      <div class="tb-theme-btn">⚙</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero-section" style="padding-top: calc(var(--topbar-h) + 40px);">
+  <!-- Arch rings left -->
+  <div class="hero-arch hero-arch-left" style="top:50%;transform:translateY(-50%)"></div>
+  <div class="hero-arch hero-arch-left2" style="left:-400px;width:860px;height:860px;border-color:rgba(0,200,232,.04)"></div>
+  <div class="hero-arch" style="left:-520px;top:50%;transform:translateY(-50%);width:1080px;height:1080px;border-color:rgba(0,200,232,.025)"></div>
+  <!-- Arch rings right -->
+  <div class="hero-arch hero-arch-right" style="top:50%;transform:translateY(-50%)"></div>
+  <div class="hero-arch hero-arch-right2" style="right:-400px;width:860px;height:860px;border-color:rgba(0,200,232,.04)"></div>
+  <div class="hero-arch" style="right:-520px;top:50%;transform:translateY(-50%);width:1080px;height:1080px;border-color:rgba(0,200,232,.025)"></div>
+  <!-- Central glow -->
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <h1>hexCore Developer Portal</h1>
+    <p class="hero-sub">Welcome to the hexCore Developer Portal! 😊 🤙</p>
+    <p class="hero-sub" style="margin-bottom:16px">
+      We've documented all the key information you need to build your Digital Banking Product.
+      With access to <strong style="color:var(--white)">150+ API resources</strong>, you can seamlessly integrate with the hexCore system to drive your Digital Banking Strategy.
+    </p>
+    <p class="hero-sub" style="margin-bottom:16px">
+      Over the years, banks, neobanks, and financial institutions (FIs) have leveraged our APIs to build innovative digital products, transforming payments across the country.
+    </p>
+    <p class="hero-sub" style="margin-bottom:8px">Are you ready to build your own Digital Banking Product? 💻</p>
+    <p class="hero-sub" style="margin-bottom:28px">Let's get started! 🚀 🚀</p>
+    <div class="hero-acts">
+      <a href="docs/welcome.html" class="btn-primary">
+        📄 Get Started
+      </a>
+      <a href="reference/introduction.html" class="btn-secondary">
+        💬 API Reference
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── API CATEGORIES GRID ── -->
+<section class="api-grid-section">
+  <div class="inner">
+    <div class="api-grid">
+
+      <!-- Getting Started -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">📚</span> Getting Started</div>
+        <div class="api-group-links">
+          <a href="docs/welcome.html" class="api-group-link"><span class="method-dot get"></span>Introduction</a>
+        </div>
+      </div>
+
+      <!-- Account API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">🏦</span> Account API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#accounts" class="api-group-link"><span class="method-dot get"></span>Accounts</a>
+        </div>
+      </div>
+
+      <!-- Account Officer -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">👤</span> Account Officer</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#account-officer" class="api-group-link"><span class="method-dot get"></span>Account Officer</a>
+        </div>
+      </div>
+
+      <!-- Customers API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">👥</span> Customers API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#customers" class="api-group-link"><span class="method-dot post"></span>Customers</a>
+        </div>
+      </div>
+
+      <!-- Loans API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">💰</span> Loans API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#loans" class="api-group-link"><span class="method-dot post"></span>Loans</a>
+        </div>
+      </div>
+
+      <!-- Fixed Deposit API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">🏛️</span> Fixed Deposit API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#fixed-deposit" class="api-group-link"><span class="method-dot post"></span>Fixed Deposit</a>
+        </div>
+      </div>
+
+      <!-- Transfer API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">🔄</span> Transfer API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#transfers" class="api-group-link"><span class="method-dot post"></span>Transfers</a>
+        </div>
+      </div>
+
+      <!-- LOCAL Transactions API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">📊</span> LOCAL Transactions API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#local-transactions" class="api-group-link"><span class="method-dot get"></span>Local Transactions</a>
+        </div>
+      </div>
+
+      <!-- Cards API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">💳</span> Cards API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#cards" class="api-group-link"><span class="method-dot post"></span>Cards</a>
+        </div>
+      </div>
+
+      <!-- Overdraft API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">🟠</span> Overdraft API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#overdraft" class="api-group-link"><span class="method-dot post"></span>Overdraft</a>
+        </div>
+      </div>
+
+      <!-- Bills Payment API -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">🟡</span> Bills Payment API</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#bills-payment" class="api-group-link"><span class="method-dot post"></span>Bills Payment</a>
+        </div>
+      </div>
+
+      <!-- Messaging -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">💬</span> Messaging</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#messaging" class="api-group-link">
+            <span class="method-dot post"></span>Send SMS
+            <span class="method-badge post" style="margin-left:auto;font-size:9px;padding:1px 6px">POST</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Standing Order -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">📅</span> Standing Order</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#standing-order" class="api-group-link"><span class="method-dot post"></span>Standing Order</a>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">🔴</span> Products</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#products" class="api-group-link"><span class="method-dot get"></span>Products</a>
+        </div>
+      </div>
+
+      <!-- Thirdparty Transactions -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">🌐</span> Thirdparty Transactions</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#thirdparty" class="api-group-link"><span class="method-dot get"></span>Getting Started With Your API</a>
+        </div>
+      </div>
+
+      <!-- Loan Application -->
+      <div class="api-group">
+        <div class="api-group-title"><span class="api-group-icon">📋</span> Loan Application</div>
+        <div class="api-group-links">
+          <a href="reference/introduction.html#loan-application" class="api-group-link"><span class="method-dot post"></span>Getting Started With Your API</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="js/docs.js"></script>
+</body>
+</html>

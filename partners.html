@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners — Hexatech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── Partners-specific styles ─────────────────────────────────── */
+
+/* Hero */
+.pt-hero{
+  position:relative;min-height:62vh;display:flex;align-items:center;
+  background:linear-gradient(135deg,#07102a 0%,#06091a 55%,#091228 100%);
+  overflow:hidden;padding:120px 0 80px;
+}
+.pt-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(0,200,232,.12) 1px,transparent 1px);
+  background-size:36px 36px;
+  mask-image:radial-gradient(ellipse 70% 100% at 60% 50%,black 0%,transparent 100%);
+  pointer-events:none;
+}
+.pt-hero-glow{
+  position:absolute;right:-80px;top:50%;transform:translateY(-50%);
+  width:580px;height:580px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,200,232,.12) 0%,transparent 68%);
+  pointer-events:none;
+}
+.pt-hero-visual{
+  position:absolute;right:0;top:0;bottom:0;width:42%;
+  overflow:hidden;
+}
+.pt-hero-visual::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,#07102a 0%,transparent 40%),
+             linear-gradient(to top,#07102a 0%,transparent 30%);
+  z-index:1;
+}
+.pt-hero-visual img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.pt-hero-content{position:relative;z-index:2;max-width:600px}
+.pt-breadcrumb{font-size:12px;color:var(--dim);margin-bottom:20px;display:flex;align-items:center;gap:6px}
+.pt-breadcrumb a{color:var(--dim);transition:color .2s}.pt-breadcrumb a:hover{color:var(--cyan)}
+.pt-breadcrumb span{color:var(--cyan)}
+.pt-hero h1{font-family:var(--fd);font-size:clamp(36px,4.5vw,58px);font-weight:800;color:var(--navy);line-height:1.05;letter-spacing:-2px;margin-bottom:18px}
+.pt-hero p{font-size:16px;color:var(--muted);line-height:1.8;max-width:500px;margin-bottom:34px}
+
+/* Why cards */
+.why3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:16px;overflow:hidden;margin-top:52px}
+.why3-card{background:#070e26;padding:32px 28px;transition:background .2s}
+.why3-card:hover{background:#f8fafc}
+.why3-card-num{font-family:var(--fd);font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.why3-card-title{font-family:var(--fd);font-size:17px;font-weight:800;color:var(--navy);margin-bottom:12px;line-height:1.2}
+.why3-card-desc{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* Gain cards */
+.gain-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.gain-card{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:16px;padding:26px;transition:all .25s;position:relative;overflow:hidden}
+.gain-card:hover{border-color:rgba(0,200,232,.3);background:rgba(0,200,232,.03);transform:translateY(-3px)}
+.gain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .25s}
+.gain-card:hover::before{opacity:1}
+.gain-card.accent{background:linear-gradient(135deg,rgba(0,200,232,.12),rgba(26,111,212,.1));border-color:rgba(0,200,232,.25)}
+.gain-card.accent:hover{background:linear-gradient(135deg,rgba(0,200,232,.18),rgba(26,111,212,.15))}
+.gain-card-ico{width:40px;height:40px;border-radius:10px;background:rgba(0,200,232,.1);border:1px solid rgba(0,200,232,.2);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+.gain-card-title{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.gain-card-desc{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* Platform tabs */
+.plat-tabs{display:flex;gap:0;border:1px solid var(--bdr);border-radius:10px;overflow:hidden;width:fit-content;margin-bottom:36px}
+.plat-tab{padding:10px 28px;font-size:14px;font-weight:600;font-family:var(--fd);cursor:pointer;border:none;transition:all .2s;color:var(--dim);background:rgba(255,255,255,.02)}
+.plat-tab.active{background:var(--grad);color:#fff}
+.plat-panel{display:none}.plat-panel.active{display:block}
+.plat-card{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:16px;padding:32px;max-width:480px;transition:border-color .2s}
+.plat-card:hover{border-color:rgba(0,200,232,.25)}
+.plat-card-title{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.plat-card-sub{font-size:12px;color:var(--cyan);margin-bottom:16px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.plat-card-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px}
+
+/* Partner type tabs */
+.ptype-tabs{display:flex;gap:4px;background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:10px;padding:4px;width:fit-content;margin-bottom:36px;flex-wrap:wrap}
+.ptype-tab{padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;border-radius:7px;border:none;font-family:var(--fd);color:var(--dim);background:transparent;transition:all .2s;white-space:nowrap}
+.ptype-tab.active{background:var(--grad);color:#fff}
+.ptype-tab:hover:not(.active){color:var(--navy);background:rgba(255,255,255,.05)}
+.ptype-panel{display:none}.ptype-panel.active{display:block}
+.ptype-logos{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:8px}
+.plogo{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:10px;padding:16px 12px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:13px;font-weight:700;color:var(--muted);text-align:center;min-height:60px;cursor:pointer;transition:all .2s}
+.plogo:hover{border-color:rgba(0,200,232,.3);color:var(--navy);background:rgba(0,200,232,.05)}
+
+/* Become a partner form */
+.become-hero{
+  position:relative;background:linear-gradient(160deg,#07102a,#0a1535);
+  padding:80px 0;overflow:hidden;
+}
+.become-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(0,200,232,.1) 1px,transparent 1px);
+  background-size:28px 28px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%);
+  pointer-events:none;
+}
+.become-form-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--bdr);position:relative;z-index:1}
+.become-form-left{padding:48px;border-right:1px solid var(--bdr)}
+.become-form-right{position:relative;overflow:hidden;min-height:480px}
+.become-form-right img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.become-form-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(9,15,37,.3),transparent)}
+.bform-title{font-family:var(--fd);font-size:26px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.bform-sub{font-size:14px;color:var(--dim);margin-bottom:28px}
+.bform{display:flex;flex-direction:column;gap:14px}
+.bfrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bff{display:flex;flex-direction:column;gap:5px}
+.bflabel{font-size:10.5px;color:var(--dim);font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+.bfinput{background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:8px;padding:11px 14px;color:var(--navy);font-family:var(--fb);font-size:14px;transition:border-color .2s;outline:none;width:100%}
+.bfinput:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,200,232,.08)}
+.bfinput::placeholder{color:var(--dim)}
+.bfselect{background:#fff}
+.bfprivacy{font-size:11px;color:var(--dim);line-height:1.6}
+.bfprivacy a{color:var(--cyan)}
+.bffile{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px dashed var(--bdr);border-radius:8px;padding:12px 14px;cursor:pointer;transition:border-color .2s}
+.bffile:hover{border-color:rgba(0,200,232,.3)}
+.bffile-ico{font-size:18px}
+.bffile-text{font-size:13px;color:var(--dim)}
+
+/* stats row */
+.stats-strip{display:flex;gap:0;background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:16px;overflow:hidden;margin-bottom:56px}
+.strip-stat{flex:1;padding:24px 28px;border-right:1px solid var(--bdr);text-align:center}
+.strip-stat:last-child{border-right:none}
+.strip-stat-n{font-family:var(--fd);font-size:36px;font-weight:800;background:var(--gt);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px}
+.strip-stat-l{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+
+@media(max-width:1100px){
+  .why3-grid{grid-template-columns:1fr}
+  .gain-grid{grid-template-columns:1fr}
+  .ptype-logos{grid-template-columns:repeat(3,1fr)}
+  .become-form-grid{grid-template-columns:1fr}
+  .become-form-right{display:none}
+  .pt-hero-visual{display:none}
+  .pt-hero-content{max-width:100%}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}.nlinks{display:none}
+  .inner{padding:0 20px}.nav-inner{padding:0 20px}
+  .pt-hero{padding:100px 0 60px}
+  .bfrow{grid-template-columns:1fr}
+  .ptype-logos{grid-template-columns:repeat(2,1fr)}
+  .stats-strip{flex-direction:column}
+  .strip-stat{border-right:none;border-bottom:1px solid var(--bdr)}
+  .strip-stat:last-child{border-bottom:none}
+}
+</style>
+<link rel="stylesheet" href="css/theme-v2.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index-v2.html" class="nlogo">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#ngpartners)" stroke-width="2.2"/>
+        <line x1="13" y1="11" x2="13" y2="25" stroke="url(#ngpartners)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="23" y1="11" x2="23" y2="25" stroke="url(#ngpartners)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="13" y1="18" x2="23" y2="18" stroke="url(#ngpartners)" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ngpartners" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/>
+        </linearGradient></defs>
+      </svg>
+      <span class="lwm">Hexatech</span>
+    </a>
+    <ul class="nlinks">
+      <li>
+        <button class="nt" onclick="location.href='products.html'">Products <span class="nc">▾</span></button>
+        <div class="dd dd-mega">
+          <div class="dd-sidebar">
+            <div class="dd-sidebar-title">Product Suite</div>
+            <button class="dd-cat active" data-panel="corepartners"><div class="dd-cat-icon">🏛️</div><span class="dd-cat-label">Core Banking</span></button>
+            <button class="dd-cat" data-panel="lendingpartners"><div class="dd-cat-icon">📈</div><span class="dd-cat-label">Lending</span></button>
+            <button class="dd-cat" data-panel="cardspartners"><div class="dd-cat-icon">💳</div><span class="dd-cat-label">Cards</span></button>
+            <button class="dd-cat" data-panel="digitalpartners"><div class="dd-cat-icon">📱</div><span class="dd-cat-label">Digital Engagement</span></button>
+            <button class="dd-cat" data-panel="wealthpartners"><div class="dd-cat-icon">💼</div><span class="dd-cat-label">Wealth &amp; Capital</span></button>
+            <button class="dd-cat" data-panel="treasurypartners"><div class="dd-cat-icon">🏦</div><span class="dd-cat-label">Treasury</span></button>
+          </div>
+          <div class="dd-panels">
+            <div class="dd-panel active" id="dd-corepartners">
+              <div class="dd-panel-title">Core Banking</div>
+              <div class="dd-links">
+                <a href="pages/core-banking/consumer-core-banking.html" class="dd-link">Consumer Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/core-banking/corporate-core-banking.html" class="dd-link">Corporate Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/core-banking/central-core-banking.html" class="dd-link">Central Core Banking <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-lendingpartners">
+              <div class="dd-panel-title">Lending</div>
+              <div class="dd-links">
+                <a href="pages/lending/consumer-originations.html" class="dd-link">Consumer Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/consumer-loan-management.html" class="dd-link">Consumer Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/sme-corporate-originations.html" class="dd-link">SME &amp; Corporate Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/sme-corporate-loan-management.html" class="dd-link">SME Corporate Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/debt-collections.html" class="dd-link">Debt Collections <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-cardspartners">
+              <div class="dd-panel-title">Cards</div>
+              <div class="dd-links">
+                <a href="pages/cards/consumer-cards.html" class="dd-link">Consumer Cards <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/cards/corporate-cards.html" class="dd-link">Corporate Cards <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-digitalpartners">
+              <div class="dd-panel-title">Digital Engagement</div>
+              <div class="dd-links">
+                <a href="pages/digital-engagement/consumers-sme.html" class="dd-link">Digital Engagement — Consumers &amp; SME <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/digital-engagement/corporate-exchange.html" class="dd-link">CBX — Corporate Exchange <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-wealthpartners">
+              <div class="dd-panel-title">Wealth &amp; Capital Markets</div>
+              <div class="dd-links">
+                <a href="pages/wealth-capital-markets/wealth-management.html" class="dd-link">Wealth Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/financial-advisor.html" class="dd-link">Financial Advisor <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/brokerage.html" class="dd-link">Brokerage <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/custody.html" class="dd-link">Custody <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-treasurypartners">
+              <div class="dd-panel-title">Treasury &amp; Payments</div>
+              <div class="dd-links">
+                <a href="pages/treasury-payments/virtual-accounts-management.html" class="dd-link">Virtual Accounts Management <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Solutions <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#94a3b8;font-weight:700;padding:8px 12px 6px">By Segment</div>
+          <a href="#" class="ddi"><span class="ddn">🏦</span>Commercial Banks</a>
+          <a href="#" class="ddi"><span class="ddn">📱</span>Digital &amp; Neo Banks</a>
+          <a href="#" class="ddi"><span class="ddn">💼</span>NBFCs &amp; Fintechs</a>
+          <a href="#" class="ddi"><span class="ddn">🌍</span>Central Banks</a>
+        </div></div>
+      </li>
+      <li><a href="technology.html">Technology</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li>
+        <a href="#">Resources <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="#" class="ddi"><span class="ddn">📊</span>Analyst Recognitions</a>
+          <a href="#" class="ddi"><span class="ddn">🏆</span>Awards</a>
+          <a href="#" class="ddi"><span class="ddn">📅</span>Events</a>
+          <a href="#" class="ddi"><span class="ddn">📰</span>Newsroom</a>
+        </div></div>
+      </li>
+      <li>
+        <a href="#">About Us <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="about/our-story.html" class="ddi"><span class="ddn">📖</span>Our Story</a>
+          <a href="about/our-leadership.html" class="ddi"><span class="ddn">👥</span>Our Leadership</a>
+          <a href="about/design-thinking-dna.html" class="ddi"><span class="ddn">🎯</span>Design Thinking DNA</a>
+          <div class="dddiv"></div>
+          <a href="about/our-investors.html" class="ddi"><span class="ddn">📈</span>Investors</a>
+          <a href="about/social-impact.html" class="ddi"><span class="ddn">🌱</span>Social Impact</a>
+          <a href="about/careers.html" class="ddi"><span class="ddn">💼</span>Careers</a>
+        </div></div>
+      </li>
+    </ul>
+    <div class="nav-acts-area">
+      <a href="#" style="padding:7px 16px;border-radius:7px;font-size:14px;font-weight:500;color:#475569;border:1px solid #e2e8f0;transition:all .15s;font-family:var(--fb);background:#fff;text-decoration:none">Sign In</a>
+      <a href="#contact" class="btn bp" style="padding:8px 20px;font-size:14px">Get Started →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+<section class="pt-hero">
+  <div class="pt-hero-glow"></div>
+  <div class="pt-hero-visual">
+    <img src="https://placehold.co/900x700/0a1535/00c8e8" alt="Partners visual">
+  </div>
+  <div class="inner">
+    <div class="pt-hero-content">
+      <div class="pt-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Partners</span>
+      </div>
+      <div style="font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--cyan);font-weight:700;margin-bottom:14px">Partners</div>
+      <h1>Build the Future of<br>Banking — Together</h1>
+      <p>Join Hexatech's partner ecosystem to co-create intelligent banking solutions, accelerate digital transformation programs, and drive scalable growth across global financial institutions.</p>
+      <a href="#become-partner" class="btn bp" style="font-size:15px;padding:13px 30px">Become a Partner →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ECOSYSTEM INTRO ═════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <div class="stats-strip">
+      <div class="strip-stat"><div class="strip-stat-n">200+</div><div class="strip-stat-l">Partner organisations</div></div>
+      <div class="strip-stat"><div class="strip-stat-n">40+</div><div class="strip-stat-l">Countries covered</div></div>
+      <div class="strip-stat"><div class="strip-stat-n">$12B+</div><div class="strip-stat-l">Partner-led revenue enabled</div></div>
+      <div class="strip-stat"><div class="strip-stat-n">1,300+</div><div class="strip-stat-l">Joint implementations</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start">
+      <div>
+        <span class="sec-label" style="text-align:left">Partner Ecosystem</span>
+        <h2 class="sec-title" style="text-align:left;font-size:clamp(26px,3vw,40px)">A Partner Ecosystem Built for Enterprise Transformation</h2>
+      </div>
+      <div>
+        <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:16px">At Hexatech, partnerships are not transactional. They are strategic, long-term and outcome-driven. We work with global and regional partners to help financial institutions modernise faster, achieve lower total cost of transformation, and drive measurable outcomes in digital banking.</p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.85">Whether you are a System Integrator, Consulting Partner, Cloud Provider, or ISV — our co-opetition offers you a composable platform foundation, enterprise AI orchestration, and strong go-to-market enablement to grow your business and deliver real value to global clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY PARTNER ═════════════════════════════════════════════════════════ -->
+<section class="page-sec mid">
+  <div class="inner">
+    <span class="sec-label">Why Partner</span>
+    <h2 class="sec-title">Why Partner with Hexatech</h2>
+    <p class="sec-sub">Three pillars that make the Hexatech partner ecosystem one of the most differentiated in financial technology.</p>
+
+    <div class="why3-grid">
+      <div class="why3-card">
+        <div class="why3-card-num">01</div>
+        <div class="why3-card-title">Hexatech Philosophy</div>
+        <div class="why3-card-desc">We believe transformation succeeds when technology, domain-depth and execution come together. Our partner programme is built around breaking banking complexity into seamless builds and ensuring solutions that are simple, smarter, and future-ready.</div>
+      </div>
+      <div class="why3-card">
+        <div class="why3-card-num">02</div>
+        <div class="why3-card-title">Hexatech Approach</div>
+        <div class="why3-card-desc">We enable partners with an enterprise-grade product foundation, modular intellectual, and flexible co-investment model. Together, we help you shape differentiated offerings, deploy faster, and deliver measurable outcomes to clients across all segments.</div>
+      </div>
+      <div class="why3-card">
+        <div class="why3-card-num">03</div>
+        <div class="why3-card-title">How We Grow Together</div>
+        <div class="why3-card-desc">We grow together by combining your market presence and domain strengths with Hexatech's platform depth — sharing a strategic transformation path, and with strong GTM alignment to unlock joint pipeline, accelerate client wins, and expand into new territories.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT YOU GAIN ═══════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Partner Benefits</span>
+    <h2 class="sec-title">What You Gain as a Hexatech Partner</h2>
+    <p class="sec-sub">Six strategic advantages that make the Hexatech partner programme a force-multiplier for your business.</p>
+
+    <div class="gain-grid">
+      <div class="gain-card">
+        <div class="gain-card-ico">🤝</div>
+        <div class="gain-card-title">Co-Innovation &amp; Solution Building</div>
+        <div class="gain-card-desc">Co-create new differentiated solutions using Hexatech's eHEX platform and domain accelerators. Access our product roadmap, early-release APIs, and dedicated co-innovation labs to build IP that wins new markets together.</div>
+      </div>
+      <div class="gain-card">
+        <div class="gain-card-ico">🚀</div>
+        <div class="gain-card-title">Go-to-Market Enablement</div>
+        <div class="gain-card-desc">Joint campaigns, partner playbooks, reference architectures, and sales enablement support. Our partner marketing team co-invests in demand generation, event presence, and analyst recognition programmes on your behalf.</div>
+      </div>
+      <div class="gain-card">
+        <div class="gain-card-ico">⚡</div>
+        <div class="gain-card-title">Faster Delivery &amp; Repeatability</div>
+        <div class="gain-card-desc">Deploy transformation projects faster with composable architecture and modular building blocks. Certified delivery frameworks, pre-built accelerators, and rapid-implementation playbooks reduce delivery risk and time-to-value.</div>
+      </div>
+      <div class="gain-card">
+        <div class="gain-card-ico">🛡️</div>
+        <div class="gain-card-title">Enterprise Readiness by Design</div>
+        <div class="gain-card-desc">Hexatech's scalable and governance-built platform is built for the needs of regulated institutions. Security, compliance, audit, and resilience are embedded by design — not added after the fact.</div>
+      </div>
+      <div class="gain-card">
+        <div class="gain-card-ico">📈</div>
+        <div class="gain-card-title">Commercial &amp; Growth Frameworks</div>
+        <div class="gain-card-desc">Structured incentives, co-opetition engagement frameworks, and joint revenue opportunities. Tier-based partner programmes reward investment in certification, pipeline, and delivery with higher margins and priority access.</div>
+      </div>
+      <div class="gain-card accent">
+        <div style="font-size:14px;color:var(--cyan);font-weight:600;margin-bottom:10px">📣 Partner Network Advantage</div>
+        <div class="gain-card-desc" style="color:var(--navy);font-size:15px;line-height:1.75">Partners across Hexatech's network use the eHEX platform to accelerate transformation programs, reduce implementation complexity, and improve innovation for clients — delivering 40% faster go-live on average.</div>
+        <div style="margin-top:18px"><a href="#become-partner" class="btn bp" style="font-size:13px;padding:10px 22px">Join the Ecosystem →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CORE VALUE PROPOSITION ══════════════════════════════════════════════ -->
+<section class="page-sec mid">
+  <div class="inner">
+    <span class="sec-label">Platform Foundation</span>
+    <h2 class="sec-title">The Core Value Proposition</h2>
+    <p class="sec-sub">A partner-ready ecosystem powered by composable platforms, microservices architecture, and enterprise AI.</p>
+
+    <div class="plat-tabs" id="platTabs">
+      <button class="plat-tab active" data-panel="ehex">eHEX Platform</button>
+      <button class="plat-tab" data-panel="ai">AI &amp; Intelligence</button>
+      <button class="plat-tab" data-panel="cloud">Cloud &amp; Infrastructure</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+
+      <div class="plat-panel active" id="panel-ehex" style="display:block">
+        <div class="plat-card">
+          <div class="plat-card-title">eHEX Platform</div>
+          <div class="plat-card-sub">Comprehensive &amp; Composable Open-Finance Platform</div>
+          <div class="plat-card-desc">Every product has been built at eHEX architecture to ensure integration of banking safety, flexibility and composability with the customer at the centre. Build once, deploy anywhere — with full white-labelling and reseller rights for certified partners.</div>
+          <a href="products.html" class="btn bg2" style="font-size:13px;padding:9px 20px">Explore eHEX Platform →</a>
+        </div>
+      </div>
+
+      <div class="plat-panel active" id="panel-ehex-2" style="display:block">
+        <div class="plat-card">
+          <div class="plat-card-title">Hexatech AI &amp; Data Layer</div>
+          <div class="plat-card-sub">Open Business Impact Platform</div>
+          <div class="plat-card-desc">The AI Platform delivers secure, decision-grade intelligence and informs measurable business impact. Our AI Partner Programme enables ISVs and AI specialists to build differentiated offerings on Hexatech's intelligence infrastructure — with access to banking-grade training data, model management, and inference APIs.</div>
+          <a href="#" class="btn bg2" style="font-size:13px;padding:9px 20px">Explore AI Platform →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNER TYPES ═══════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Partner Types</span>
+    <h2 class="sec-title">Partner Types</h2>
+    <p class="sec-sub">We collaborate with leading organisations across the ecosystem to deliver transformation programs at global scale.</p>
+
+    <div class="ptype-tabs" id="ptypeTabs">
+      <button class="ptype-tab active" data-panel="gsi">Global System Integrators</button>
+      <button class="ptype-tab" data-panel="consulting">Consulting Partners</button>
+      <button class="ptype-tab" data-panel="cloud">Cloud &amp; Infrastructure Partners</button>
+      <button class="ptype-tab" data-panel="regional">Regional Partners</button>
+    </div>
+
+    <!-- Global System Integrators -->
+    <div class="ptype-panel active" id="ptype-gsi">
+      <div class="ptype-logos">
+        <div class="plogo">Accenture</div>
+        <div class="plogo">Infosys</div>
+        <div class="plogo">DXC Technology</div>
+        <div class="plogo">HCL Technologies</div>
+        <div class="plogo">Hexaware Technologies</div>
+        <div class="plogo">IBM</div>
+        <div class="plogo">Kyndryl</div>
+        <div class="plogo">LTIMindtree</div>
+        <div class="plogo">Mphasis Systems</div>
+        <div class="plogo">Hexaware</div>
+        <div class="plogo">Tech Mahindra</div>
+        <div class="plogo">Wipro</div>
+      </div>
+    </div>
+
+    <!-- Consulting Partners -->
+    <div class="ptype-panel" id="ptype-consulting">
+      <div class="ptype-logos">
+        <div class="plogo">McKinsey &amp; Co</div>
+        <div class="plogo">Deloitte</div>
+        <div class="plogo">PwC</div>
+        <div class="plogo">EY</div>
+        <div class="plogo">KPMG</div>
+        <div class="plogo">BCG</div>
+        <div class="plogo">Capgemini</div>
+        <div class="plogo">Oliver Wyman</div>
+        <div class="plogo">Cognizant</div>
+      </div>
+    </div>
+
+    <!-- Cloud & Infrastructure -->
+    <div class="ptype-panel" id="ptype-cloud">
+      <div class="ptype-logos">
+        <div class="plogo">AWS</div>
+        <div class="plogo">Microsoft Azure</div>
+        <div class="plogo">Google Cloud</div>
+        <div class="plogo">Oracle Cloud</div>
+        <div class="plogo">IBM Cloud</div>
+        <div class="plogo">Salesforce</div>
+      </div>
+    </div>
+
+    <!-- Regional Partners -->
+    <div class="ptype-panel" id="ptype-regional">
+      <div class="ptype-logos">
+        <div class="plogo">Interswitch</div>
+        <div class="plogo">Flutterwave</div>
+        <div class="plogo">NIBSS</div>
+        <div class="plogo">CRC Credit Bureau</div>
+        <div class="plogo">eTranzact</div>
+        <div class="plogo">Ecobank</div>
+        <div class="plogo">Stanbic IBTC</div>
+        <div class="plogo">Access Bank</div>
+        <div class="plogo">Zenith Bank</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BECOME A PARTNER FORM ═══════════════════════════════════════════════ -->
+<section class="become-hero" id="become-partner">
+  <div class="inner">
+    <div class="become-form-grid">
+      <div class="become-form-left">
+        <div class="bform-title">Become a Partner Today!</div>
+        <div class="bform-sub">Complete the form and our partnerships team will be in touch within 2 business days.</div>
+
+        <div class="bform">
+          <div class="bfrow">
+            <div class="bff">
+              <label class="bflabel">First Name*</label>
+              <input class="bfinput" type="text" placeholder="First Name">
+            </div>
+            <div class="bff">
+              <label class="bflabel">Last Name*</label>
+              <input class="bfinput" type="text" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="bfrow">
+            <div class="bff">
+              <label class="bflabel">Company Name*</label>
+              <input class="bfinput" type="text" placeholder="Company Name">
+            </div>
+            <div class="bff">
+              <label class="bflabel">Designation*</label>
+              <input class="bfinput" type="text" placeholder="Your Role">
+            </div>
+          </div>
+          <div class="bfrow">
+            <div class="bff">
+              <label class="bflabel">Country*</label>
+              <select class="bfinput bfselect">
+                <option value="">Country*</option>
+                <option>Nigeria</option><option>Kenya</option><option>South Africa</option>
+                <option>Ghana</option><option>Egypt</option><option>UAE</option>
+                <option>Saudi Arabia</option><option>Singapore</option><option>UK</option>
+                <option>United States</option><option>India</option><option>Other</option>
+              </select>
+            </div>
+            <div class="bff">
+              <label class="bflabel">Partner Type</label>
+              <select class="bfinput bfselect">
+                <option value="">Partner Type</option>
+                <option>Global System Integrator</option>
+                <option>Consulting Partner</option>
+                <option>Cloud &amp; Infrastructure Partner</option>
+                <option>Regional / Boutique Partner</option>
+                <option>ISV / Technology Partner</option>
+                <option>Fintech / Startup</option>
+              </select>
+            </div>
+          </div>
+          <div class="bff">
+            <label class="bflabel">Geography to Coverage</label>
+            <input class="bfinput" type="text" placeholder="e.g. West Africa, MENA, Southeast Asia">
+          </div>
+          <div class="bff">
+            <label class="bflabel">Official Email ID only*</label>
+            <input class="bfinput" type="email" placeholder="your@company.com">
+          </div>
+          <div class="bff">
+            <label class="bflabel">Deputy / Senior</label>
+            <input class="bfinput" type="text" placeholder="Senior contact or sponsor at your organisation">
+          </div>
+          <div class="bff">
+            <label class="bflabel">Attach a brochure on your proposing</label>
+            <div class="bffile">
+              <span class="bffile-ico">📎</span>
+              <span class="bffile-text">No file chosen — click to upload (.pdf, .pptx, .docx)</span>
+            </div>
+          </div>
+          <div class="bff">
+            <label class="bflabel">Interest</label>
+            <textarea class="bfinput" placeholder="Tell us about your partnership goals, client focus, and how you see us working together..." style="min-height:90px;resize:vertical"></textarea>
+          </div>
+          <div class="bfprivacy">By submitting this form you agree to Hexatech's <a href="#">Privacy Policy</a> and <a href="#">Partner Programme Terms</a>. We will never share your information with third parties.</div>
+          <a href="#" class="btn bp" style="width:100%;justify-content:center;padding:14px;margin-top:6px;font-size:15px">Submit Application →</a>
+        </div>
+      </div>
+
+      <div class="become-form-right">
+        <img src="https://placehold.co/700x900/071228/00c8e8" alt="Partners">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER STRIP ════════════════════════════════════════════════════ -->
+<section style="background:#f8fafc;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:24px 0">
+  <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <div style="font-size:15px;color:var(--muted)">Stay updated with the latest at Hexatech</div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <input type="email" placeholder="Phone Email*" style="background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;color:var(--navy);font-family:var(--fb);font-size:14px;outline:none;min-width:240px;transition:border-color .2s">
+      <a href="#" class="btn bp" style="padding:10px 22px">Submit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:22px 0">
+    <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="font-size:15px;color:#64748b">Stay updated with the latest at Hexatech</div>
+      <div style="display:flex;gap:10px">
+        <input type="email" placeholder="Work Email*" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 16px;font-size:14px;color:#0d1f4a;outline:none;min-width:240px;transition:border-color .2s;font-family:'DM Sans',sans-serif">
+        <a href="#" class="btn bp" style="padding:10px 22px;font-size:14px">Submit</a>
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <div class="ftop">
+      <div class="fbrand">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#fgv2)" stroke-width="2.2"/>
+            <line x1="13" y1="11" x2="13" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="23" y1="11" x2="23" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="13" y1="18" x2="23" y2="18" stroke="url(#fgv2)" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="fgv2" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/></linearGradient></defs>
+          </svg>
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#0d1f4a">Hexatech</span>
+        </div>
+        <p>The composable Open Finance Platform for banks, fintechs, and financial institutions worldwide.</p>
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <div class="fsb">𝕏</div><div class="fsb">in</div><div class="fsb">▶</div>
+        </div>
+      </div>
+      <div class="fcols">
+        <div class="fcol"><h4>Products</h4><ul>
+          <li><a href="pages/core-banking/consumer-core-banking.html">Consumer Core Banking</a></li>
+          <li><a href="pages/core-banking/corporate-core-banking.html">Corporate Core Banking</a></li>
+          <li><a href="pages/lending/consumer-originations.html">Consumer Originations</a></li>
+          <li><a href="pages/cards/consumer-cards.html">Consumer Cards</a></li>
+          <li><a href="pages/wealth-capital-markets/wealth-management.html">Wealth Management</a></li>
+          <li><a href="products.html">View All Products</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Solutions</h4><ul>
+          <li><a href="#">Commercial Banks</a></li>
+          <li><a href="#">Digital Banks</a></li>
+          <li><a href="#">NBFCs &amp; Fintechs</a></li>
+          <li><a href="#">Central Banks</a></li>
+          <li><a href="#">Insurance Companies</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Technology</h4><ul>
+          <li><a href="technology.html">Overview</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="docs/index.html">Developer Portal</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Security</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Company</h4><ul>
+          <li><a href="about/our-story.html">About Us</a></li>
+          <li><a href="about/our-leadership.html">Leadership</a></li>
+          <li><a href="about/careers.html">Careers</a></li>
+          <li><a href="about/our-investors.html">Investors</a></li>
+          <li><a href="about/social-impact.html">Social Impact</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 Hexatech Inc. All rights reserved.</p>
+      <div class="fleg">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+
+  /* Platform tabs */
+  var platTabs = document.querySelectorAll('#platTabs .plat-tab');
+  platTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      platTabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      /* Simple toggle — both panels shown by default for 2-up layout */
+    });
+  });
+
+  /* Partner type tabs */
+  var ptypeTabs = document.querySelectorAll('#ptypeTabs .ptype-tab');
+  ptypeTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      ptypeTabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var key = tab.dataset.panel;
+      document.querySelectorAll('.ptype-panel').forEach(function(p){ p.classList.remove('active'); });
+      var target = document.getElementById('ptype-'+key);
+      if(target) target.classList.add('active');
+    });
+  });
+
+  /* File upload label */
+  var fileArea = document.querySelector('.bffile');
+  if(fileArea){
+    fileArea.addEventListener('click', function(){
+      var inp = document.createElement('input');
+      inp.type='file';
+      inp.accept='.pdf,.pptx,.docx,.ppt';
+      inp.onchange=function(){
+        if(inp.files && inp.files[0]){
+          fileArea.querySelector('.bffile-text').textContent = inp.files[0].name;
+        }
+      };
+      inp.click();
+    });
+  }
+
+  /* Accordion if any on page */
+  document.querySelectorAll('.acc-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var item=btn.closest('.acc-item');
+      var list=btn.closest('.acc-list');
+      var isOpen=item.classList.contains('open');
+      if(list) list.querySelectorAll('.acc-item').forEach(function(i){i.classList.remove('open');});
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

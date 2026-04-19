@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Core Banking — Hexatech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../css/theme-v2.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../../index-v2.html" class="nlogo">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#ngpages_coreba)" stroke-width="2.2"/>
+        <line x1="13" y1="11" x2="13" y2="25" stroke="url(#ngpages_coreba)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="23" y1="11" x2="23" y2="25" stroke="url(#ngpages_coreba)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="13" y1="18" x2="23" y2="18" stroke="url(#ngpages_coreba)" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ngpages_coreba" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/>
+        </linearGradient></defs>
+      </svg>
+      <span class="lwm">Hexatech</span>
+    </a>
+    <ul class="nlinks">
+      <li>
+        <button class="nt" onclick="location.href='../../products.html'">Products <span class="nc">▾</span></button>
+        <div class="dd dd-mega">
+          <div class="dd-sidebar">
+            <div class="dd-sidebar-title">Product Suite</div>
+            <button class="dd-cat active" data-panel="corepages_coreba"><div class="dd-cat-icon">🏛️</div><span class="dd-cat-label">Core Banking</span></button>
+            <button class="dd-cat" data-panel="lendingpages_coreba"><div class="dd-cat-icon">📈</div><span class="dd-cat-label">Lending</span></button>
+            <button class="dd-cat" data-panel="cardspages_coreba"><div class="dd-cat-icon">💳</div><span class="dd-cat-label">Cards</span></button>
+            <button class="dd-cat" data-panel="digitalpages_coreba"><div class="dd-cat-icon">📱</div><span class="dd-cat-label">Digital Engagement</span></button>
+            <button class="dd-cat" data-panel="wealthpages_coreba"><div class="dd-cat-icon">💼</div><span class="dd-cat-label">Wealth &amp; Capital</span></button>
+            <button class="dd-cat" data-panel="treasurypages_coreba"><div class="dd-cat-icon">🏦</div><span class="dd-cat-label">Treasury</span></button>
+          </div>
+          <div class="dd-panels">
+            <div class="dd-panel active" id="dd-corepages_coreba">
+              <div class="dd-panel-title">Core Banking</div>
+              <div class="dd-links">
+                <a href="../../pages/core-banking/consumer-core-banking.html" class="dd-link">Consumer Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/core-banking/corporate-core-banking.html" class="dd-link">Corporate Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/core-banking/central-core-banking.html" class="dd-link">Central Core Banking <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-lendingpages_coreba">
+              <div class="dd-panel-title">Lending</div>
+              <div class="dd-links">
+                <a href="../../pages/lending/consumer-originations.html" class="dd-link">Consumer Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/consumer-loan-management.html" class="dd-link">Consumer Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/sme-corporate-originations.html" class="dd-link">SME &amp; Corporate Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/sme-corporate-loan-management.html" class="dd-link">SME Corporate Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/debt-collections.html" class="dd-link">Debt Collections <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-cardspages_coreba">
+              <div class="dd-panel-title">Cards</div>
+              <div class="dd-links">
+                <a href="../../pages/cards/consumer-cards.html" class="dd-link">Consumer Cards <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/cards/corporate-cards.html" class="dd-link">Corporate Cards <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-digitalpages_coreba">
+              <div class="dd-panel-title">Digital Engagement</div>
+              <div class="dd-links">
+                <a href="../../pages/digital-engagement/consumers-sme.html" class="dd-link">Digital Engagement — Consumers &amp; SME <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/digital-engagement/corporate-exchange.html" class="dd-link">CBX — Corporate Exchange <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-wealthpages_coreba">
+              <div class="dd-panel-title">Wealth &amp; Capital Markets</div>
+              <div class="dd-links">
+                <a href="../../pages/wealth-capital-markets/wealth-management.html" class="dd-link">Wealth Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/wealth-capital-markets/financial-advisor.html" class="dd-link">Financial Advisor <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/wealth-capital-markets/brokerage.html" class="dd-link">Brokerage <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/wealth-capital-markets/custody.html" class="dd-link">Custody <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-treasurypages_coreba">
+              <div class="dd-panel-title">Treasury &amp; Payments</div>
+              <div class="dd-links">
+                <a href="../../pages/treasury-payments/virtual-accounts-management.html" class="dd-link">Virtual Accounts Management <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Solutions <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#94a3b8;font-weight:700;padding:8px 12px 6px">By Segment</div>
+          <a href="#" class="ddi"><span class="ddn">🏦</span>Commercial Banks</a>
+          <a href="#" class="ddi"><span class="ddn">📱</span>Digital &amp; Neo Banks</a>
+          <a href="#" class="ddi"><span class="ddn">💼</span>NBFCs &amp; Fintechs</a>
+          <a href="#" class="ddi"><span class="ddn">🌍</span>Central Banks</a>
+        </div></div>
+      </li>
+      <li><a href="../../technology.html">Technology</a></li>
+      <li><a href="../../partners.html">Partners</a></li>
+      <li>
+        <a href="#">Resources <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="#" class="ddi"><span class="ddn">📊</span>Analyst Recognitions</a>
+          <a href="#" class="ddi"><span class="ddn">🏆</span>Awards</a>
+          <a href="#" class="ddi"><span class="ddn">📅</span>Events</a>
+          <a href="#" class="ddi"><span class="ddn">📰</span>Newsroom</a>
+        </div></div>
+      </li>
+      <li>
+        <a href="#">About Us <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="../../about/our-story.html" class="ddi"><span class="ddn">📖</span>Our Story</a>
+          <a href="../../about/our-leadership.html" class="ddi"><span class="ddn">👥</span>Our Leadership</a>
+          <a href="../../about/design-thinking-dna.html" class="ddi"><span class="ddn">🎯</span>Design Thinking DNA</a>
+          <div class="dddiv"></div>
+          <a href="../../about/our-investors.html" class="ddi"><span class="ddn">📈</span>Investors</a>
+          <a href="../../about/social-impact.html" class="ddi"><span class="ddn">🌱</span>Social Impact</a>
+          <a href="../../about/careers.html" class="ddi"><span class="ddn">💼</span>Careers</a>
+        </div></div>
+      </li>
+    </ul>
+    <div class="nav-acts-area">
+      <a href="#" style="padding:7px 16px;border-radius:7px;font-size:14px;font-weight:500;color:#475569;border:1px solid #e2e8f0;transition:all .15s;font-family:var(--fb);background:#fff;text-decoration:none">Sign In</a>
+      <a href="#contact" class="btn bp" style="padding:8px 20px;font-size:14px">Get Started →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="pg-hero">
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="breadcrumb">
+      <a href="#">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="#">Products</a><span class="breadcrumb-sep">›</span>
+      <a href="#">Core Banking</a><span class="breadcrumb-sep">›</span>
+      <span>Consumer Core Banking</span>
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid rgba(0,200,232,.3);border-radius:100px;font-size:11px;color:var(--cyan);font-weight:600;background:rgba(0,200,232,.06);margin-bottom:20px">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--cyan);display:block"></span>
+      eHEX Platform · Core Banking Module
+    </div>
+    <h1>Consumer Core Banking<br><span class="gt">Intelligent Core Designed</span><br>to Lead Change</h1>
+    <p class="lead">The SBS Consumer Core Banking platform empowers banks and fintechs to deliver hyper-personalised, real-time financial experiences — from account origination to full lifecycle management.</p>
+    <div class="hero-acts">
+      <a href="#contact" class="btn bp">Request a Demo →</a>
+      <a href="#" class="btn bg2">Download Brochure ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">19</div><div class="hstat-l">Products &amp; modules</div></div>
+      <div class="hstat"><div class="hstat-n">40</div><div class="hstat-l">Countries live</div></div>
+      <div class="hstat"><div class="hstat-n">212</div><div class="hstat-l">Implementations</div></div>
+      <div class="hstat"><div class="hstat-n">53</div><div class="hstat-l">Clients</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATING MODEL -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Overview</span>
+    <h2 class="sec-title">An Operating Model for Banking in Motion</h2>
+    <p class="sec-sub">Purpose-built to give financial institutions the agility, scale, and innovation needed to thrive in open finance ecosystems.</p>
+    <div class="op-grid">
+      <div class="op-text">
+        <p>The banking landscape is undergoing its most profound transformation in decades. Customers demand instant, intelligent, personalised financial experiences. Regulators require transparency, auditability, and resilience. Competitors — challenger banks and embedded finance players — move at software speed.</p>
+        <p><strong>Hexatech Consumer Core Banking</strong> is engineered for this reality. Built on the <strong>eHEX microservices architecture</strong>, it gives you the power to launch new products in days, integrate with any ecosystem partner via 2,000+ open APIs, and serve millions of customers without compromise on performance or compliance.</p>
+        <p>From onboarding to cross-sell, from savings to lending, from mobile to branch — every customer touchpoint is orchestrated through a unified, real-time data model that puts intelligence at the heart of every interaction.</p>
+        <div style="margin-top:28px"><a href="#" class="bl">Explore the Architecture →</a></div>
+      </div>
+      <div class="op-features">
+        <div class="op-feat">
+          <div class="op-feat-icon">⚡</div>
+          <div class="op-feat-title">Customer-Centric Engine</div>
+          <div class="op-feat-desc">360° customer profile with real-time event processing and AI-driven personalisation at scale.</div>
+        </div>
+        <div class="op-feat">
+          <div class="op-feat-icon">🔗</div>
+          <div class="op-feat-title">Composable Architecture</div>
+          <div class="op-feat-desc">Deploy individual modules or the full suite. Integrate with any core, channel, or partner.</div>
+        </div>
+        <div class="op-feat">
+          <div class="op-feat-icon">📋</div>
+          <div class="op-feat-title">Regulatory Product Manager</div>
+          <div class="op-feat-desc">Configure compliant products for any jurisdiction with built-in regulatory rules engine.</div>
+        </div>
+        <div class="op-feat">
+          <div class="op-feat-icon">🛡️</div>
+          <div class="op-feat-title">Multi-Entity Operations</div>
+          <div class="op-feat-desc">Run multiple brands, markets, and entity structures on a single platform instance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCORDION — BEYOND RIGID CONSTRAINTS -->
+<section class="page-sec mid" style="position:relative;overflow:hidden">
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,232,.08),transparent 68%);top:-100px;right:-100px;pointer-events:none"></div>
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="acc-header">
+      <span class="sec-label">Capabilities</span>
+      <h2 class="sec-title">Beyond Rigid Constraints,<br>Architecting Customer-Centricity</h2>
+      <p class="sec-sub" style="margin-bottom:0">Our platform principles unlock capabilities that rigid legacy cores simply cannot deliver.</p>
+    </div>
+    <div class="acc-tabs">
+      <button class="acc-tab active">All Capabilities</button>
+      <button class="acc-tab">Product Management</button>
+      <button class="acc-tab">Customer Lifecycle</button>
+      <button class="acc-tab">Operations</button>
+      <button class="acc-tab">Compliance</button>
+    </div>
+    <div class="acc-list">
+      <div class="acc-item open">
+        <button class="acc-btn"><span>1. Composable Product Library</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Build and launch financial products in days, not months. The product factory supports current accounts, savings, fixed deposits, recurring deposits, and multi-currency accounts — all configurable without code.
+          <ul>
+            <li>Visual product designer with real-time preview</li>
+            <li>Rules-based interest, fees, and charges engine</li>
+            <li>Parameterised eligibility and limit management</li>
+            <li>A/B test product variants before full rollout</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>2. Composable Business Processes</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Orchestrate end-to-end business processes without hard-coded workflows. Every journey — onboarding, KYC, account servicing, closure — is configurable via a visual process designer.
+          <ul>
+            <li>No-code journey builder with drag-and-drop steps</li>
+            <li>Dynamic branching based on customer segment or risk</li>
+            <li>Straight-through processing for high-volume operations</li>
+            <li>Full audit trail on every process execution</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>3. Open Powerbase</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          2,000+ REST APIs expose every function of the platform to your channel apps, partner fintechs, and internal systems. Build once, connect everywhere.
+          <ul>
+            <li>OpenAPI 3.0 specification for every endpoint</li>
+            <li>Webhook-based real-time event notifications</li>
+            <li>GraphQL support for flexible data querying</li>
+            <li>Sandbox environment for accelerated integration testing</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>4. Actionable Levels</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Multi-level customer hierarchy supports individual, household, SME, and corporate relationships on a single platform. Configure relationship-based pricing and entitlements.
+          <ul>
+            <li>Individual, household, and group account structures</li>
+            <li>Relationship-based fee waivers and reward tiers</li>
+            <li>Consolidated statements across all linked accounts</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>5. Real-Time Events &amp; Positions</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Every financial event — transaction, balance change, limit breach — is processed in real-time and published to your event bus for downstream consumption.
+          <ul>
+            <li>Sub-100ms transaction processing latency</li>
+            <li>Real-time balance and position visibility</li>
+            <li>Event streaming to Kafka, Azure Service Bus, or custom brokers</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>6. Intelligence &amp; Operations Excellence</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Embedded analytics, AI models, and operational dashboards give your operations teams the intelligence to act proactively and your leadership real-time performance visibility.
+          <ul>
+            <li>Pre-built operational KPI dashboards</li>
+            <li>AI-driven anomaly detection and alert routing</li>
+            <li>Customer churn prediction and next-best-action recommendations</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>7. Comprehensive Regulatory Framework</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Stay compliant across every market you operate in. The regulatory engine handles jurisdiction-specific product rules, reporting obligations, and statutory calculations automatically.
+          <ul>
+            <li>IFRS 9 provisioning and Basel III reporting</li>
+            <li>Country-specific tax calculation (WHT, VAT, stamp duty)</li>
+            <li>Real-time regulatory reporting to central banks</li>
+            <li>Audit-ready transaction logs with full lineage</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Key Differentiators</span>
+    <h2 class="sec-title">Why Banks choose eHEX Consumer<br>Core Banking to Build their Future</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-card-num">01</div>
+        <div class="why-card-ico">🏗️</div>
+        <div class="why-card-title">Composable 'Core Vaults' Architecture</div>
+        <div class="why-card-desc">Modular vaults for products, customers, accounts, transactions, and entitlements — combine only what you need.</div>
+        <ul class="why-card-pts">
+          <li>Deploy in phases without big-bang migration</li>
+          <li>Independently scale each vault under load</li>
+          <li>Replace legacy components one vault at a time</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">02</div>
+        <div class="why-card-ico">🔄</div>
+        <div class="why-card-title">Progressive Modernisation Path</div>
+        <div class="why-card-desc">Hexatech's side-by-side migration approach lets you run new and legacy systems in parallel, reducing migration risk to near zero.</div>
+        <ul class="why-card-pts">
+          <li>Strangler fig pattern for zero-downtime migration</li>
+          <li>Data reconciliation tooling included</li>
+          <li>Proven in Tier 1 bank migrations globally</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">03</div>
+        <div class="why-card-ico">🧩</div>
+        <div class="why-card-title">Bring Your Own Extensibility</div>
+        <div class="why-card-desc">Every domain is extensible. Add custom fields, custom rules, and custom integrations without touching platform code.</div>
+        <ul class="why-card-pts">
+          <li>Custom attribute framework on all entities</li>
+          <li>BYO rules engine integration support</li>
+          <li>Extension points on every business event</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">04</div>
+        <div class="why-card-ico">🔮</div>
+        <div class="why-card-title">Future-Proof Resilience</div>
+        <div class="why-card-desc">Cloud-native, multi-region, active-active architecture ensures your platform grows with your ambition — without replatforming again.</div>
+        <ul class="why-card-pts">
+          <li>99.999% uptime with active-active deployment</li>
+          <li>Horizontal auto-scaling to billions of accounts</li>
+          <li>Disaster recovery RPO/RTO under 5 minutes</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">05</div>
+        <div class="why-card-ico">📡</div>
+        <div class="why-card-title">Strong Banking DNA</div>
+        <div class="why-card-desc">30+ years of banking domain expertise embedded in every configuration, workflow, and compliance rule — so you don't have to build from first principles.</div>
+        <ul class="why-card-pts">
+          <li>Pre-configured for 40+ country regulatory profiles</li>
+          <li>Industry-standard workflows ready out of the box</li>
+          <li>Dedicated banking domain advisory team</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">06</div>
+        <div class="why-card-ico">🎛️</div>
+        <div class="why-card-title">Digital Command Centre</div>
+        <div class="why-card-desc">A unified operations console gives your teams real-time visibility, exception management, and self-service configuration — all in one place.</div>
+        <ul class="why-card-pts">
+          <li>Live transaction monitoring and alerting</li>
+          <li>Self-service product and limit management</li>
+          <li>Role-based access with full audit trail</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="page-sec mid">
+  <div class="inner">
+    <span class="sec-label">FAQ</span>
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <div class="faq-wrap">
+      <div class="acc-list">
+        <div class="acc-item">
+          <button class="acc-btn"><span>How does Hexatech Consumer Core Banking prevent fraud while ensuring top-tier customer compliance?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Our platform integrates natively with leading fraud and AML engines, with real-time transaction screening, behavioural analytics, and configurable rule sets for each market. Every alert is routed to the Digital Command Centre for immediate investigation.</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn"><span>Can the platform be easily updated by banking teams to increase high-volume and improve resilience?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Yes. The platform uses cloud-native horizontal scaling with zero-downtime deployments. Banking operations teams can adjust product parameters, limits, and workflows via the no-code Command Centre without engineering involvement.</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn"><span>How does eHEX handle real-time notifications across customer touchpoints?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Every financial event triggers a configurable notification workflow. Customers can receive push, SMS, email, or in-app notifications within milliseconds of any account activity, with bank-controlled templates and personalisation tokens.</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn"><span>How does the platform support multi-currency and multi-entity operations?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">The platform natively supports unlimited currencies, exchange rates, and entity structures from a single instance. Each entity can have distinct product catalogues, regulatory profiles, and operating models while sharing a common technology backbone.</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn"><span>How can I integrate the primary elements of a Transaction Audit and Ledger?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">The platform ships with a double-entry general ledger with full IFRS compliance. Every transaction posts to the ledger in real time with complete audit lineage. Export to any ERP or reporting system via pre-built connectors or REST APIs.</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn"><span>Is the Hexatech solution compliant with fintech partners along your ecosystem integration?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Absolutely. Our marketplace includes 150+ certified fintech integrations including KYC/AML, payments, FX, insurance, and wealth partners. Each integration is maintained and certified by Hexatech, reducing your integration risk and time-to-market.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS STORIES -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Case Studies</span>
+    <h2 class="sec-title">Real-World Core Banking Success Stories</h2>
+    <div class="stories-grid">
+      <div class="story-card">
+        <img src="https://placehold.co/500x320/07102a/00c8e8" alt="FirstCapital">
+        <div class="story-overlay"></div>
+        <div class="story-body">
+          <div class="story-tag">Commercial Bank · Africa</div>
+          <div class="story-title">FirstCapital Bank migrates 2.4M customers to cloud-native core in 8 months</div>
+          <div class="story-meta">Ghana · Core Banking · Payments</div>
+          <a href="#" class="story-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="story-card">
+        <img src="https://placehold.co/500x320/091228/1a6fd4" alt="NeoBank">
+        <div class="story-overlay"></div>
+        <div class="story-body">
+          <div class="story-tag">Digital Bank · Southeast Asia</div>
+          <div class="story-title">NeoBank Singapore launches 5 products in 90 days on eHEX platform</div>
+          <div class="story-meta">Singapore · Consumer Banking · Digital</div>
+          <a href="#" class="story-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="story-card">
+        <img src="https://placehold.co/500x320/0a1535/00c8e8" alt="OmegaFin">
+        <div class="story-overlay"></div>
+        <div class="story-body">
+          <div class="story-tag">NBFC · Middle East</div>
+          <div class="story-title">OmegaFin achieves 340% uplift in digital account opening conversion</div>
+          <div class="story-meta">UAE · Originations · KYC</div>
+          <a href="#" class="story-link">Read case study →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT EXPERT -->
+<section class="page-sec mid" id="contact">
+  <div class="inner">
+    <span class="sec-label">Get in Touch</span>
+    <h2 class="sec-title" style="margin-bottom:48px">Contact our Expert</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="expert-card">
+          <img src="https://placehold.co/600x220/0d1f4a/00c8e8" alt="Expert" class="expert-img">
+          <div class="expert-body">
+            <div class="expert-name">James Okonkwo</div>
+            <div class="expert-role">Head of Consumer Banking Solutions, EMEA</div>
+            <div class="expert-bio">James leads Hexatech's consumer banking practice across Africa and Europe, with 18 years of core banking transformation experience at Tier 1 financial institutions.</div>
+          </div>
+        </div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:36px;height:36px;border:1px solid var(--bdr);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,.03)">✉️</div>
+            <div><div style="font-size:10.5px;color:var(--dim)">Email</div><div style="font-size:13px;color:var(--navy)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8fece0e1fcfae2eafdcfe7eaf7eefbeaece7a1ece0e2">[email&#160;protected]</a></div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:36px;height:36px;border:1px solid var(--bdr);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,.03)">📞</div>
+            <div><div style="font-size:10.5px;color:var(--dim)">Phone</div><div style="font-size:13px;color:var(--navy)">+1 (800) HEX-TECH</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <div class="cftitle">Request a personalised demo</div>
+        <div class="cfsubtitle">Tell us about your institution and we'll arrange a tailored walkthrough.</div>
+        <div class="cform">
+          <div class="frow">
+            <div class="ff"><label>First Name</label><input type="text" placeholder="John"></div>
+            <div class="ff"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+          </div>
+          <div class="ff"><label>Business Email</label><input type="email" placeholder="john@yourbank.com"></div>
+          <div class="frow">
+            <div class="ff"><label>Company</label><input type="text" placeholder="Your Bank Ltd."></div>
+            <div class="ff"><label>Country</label>
+              <select><option>Select country…</option><option>Nigeria</option><option>Kenya</option><option>South Africa</option><option>United Kingdom</option><option>Singapore</option><option>UAE</option><option>Other</option></select>
+            </div>
+          </div>
+          <div class="ff"><label>Number of Customers</label>
+            <select><option>Select range…</option><option>Under 100K</option><option>100K – 500K</option><option>500K – 2M</option><option>2M – 10M</option><option>Over 10M</option></select>
+          </div>
+          <div class="ff"><label>Message</label><textarea placeholder="Tell us about your current core banking setup and what you're looking to achieve…"></textarea></div>
+          <div class="privacy-note">By submitting this form, you agree to Hexatech's <a href="#" style="color:var(--cyan)">Privacy Policy</a>. We will never share your data with third parties.</div>
+          <a href="#" class="btn bp" style="width:100%;justify-content:center;padding:14px;margin-top:4px">Submit Request →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:22px 0">
+    <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="font-size:15px;color:#64748b">Stay updated with the latest at Hexatech</div>
+      <div style="display:flex;gap:10px">
+        <input type="email" placeholder="Work Email*" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 16px;font-size:14px;color:#0d1f4a;outline:none;min-width:240px;transition:border-color .2s;font-family:'DM Sans',sans-serif">
+        <a href="#" class="btn bp" style="padding:10px 22px;font-size:14px">Submit</a>
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <div class="ftop">
+      <div class="fbrand">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#fgv2)" stroke-width="2.2"/>
+            <line x1="13" y1="11" x2="13" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="23" y1="11" x2="23" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="13" y1="18" x2="23" y2="18" stroke="url(#fgv2)" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="fgv2" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/></linearGradient></defs>
+          </svg>
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#0d1f4a">Hexatech</span>
+        </div>
+        <p>The composable Open Finance Platform for banks, fintechs, and financial institutions worldwide.</p>
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <div class="fsb">𝕏</div><div class="fsb">in</div><div class="fsb">▶</div>
+        </div>
+      </div>
+      <div class="fcols">
+        <div class="fcol"><h4>Products</h4><ul>
+          <li><a href="../../pages/core-banking/consumer-core-banking.html">Consumer Core Banking</a></li>
+          <li><a href="../../pages/core-banking/corporate-core-banking.html">Corporate Core Banking</a></li>
+          <li><a href="../../pages/lending/consumer-originations.html">Consumer Originations</a></li>
+          <li><a href="../../pages/cards/consumer-cards.html">Consumer Cards</a></li>
+          <li><a href="../../pages/wealth-capital-markets/wealth-management.html">Wealth Management</a></li>
+          <li><a href="../../products.html">View All Products</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Solutions</h4><ul>
+          <li><a href="#">Commercial Banks</a></li>
+          <li><a href="#">Digital Banks</a></li>
+          <li><a href="#">NBFCs &amp; Fintechs</a></li>
+          <li><a href="#">Central Banks</a></li>
+          <li><a href="#">Insurance Companies</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Technology</h4><ul>
+          <li><a href="../../technology.html">Overview</a></li>
+          <li><a href="../../partners.html">Partners</a></li>
+          <li><a href="../../docs/index.html">Developer Portal</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Security</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Company</h4><ul>
+          <li><a href="../../about/our-story.html">About Us</a></li>
+          <li><a href="../../about/our-leadership.html">Leadership</a></li>
+          <li><a href="../../about/careers.html">Careers</a></li>
+          <li><a href="../../about/our-investors.html">Investors</a></li>
+          <li><a href="../../about/social-impact.html">Social Impact</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 Hexatech Inc. All rights reserved.</p>
+      <div class="fleg">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../../js/main.js"></script>
+
+<script>
+// Accordion — page specific
+document.querySelectorAll('.acc-btn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var item = btn.closest('.acc-item');
+    var isOpen = item.classList.contains('open');
+    // Close all in same list
+    btn.closest('.acc-list').querySelectorAll('.acc-item').forEach(function(i) { i.classList.remove('open'); });
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+// Accordion tabs (visual only)
+document.querySelectorAll('.acc-tab').forEach(function(ta

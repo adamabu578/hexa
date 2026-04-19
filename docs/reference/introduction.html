@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction — hexCore API Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="../index.html" class="tb-logo">
+      <div class="tb-logo-mark">H</div>
+      hexCore
+    </a>
+    <span class="tb-version">v2</span>
+    <div class="tb-nav">
+      <a href="../index.html"><span>🏠</span> Home</a>
+      <a href="../docs/welcome.html"><span>📄</span> Documentation</a>
+      <a href="introduction.html" class="active"><span>&lt;/&gt;</span> API Reference</a>
+    </div>
+    <div class="tb-actions">
+      <div class="tb-search" tabindex="0">
+        <span>🔍</span><span>Search</span><kbd>CTRL·K</kbd>
+      </div>
+      <button class="tb-btn-login">Log In</button>
+      <div class="tb-theme-btn">⚙</div>
+    </div>
+  </div>
+</nav>
+
+<div class="docs-shell">
+
+  <!-- ── LEFT SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sb-group">
+      <div class="sb-group-label"><span class="sb-ico">🚀</span> GETTING STARTED</div>
+      <a href="introduction.html" class="sb-item active">Introduction</a>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">ACCOUNT API</div>
+      <div class="sb-item" data-expand="ref-accounts">
+        Accounts <span class="sb-chevron">›</span>
+      </div>
+      <div class="sb-sub" data-group="ref-accounts">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Create Account</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Get Account</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Account Balance</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Account Statement</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">ACCOUNT OFFICER</div>
+      <div class="sb-item" data-expand="ref-ao">Account Officer <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-ao">
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Get Officer</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">CUSTOMERS API</div>
+      <div class="sb-item" data-expand="ref-customers">Customers <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-customers">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Create Customer</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Get Customer</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge put" style="font-size:9px;padding:1px 5px;margin-right:4px">PUT</span>Update Customer</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">LOANS API</div>
+      <div class="sb-item" data-expand="ref-loans">Loans <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-loans">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Request Loan</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Loan Status</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Approve Loan</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Repayment Schedule</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">FIXED DEPOSIT API</div>
+      <div class="sb-item" data-expand="ref-fd">Fixed Deposit <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-fd">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Create Fixed Deposit</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Liquidate</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">TRANSFER API</div>
+      <div class="sb-item" data-expand="ref-transfer">Transfers <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-transfer">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Intrabank Transfer</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Interbank Transfer</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Transfer Status</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">LOCAL TRANSACTIONS API</div>
+      <div class="sb-item" data-expand="ref-txn">Local Transactions <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-txn">
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Get Transactions</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Transaction Details</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">CARDS API</div>
+      <div class="sb-item" data-expand="ref-cards">Cards <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-cards">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Issue Card</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Block Card</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Card Details</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">OVERDRAFT API 🟠</div>
+      <div class="sb-item" data-expand="ref-overdraft">Overdraft <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-overdraft">
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Get Overdraft</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Set Limit</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">BILLS PAYMENT API 🟡</div>
+      <div class="sb-item" data-expand="ref-bills">Bills Payment <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-bills">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Pay Bill</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Bill Categories</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">MESSAGING 💬</div>
+      <a href="#" class="sb-item">Send SMS <span class="sb-item-badge post">POST</span></a>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">STANDING ORDER</div>
+      <div class="sb-item" data-expand="ref-so">Standing Order <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-so">
+        <a href="#" class="sb-sub-item"><span class="method-badge post" style="font-size:9px;padding:1px 5px;margin-right:4px">POST</span>Create</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Get</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge delete" style="font-size:9px;padding:1px 5px;margin-right:4px">DEL</span>Cancel</a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">PRODUCTS 🔴</div>
+      <div class="sb-item" data-expand="ref-products">Products <span class="sb-chevron">›</span></div>
+      <div class="sb-sub" data-group="ref-products">
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>List Products</a>
+        <a href="#" class="sb-sub-item"><span class="method-badge get" style="font-size:9px;padding:1px 5px;margin-right:4px">GET</span>Product Details</a>
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+    <div style="padding:14px 20px;font-size:11px;color:var(--dim)">Powered by <span style="color:var(--cyan);font-weight:600">hexCore</span></div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="docs-main">
+    <div class="docs-content">
+
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:4px">
+        <div class="doc-h1" id="top">Introduction</div>
+        <div style="display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--bdr);font-size:13px;color:var(--dim);cursor:pointer;flex-shrink:0;margin-top:6px">
+          🤖 Ask AI <span style="font-size:10px">▾</span>
+        </div>
+      </div>
+      <div class="doc-tagline">Quickly get started using our API</div>
+
+      <!-- Hero image placeholder -->
+      <div style="margin:28px 0 36px;border-radius:14px;overflow:hidden;border:1px solid var(--bdr);background:#080d1c;padding:32px;display:flex;align-items:center;justify-content:center;min-height:160px">
+        <div style="display:flex;gap:20px;align-items:center">
+          <div style="background:#0d1530;border:1px solid var(--bdr);border-radius:10px;padding:18px 24px;font-family:var(--fc);font-size:12px;color:#4a6480">
+            <div style="color:#79c0ff">GET</div>
+            <div style="color:#a5d6ff">/api/v2/accounts</div>
+            <div style="color:var(--dim);margin-top:10px">Authorization: Bearer <span style="color:var(--cyan)">••••••••</span></div>
+          </div>
+          <div style="width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:22px">👤</div>
+          <div style="background:#0d1530;border:1px solid rgba(0,200,232,.2);border-radius:10px;padding:18px 24px;font-family:var(--fc);font-size:12px">
+            <div style="color:var(--green)">200 OK</div>
+            <div style="color:#a5d6ff;margin-top:6px">{ "status": "success" }</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="doc-p">
+        You are about to kick off the development of your super digital banking application and cannot
+        wait to start writing those lines of code. Here are the key steps you'll need to follow to
+        integrate with our Digital Banking Enabler API.
+      </p>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="authentication">Authentication</h2>
+      <p class="doc-p">
+        You have to get authenticated to use the API — this means you need an auth token to make your
+        request. There are two different types of users: the <span class="doc-code">BIB Users</span>
+        and <span class="doc-code">Enterprise Users</span>.
+      </p>
+
+      <h3 class="doc-h3" id="bib-user">BIB User</h3>
+      <p class="doc-p">To get your Auth token as another BIB user follow the steps below:</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Contact the Business or Implementation team</div>
+            <div class="step-desc">Reach out to initiate your integration request and confirm your use case and environment requirements.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Sign SOW &amp; provide your authorized token custodian</div>
+            <div class="step-desc">Complete the Statement of Work and designate a token custodian within your organization.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Staging environment setup</div>
+            <div class="step-desc">Your staging environment will be provided for use by the implementation support team.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Join the Implementation support team via group chat</div>
+            <div class="step-desc">A dedicated group chat is created for your integration to provide real-time support.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="doc-h3" id="enterprise-user">Enterprise User</h3>
+      <p class="doc-p">To get your auth token as an enterprise user follow the steps below:</p>
+      <ul class="doc-ul">
+        <li>Log into <a href="#" style="color:var(--cyan)">iRestrict</a></li>
+        <li>Set up your account</li>
+        <li>Get your authentication token</li>
+        <li>Join Teams group provided by the Implementation support team</li>
+      </ul>
+
+      <!-- Code example -->
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">Authorization Header</span>
+          <button class="code-block-copy">⎘ Copy</button>
+        </div>
+        <pre><span class="kw">Authorization</span>: Bearer <span class="str">&lt;your_auth_token&gt;</span>
+
+<span class="cm">// Example request with auth token</span>
+<span class="fn">fetch</span>(<span class="str">'https://api.hexcore.io/v2/accounts'</span>, {
+  <span class="key">method</span>: <span class="str">'GET'</span>,
+  <span class="key">headers</span>: {
+    <span class="str">'Authorization'</span>: <span class="str">`Bearer ${authToken}`</span>,
+    <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span>
+  }
+})</pre>
+      </div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="testing-actions">Testing Your Actions</h2>
+      <p class="doc-p">
+        After successfully getting your auth token and setting up your account, you might want to
+        confirm your API actions. For instance, after creating an account via API, user can view this
+        account on BankOne to confirm the account was created as required.
+      </p>
+      <p class="doc-p">
+        To do this, login to BankOne using the Institution code: 4-digit institution code, Username:
+        Username and Password provided by the implementation team.
+      </p>
+
+      <div class="callout info">
+        <span class="callout-ico">ℹ️</span>
+        <div class="callout-body">
+          Always test your integrations thoroughly in the <strong>Staging</strong> environment before
+          going live. Never use production credentials in your development environment.
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="api-environment">API Environment</h2>
+      <p class="doc-p">hexCore provides two environments for your integration journey:</p>
+
+      <div class="doc-table-wrap">
+        <table class="env-table">
+          <thead>
+            <tr><th>Name</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Production</td>
+              <td>This is the environment where real action and transactions occur and should be used when you are ready to put your application into operation for the intended users. An auth-token would be provided for this environment following sign-off of staging test.</td>
+            </tr>
+            <tr>
+              <td>Staging</td>
+              <td>This is the environment where you are required to conduct your test. A staging auth token would be generated for your institution and should be used for this purpose.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="api-types">What you should Know about Our API</h2>
+      <p class="doc-p">The hexCore API is categorized into two main types namely:</p>
+      <ul class="doc-ul">
+        <li><strong style="color:var(--white)">Corebanking APIs</strong> — Direct integration with the core banking system for account management, transactions, and product operations.</li>
+        <li><strong style="color:var(--white)">Channels APIs</strong> — Integration with customer-facing channels for digital banking interactions.</li>
+      </ul>
+
+      <div class="callout warn">
+        <span class="callout-ico">⚠️</span>
+        <div class="callout-body">
+          The <strong>Corebanking &amp; Channels API</strong> have different base URLs; hence it is
+          important to take note of this difference when integrating or conducting your test.
+        </div>
+      </div>
+
+      <!-- Base URLs -->
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">Base URLs</span>
+          <button class="code-block-copy">⎘ Copy</button>
+        </div>
+        <pre><span class="cm"># Corebanking API</span>
+<span class="key">Production</span>: <span class="str">https://api.hexcore.io/v2</span>
+<span class="key">Staging</span>:    <span class="str">https://staging-api.hexcore.io/v2</span>
+
+<span class="cm"># Channels API</span>
+<span class="key">Production</span>: <span class="str">https://channels.hexcore.io/v2</span>
+<span class="key">Staging</span>:    <span class="str">https://staging-channels.hexcore.io/v2</span></pre>
+      </div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="rate-limits">Rate Limits</h2>
+      <p class="doc-p">All hexCore APIs are subject to rate limiting to ensure platform stability and fair usage:</p>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr><th>Environment</th><th>Requests / minute</th><th>Requests / day</th><th>Burst limit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Staging</td><td><code>100</code></td><td><code>5,000</code></td><td><code>20 req/s</code></td></tr>
+            <tr><td>Production</td><td><code>500</code></td><td><code>100,000</code></td><td><code>100 req/s</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout tip">
+        <span class="callout-ico">💡</span>
+        <div class="callout-body">
+          If you need higher rate limits for your production application, contact the hexCore support
+          team to discuss an enterprise tier arrangement.
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────── -->
+      <h2 class="doc-h2" id="error-codes">Error Codes</h2>
+      <p class="doc-p">The hexCore API uses standard HTTP response codes. Here are the most common ones:</p>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr><th>Code</th><th>Meaning</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code style="color:var(--green)">200</code></td><td>Success</td><td>Request completed successfully.</td></tr>
+            <tr><td><code style="color:var(--green)">201</code></td><td>Created</td><td>Resource created successfully.</td></tr>
+            <tr><td><code style="color:var(--orange)">400</code></td><td>Bad Request</td><td>Check your request body — a required field may be missing or malformed.</td></tr>
+            <tr><td><code style="color:var(--orange)">401</code></td><td>Unauthorized</td><td>Your auth token is missing, expired, or invalid. Refresh your token.</td></tr>
+            <tr><td><code style="color:var(--orange)">403</code></td><td>Forbidden</td><td>Your account does not have permission to perform this action.</td></tr>
+            <tr><td><code style="color:var(--red)">404</code></td><td>Not Found</td><td>The requested resource does not exist.</td></tr>
+            <tr><td><code style="color:var(--red)">429</code></td><td>Too Many Requests</td><td>You have exceeded your rate limit. Implement exponential backoff.</td></tr>
+            <tr><td><code style="color:var(--red)">500</code></td><td>Server Error</td><td>An unexpected error on our end. Contact support if this persists.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── PAGE NAV ── -->
+      <div class="page-nav">
+        <div></div>
+        <a href="#accounts" class="page-nav-next">
+          <div>
+            <div class="pn-dir">Next</div>
+            <div class="pn-title">Accounts →</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ── HELPFUL ── -->
+      <div class="doc-helpful">
+        Did this page help you?
+        <button class="helpful-btn">👍 Yes</button>
+        <button class="helpful-btn">👎 No</button>
+        <span class="helpful-last-updated">Updated 6 months ago</span>
+      </div>
+
+    </div><!-- /docs-content -->
+
+    <!-- ── TABLE OF CONTENTS ── -->
+    <div class="toc-panel">
+      <div class="toc-panel-inner">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#authentication">Authentication</a></li>
+          <li><a href="#bib-user">BIB User</a></li>
+          <li><a href="#enterprise-user">Enterprise User</a></li>
+          <li><a href="#testing-actions">Testing Your Actions</a></li>
+          <li><a href="#api-environment">API Environment</a></li>
+          <li><a href="#api-types">What you should Know about Our API</a></li>
+          <li><a href="#rate-limits">Rate Limits</a></li>
+          <li><a href="#error-codes">Error Codes</a></li>
+        </ul>
+        <div class="toc-actions">
+          <div class="toc-action-btn">✏️ Suggest Edits</div>
+          <div class="toc-action-btn">🤖 Ask AI ▾</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

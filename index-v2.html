@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hexatech — The Composable Open Finance Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/docker-theme.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index-v2.html" class="nlogo">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#ng2)" stroke-width="2.2"/>
+        <line x1="13" y1="11" x2="13" y2="25" stroke="url(#ng2)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="23" y1="11" x2="23" y2="25" stroke="url(#ng2)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="13" y1="18" x2="23" y2="18" stroke="url(#ng2)" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ng2" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/>
+        </linearGradient></defs>
+      </svg>
+      <span class="lwm">Hexatech</span>
+    </a>
+    <ul class="nlinks">
+      <li>
+        <button class="nt" onclick="location.href='products.html'">Products <span class="nc">▾</span></button>
+        <div class="dd dd-mega">
+          <div class="dd-sidebar">
+            <div class="dd-sidebar-title">Product Suite</div>
+            <button class="dd-cat active" data-panel="core"><div class="dd-cat-icon">🏛️</div><span class="dd-cat-label">Core Banking</span></button>
+            <button class="dd-cat" data-panel="lending"><div class="dd-cat-icon">📈</div><span class="dd-cat-label">Lending</span></button>
+            <button class="dd-cat" data-panel="cards"><div class="dd-cat-icon">💳</div><span class="dd-cat-label">Cards</span></button>
+            <button class="dd-cat" data-panel="digital"><div class="dd-cat-icon">📱</div><span class="dd-cat-label">Digital Engagement</span></button>
+            <button class="dd-cat" data-panel="wealth"><div class="dd-cat-icon">💼</div><span class="dd-cat-label">Wealth &amp; Capital Markets</span></button>
+            <button class="dd-cat" data-panel="treasury"><div class="dd-cat-icon">🏦</div><span class="dd-cat-label">Treasury &amp; Payments</span></button>
+          </div>
+          <div class="dd-panels">
+            <div class="dd-panel active" id="dd-core">
+              <div class="dd-panel-title">Core Banking</div>
+              <div class="dd-links">
+                <a href="pages/core-banking/consumer-core-banking.html" class="dd-link">Consumer Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/core-banking/corporate-core-banking.html" class="dd-link">Corporate Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/core-banking/central-core-banking.html" class="dd-link">Central Core Banking <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-lending">
+              <div class="dd-panel-title">Lending</div>
+              <div class="dd-links">
+                <a href="pages/lending/consumer-originations.html" class="dd-link">Consumer Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/consumer-loan-management.html" class="dd-link">Consumer Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/sme-corporate-originations.html" class="dd-link">SME &amp; Corporate Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/sme-corporate-loan-management.html" class="dd-link">SME Corporate Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/debt-collections.html" class="dd-link">Debt Collections <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-cards">
+              <div class="dd-panel-title">Cards</div>
+              <div class="dd-links">
+                <a href="pages/cards/consumer-cards.html" class="dd-link">Consumer Cards <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/cards/corporate-cards.html" class="dd-link">Corporate Cards <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-digital">
+              <div class="dd-panel-title">Digital Engagement</div>
+              <div class="dd-links">
+                <a href="pages/digital-engagement/consumers-sme.html" class="dd-link">Digital Engagement — Consumers &amp; SME <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/digital-engagement/corporate-exchange.html" class="dd-link">CBX — Corporate Exchange <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-wealth">
+              <div class="dd-panel-title">Wealth &amp; Capital Markets</div>
+              <div class="dd-links">
+                <a href="pages/wealth-capital-markets/wealth-management.html" class="dd-link">Wealth Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/financial-advisor.html" class="dd-link">Financial Advisor <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/brokerage.html" class="dd-link">Brokerage <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/custody.html" class="dd-link">Custody <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-treasury">
+              <div class="dd-panel-title">Treasury &amp; Payments</div>
+              <div class="dd-links">
+                <a href="pages/treasury-payments/virtual-accounts-management.html" class="dd-link">Virtual Accounts Management <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Solutions <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#94a3b8;font-weight:700;padding:8px 12px 6px">By Segment</div>
+          <a href="#" class="ddi"><span class="ddn">🏦</span>Commercial Banks</a>
+          <a href="#" class="ddi"><span class="ddn">📱</span>Digital &amp; Neo Banks</a>
+          <a href="#" class="ddi"><span class="ddn">💼</span>NBFCs &amp; Fintechs</a>
+          <a href="#" class="ddi"><span class="ddn">🌍</span>Central Banks</a>
+          <a href="#" class="ddi"><span class="ddn">🛡️</span>Insurance Companies</a>
+        </div></div>
+      </li>
+      <li><a href="technology.html">Technology</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li>
+        <a href="#">Resources <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="#" class="ddi"><span class="ddn">📊</span>Analyst Recognitions</a>
+          <a href="#" class="ddi"><span class="ddn">🏆</span>Awards</a>
+          <a href="#" class="ddi"><span class="ddn">📅</span>Events</a>
+          <a href="#" class="ddi"><span class="ddn">📰</span>Newsroom</a>
+          <a href="#" class="ddi"><span class="ddn">▶️</span>Videos &amp; Podcasts</a>
+        </div></div>
+      </li>
+      <li>
+        <a href="#">About Us <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="about/our-story.html" class="ddi"><span class="ddn">📖</span>Our Story</a>
+          <a href="about/our-leadership.html" class="ddi"><span class="ddn">👥</span>Our Leadership</a>
+          <a href="about/design-thinking-dna.html" class="ddi"><span class="ddn">🎯</span>Design Thinking DNA</a>
+          <div class="dddiv"></div>
+          <a href="about/our-investors.html" class="ddi"><span class="ddn">📈</span>Our Investors</a>
+          <a href="about/social-impact.html" class="ddi"><span class="ddn">🌱</span>Social Impact</a>
+          <a href="about/careers.html" class="ddi"><span class="ddn">💼</span>Careers</a>
+        </div></div>
+      </li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="nav-signin">Sign In</a>
+      <a href="#contact" class="nav-getstarted">Get Started →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+<section class="d-hero">
+  <div class="d-inner">
+    <div class="d-hero-content">
+      <div class="d-hero-badge"><span class="d-hero-badge-dot"></span>eHEX Platform · 700+ Microservices · 3,061 APIs</div>
+      <h1>The #1 composable<br><span class="hl">Open Finance Platform</span><br>for banks &amp; fintechs</h1>
+      <p class="d-hero-sub">Streamline digital banking transformation with Hexatech's composable, AI-powered platform. Deploy faster, scale further, comply everywhere.</p>
+      <div class="d-hero-acts">
+        <a href="#contact" class="btn-prim">Get Started →</a>
+        <a href="products.html" class="btn-out">Explore Products</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard mockup -->
+  <div class="d-inner" style="padding-top:0">
+    <div class="d-hero-visual">
+      <div class="mockup-bar">
+        <div class="mockup-dots">
+          <div class="mockup-dot" style="background:#ff5f56"></div>
+          <div class="mockup-dot" style="background:#ffbd2e"></div>
+          <div class="mockup-dot" style="background:#27c93f"></div>
+        </div>
+        <div class="mockup-url">app.hexatech.io/dashboard · Core Banking Operations</div>
+      </div>
+      <div class="mockup-body">
+        <div class="mockup-sidebar">
+          <div class="mockup-sb-logo"><div class="mockup-sb-logo-box">H</div><div class="mockup-sb-logo-name">Hexatech</div></div>
+          <div class="mockup-sb-section">Core Banking</div>
+          <div class="mockup-sb-item active"><span class="mockup-sb-ico">📊</span>Dashboard</div>
+          <div class="mockup-sb-item"><span class="mockup-sb-ico">👤</span>Customers</div>
+          <div class="mockup-sb-item"><span class="mockup-sb-ico">🏦</span>Accounts</div>
+          <div class="mockup-sb-item"><span class="mockup-sb-ico">📈</span>Loans</div>
+          <div class="mockup-sb-section">Operations</div>
+          <div class="mockup-sb-item"><span class="mockup-sb-ico">💳</span>Cards</div>
+          <div class="mockup-sb-item"><span class="mockup-sb-ico">🔄</span>Transfers</div>
+          <div class="mockup-sb-item"><span class="mockup-sb-ico">📋</span>Compliance</div>
+          <div class="mockup-sb-item"><span class="mockup-sb-ico">⚙️</span>Settings</div>
+        </div>
+        <div class="mockup-main">
+          <div class="mockup-toprow">
+            <div class="mockup-page-title">Operations Overview</div>
+            <div style="display:flex;gap:8px">
+              <div class="mockup-badge green">● All systems live</div>
+              <div class="mockup-badge blue">Today · Live</div>
+            </div>
+          </div>
+          <div class="mockup-kpi-row">
+            <div class="mockup-kpi"><div class="mockup-kpi-n">$2.4B<span class="up">↑4.2%</span></div><div class="mockup-kpi-l">AUM Today</div></div>
+            <div class="mockup-kpi"><div class="mockup-kpi-n">148K<span class="up">↑12%</span></div><div class="mockup-kpi-l">Active Accounts</div></div>
+            <div class="mockup-kpi"><div class="mockup-kpi-n">99.98%<span class="up">↑</span></div><div class="mockup-kpi-l">Platform Uptime</div></div>
+            <div class="mockup-kpi"><div class="mockup-kpi-n">1.2ms</div><div class="mockup-kpi-l">Avg Response</div></div>
+          </div>
+          <div class="mockup-chart">
+            <div class="bar" style="height:45%"></div><div class="bar hi" style="height:65%"></div>
+            <div class="bar" style="height:40%"></div><div class="bar hi" style="height:80%"></div>
+            <div class="bar" style="height:55%"></div><div class="bar" style="height:48%"></div>
+            <div class="bar hi" style="height:72%"></div><div class="bar" style="height:58%"></div>
+            <div class="bar hi" style="height:90%"></div><div class="bar" style="height:62%"></div>
+            <div class="bar hi" style="height:85%"></div><div class="bar" style="height:68%"></div>
+          </div>
+          <div class="mockup-table">
+            <div class="mockup-th"><span>Transaction</span><span>Amount</span><span>Channel</span><span>Status</span></div>
+            <div class="mockup-tr"><span class="name">NIP Transfer — Emeka Okafor</span><span>₦245,000</span><span>Mobile</span><span><div class="mockup-status s-active">Settled</div></span></div>
+            <div class="mockup-tr"><span class="name">Loan Disbursement — ABC Corp</span><span>₦12.5M</span><span>Core</span><span><div class="mockup-status s-active">Settled</div></span></div>
+            <div class="mockup-tr"><span class="name">Card Payment — Adaeze Obi</span><span>₦18,400</span><span>POS</span><span><div class="mockup-status s-pending">Clearing</div></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUSTED BY LOGOS ═══════════════════════════════════════════════════ -->
+<section class="d-logos">
+  <div class="d-inner">
+    <div class="d-logos-label">Trusted by leading financial institutions globally</div>
+    <div class="d-logos-row">
+      <span class="d-logo-item">FirstBank</span>
+      <span class="d-logo-item">Ecobank</span>
+      <span class="d-logo-item">Standard Chartered</span>
+      <span class="d-logo-item">Access Bank</span>
+      <span class="d-logo-item">HDFC</span>
+      <span class="d-logo-item">Abu Dhabi Islamic Bank</span>
+      <span class="d-logo-item">Zenith Bank</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BUILT FOR CHANGE ════════════════════════════════════════════════════ -->
+<section class="d-sec gray">
+  <div class="d-inner">
+    <div style="text-align:center;margin-bottom:12px">
+      <span class="d-sec-label">Why Hexatech</span>
+    </div>
+    <h2 class="d-sec-title center">Increase speed-to-market and reduce<br>cost of banking transformation</h2>
+    <p class="d-sec-sub center" style="margin-bottom:0">Hexatech enhances your development workflow through 700+ composable microservices. These capabilities expand banking functionality, providing a tailored experience that suits every institutional need.</p>
+
+    <div class="d-feats">
+      <div class="d-feat">
+        <div class="d-feat-ico">⚡</div>
+        <div class="d-feat-title">eHEX Platform</div>
+        <div class="d-feat-desc">The eHEX core powers your banking operations with high-performance microservices — the core technology for building and running composable banking at scale.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">🤖</div>
+        <div class="d-feat-title">Contextual AI</div>
+        <div class="d-feat-desc">The AI layer offers a robust command-line tool for precise control over your banking workflows. Automate tasks, and integrate Hexatech seamlessly into your operations.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">🧩</div>
+        <div class="d-feat-title">Composable by Design</div>
+        <div class="d-feat-desc">Hexatech simplifies the process of deploying and managing composable banking modules. Define complex setups with a single configuration file.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">🏗️</div>
+        <div class="d-feat-title">Build Once, Deploy Everywhere</div>
+        <div class="d-feat-desc">Hexatech Build is a powerful tool within the eHEX platform that simplifies the process to package and ship your code to any institution on any cloud, on any scale.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">🌐</div>
+        <div class="d-feat-title">Multi-Entity Orchestration</div>
+        <div class="d-feat-desc">Built-in multi-entity management with support for multiple countries, currencies, and regulatory environments from a single platform instance.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">📊</div>
+        <div class="d-feat-title">Real-Time Data Visibility</div>
+        <div class="d-feat-desc">Hexatech provides a robust solution for managing and sharing real-time banking data. Securely manage positions for intraday visibility and data portability.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">🔗</div>
+        <div class="d-feat-title">Synchronised API Ecosystem</div>
+        <div class="d-feat-desc">3,061+ open APIs enable real-time sharing and synchronisation of capabilities across your institution, improving collaboration and consistency.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">🛡️</div>
+        <div class="d-feat-title">Enterprise Security</div>
+        <div class="d-feat-desc">Hardened Hexatech deployment includes advanced security features to safeguard your development environment — ISO 42001, ISO 27001, PCI DSS certified.</div>
+      </div>
+      <div class="d-feat">
+        <div class="d-feat-ico">🔌</div>
+        <div class="d-feat-title">Purple Fabric Marketplace</div>
+        <div class="d-feat-desc">Custom extensions tailored to your specific requirements. Customise and enhance your banking environment with specialised tools and integrations available exclusively through the marketplace.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION: Extend the power ══════════════════════════════════════════ -->
+<section class="d-sec">
+  <div class="d-inner">
+    <div class="d-split">
+      <div class="d-split-text">
+        <span class="d-sec-label">Platform Architecture</span>
+        <h2 class="d-sec-title">Extend the power<br>of the eHEX Platform</h2>
+        <p>Hexatech enhances its capabilities through Purple Fabric, allowing developers to integrate seamlessly with their favourite tools and services. These extensions expand the platform's functionality, providing a tailored experience that serves any development need.</p>
+        <ul class="d-split-pts">
+          <li><strong>Enhanced integration</strong> — Connect with a wider range of popular tools and services, streamlining your banking workflow.</li>
+          <li><strong>Customisable experience</strong> — Personalise the platform with extensions that suit your individual or team needs, improving productivity and efficiency.</li>
+          <li><strong>Support for popular tools</strong> — Leverage extensions from leading banking vendors and tool providers, ensuring compatibility with the tools you rely on.</li>
+        </ul>
+        <a href="technology.html" class="btn-link">Learn more about our platform →</a>
+      </div>
+      <div>
+        <!-- Extensions visual -->
+        <div class="d-split-visual" style="background:#f8fafc;padding:24px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#0d1f4a">Manage Extensions</div>
+            <div style="display:inline-flex;align-items:center;gap:5px;font-size:10px;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:100px;font-weight:700">● Live Releases</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:20px">
+            <div style="padding:5px 14px;border-radius:100px;background:#1a2540;color:#fff;font-size:12px;font-weight:600">My Extensions</div>
+            <div style="padding:5px 14px;border-radius:100px;background:#f1f5f9;color:#64748b;font-size:12px;font-weight:600">Browse</div>
+            <div style="padding:5px 14px;border-radius:100px;background:#f1f5f9;color:#64748b;font-size:12px;font-weight:600">Create</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+              <div style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#7c3cf8,#1a6fd4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0">PF</div>
+              <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#0d1f4a;margin-bottom:2px">Purple Fabric</div><div style="font-size:11px;color:#94a3b8">Open Business Impact Platform</div></div>
+              <div style="font-size:11px;color:#16a34a;font-weight:700">● Active</div>
+            </div>
+            <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+              <div style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#00c8e8,#1a6fd4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0">Σ</div>
+              <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#0d1f4a;margin-bottom:2px">Sigma AI</div><div style="font-size:11px;color:#94a3b8">Enterprise Intelligence Platform</div></div>
+              <div style="font-size:11px;color:#16a34a;font-weight:700">● Active</div>
+            </div>
+            <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+              <div style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0">iT</div>
+              <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#0d1f4a;margin-bottom:2px">iTurmeric</div><div style="font-size:11px;color:#94a3b8">Composability &amp; Integration Engine</div></div>
+              <div style="font-size:11px;color:#3b82f6;font-weight:700">↑ Update</div>
+            </div>
+          </div>
+          <div style="margin-top:14px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:9px;background:#0d1f4a;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0">↑</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#0d1f4a;margin-bottom:2px">Release Share</div><div style="font-size:11px;color:#94a3b8">Share your platform builds publicly with a click.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIAL ═════════════════════════════════════════════════════════ -->
+<section class="d-sec" style="padding:0 0 80px">
+  <div class="d-inner">
+    <div class="d-testimonial">
+      <div class="d-tq">"</div>
+      <div class="d-ttext">"Initially, our use of Hexatech was constrained to virtual environments due to policy restrictions on our workstations. The introduction of the eHEX Platform and its composable architecture enabled access to cutting-edge banking technologies on our physical deployments at scale."</div>
+      <div class="d-tattrib"><strong>David Okonkwo</strong>Senior DevOps — EcoBank, Nigeria</div>
+      <div style="margin-top:24px"><a href="#" class="btn-link" style="color:rgba(255,255,255,.65)">Browse client stories →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEVELOP FASTER CTA ══════════════════════════════════════════════════ -->
+<section class="d-sec gray">
+  <div class="d-inner" style="text-align:center">
+    <h2 class="d-sec-title center">Transform banking faster<br>with the eHEX Platform</h2>
+    <p class="d-sec-sub center" style="margin-bottom:36px">Ready to accelerate your digital banking transformation? Explore our products or reach out for more information.</p>
+    <a href="products.html" class="btn-prim">Explore Products</a>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="d-inner" style="padding-top:0">
+    <div class="d-stats">
+      <div class="d-stat"><div class="d-stat-n">140+</div><div class="d-stat-l">Global Clients</div></div>
+      <div class="d-stat"><div class="d-stat-n">61+</div><div class="d-stat-l">Countries</div></div>
+      <div class="d-stat"><div class="d-stat-n">1,300+</div><div class="d-stat-l">Implementations</div></div>
+      <div class="d-stat"><div class="d-stat-n">700+</div><div class="d-stat-l">Microservices</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ADDITIONAL RESOURCES ════════════════════════════════════════════════ -->
+<section class="d-sec" id="resources">
+  <div class="d-inner">
+    <h2 class="d-sec-title center" style="margin-bottom:8px">Additional resources</h2>
+    <div class="d-resources">
+      <div class="d-res-card">
+        <div class="d-res-ico">📥</div>
+        <div class="d-res-title">Download the datasheet</div>
+        <div class="d-res-desc">Read our solutions overview. Hexatech simplifies container management so you can ship products to market faster.</div>
+        <a href="#" class="btn-link">Learn more →</a>
+      </div>
+      <div class="d-res-card">
+        <div class="d-res-ico">💬</div>
+        <div class="d-res-title">Join our community</div>
+        <div class="d-res-desc">Join the global community to connect with other developers, share discussions, contribute to projects, and be part of a vibrant ecosystem.</div>
+        <a href="#" class="btn-link">Learn more →</a>
+      </div>
+      <div class="d-res-card">
+        <div class="d-res-ico">📖</div>
+        <div class="d-res-title">Read the blog</div>
+        <div class="d-res-desc">Get the latest Hexatech news, tips, and best practices by reading our blog. Stay informed about new features, case studies, and industry trends.</div>
+        <a href="#" class="btn-link">Learn more →</a>
+      </div>
+      <div class="d-res-card">
+        <div class="d-res-ico">📚</div>
+        <div class="d-res-title">Find resources</div>
+        <div class="d-res-desc">Explore a wealth of resources including webinars and white papers. Equip yourself with the knowledge and skills needed to make the most of Hexatech.</div>
+        <a href="#" class="btn-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOTTOM CTA ══════════════════════════════════════════════════════════ -->
+<section class="d-cta" id="contact">
+  <div class="d-inner">
+    <h2>Build better banking,<br>together with Hexatech</h2>
+    <p>Get started today or choose the implementation programme that's right for your institution.</p>
+    <div class="d-cta-acts">
+      <a href="#" class="btn-cyan">Request a Demo →</a>
+      <a href="about/our-story.html" class="btn-out" style="color:#fff;border-color:rgba(255,255,255,.3)">Learn About Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fnews">
+    <div class="d-inner fnews-inner">
+      <div style="font-size:15px;color:#475569">Stay updated with the latest at Hexatech</div>
+      <div style="display:flex;gap:10px">
+        <input type="email" class="fnews-input" placeholder="Work Email*">
+        <a href="#" class="btn-prim" style="padding:10px 22px;font-size:14px">Submit</a>
+      </div>
+    </div>
+  </div>
+  <div class="d-inner">
+    <div class="ftop">
+      <div class="fbrand">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#fg)" stroke-width="2.2"/>
+            <line x1="13" y1="11" x2="13" y2="25" stroke="url(#fg)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="23" y1="11" x2="23" y2="25" stroke="url(#fg)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="13" y1="18" x2="23" y2="18" stroke="url(#fg)" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="fg" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/></linearGradient></defs>
+          </svg>
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#0d1f4a">Hexatech</span>
+        </div>
+        <p>The composable Open Finance Platform for banks, fintechs, and financial institutions worldwide.</p>
+        <div class="fsocials" style="margin-top:16px">
+          <div class="fsoc">𝕏</div>
+          <div class="fsoc">in</div>
+          <div class="fsoc">▶</div>
+        </div>
+      </div>
+      <div class="fcols">
+        <div class="fcol"><h4>Products</h4><ul>
+          <li><a href="pages/core-banking/consumer-core-banking.html">Consumer Core Banking</a></li>
+          <li><a href="pages/core-banking/corporate-core-banking.html">Corporate Core Banking</a></li>
+          <li><a href="pages/lending/consumer-originations.html">Consumer Originations</a></li>
+          <li><a href="pages/lending/debt-collections.html">Debt Collections</a></li>
+          <li><a href="pages/cards/consumer-cards.html">Consumer Cards</a></li>
+          <li><a href="pages/wealth-capital-markets/wealth-management.html">Wealth Management</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Solutions</h4><ul>
+          <li><a href="#">Commercial Banks</a></li>
+          <li><a href="#">Digital Banks</a></li>
+          <li><a href="#">NBFCs</a></li>
+          <li><a href="#">Fintechs</a></li>
+          <li><a href="#">Central Banks</a></li>
+          <li><a href="#">Insurance</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Technology</h4><ul>
+          <li><a href="technology.html">Overview</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="docs/index.html">Developer Portal</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Security</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Company</h4><ul>
+          <li><a href="about/our-story.html">About Us</a></li>
+          <li><a href="about/our-leadership.html">Leadership</a></li>
+          <li><a href="about/careers.html">Careers</a></li>
+          <li><a href="about/our-investors.html">Investors</a></li>
+          <li><a href="about/social-impact.html">Social Impact</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 Hexatech Inc. All rights reserved.</p>
+      <div class="fleg">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  // Mega dropdown panel switching
+  document.querySelectorAll('.dd-cat').forEach(function(cat){
+    cat.addEventListener('click', function(){
+      var mega = cat.closest('.dd-mega');
+      mega.querySelectorAll('.dd-cat').forEach(function(c){ c.classList.remove('active'); });
+      mega.querySelectorAll('.dd-panel').forEach(function(p){ p.classList.remove('active'); });
+      cat.classList.add('active');
+      var key = cat.dataset.panel;
+      var panel = mega.querySelector('#dd-' + key);
+      if(panel) panel.classList.add('active');
+    });
+  });
+  // Platform tabs
+  document.querySelectorAll('.d-plat-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var bar = btn.closest('[id]') || btn.parentNode;
+      document.querySelectorAll('.d-plat-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.d-plat-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var t = document.getElementById('dpp-' + btn.dataset.panel);
+      if(t) t.classList.add('active');
+    });
+  });
+})();
+</script>
+</body>
+</html>

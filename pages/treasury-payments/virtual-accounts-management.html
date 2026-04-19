@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Accounts Management — Hexatech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── VAM-specific additions ── */
+.vam-vis{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:18px;overflow:hidden}
+.vam-vis-top{background:linear-gradient(135deg,#0d1f4a,#091228);padding:18px;border-bottom:1px solid var(--bdr)}
+.vam-vis-title{font-family:var(--fd);font-size:12px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.vam-vis-title::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--cyan);display:block}
+.vam-row{display:flex;gap:8px;margin-bottom:8px}
+.vam-cell{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:8px;padding:10px 12px;text-align:center;transition:background .2s}
+.vam-cell:hover{background:rgba(0,200,232,.06)}
+.vam-cell-n{font-family:var(--fd);font-size:16px;font-weight:800;background:var(--gt);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.vam-cell-l{font-size:9px;color:var(--dim);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
+.vam-tree{display:flex;flex-direction:column;gap:1px;background:var(--bdr)}
+.vam-tree-row{background:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--dim)}
+.vam-tree-row.root{background:#f8fafc;color:var(--navy);font-weight:600}
+.vam-tree-ico{width:26px;height:26px;border-radius:6px;background:rgba(0,200,232,.1);border:1px solid rgba(0,200,232,.15);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.vam-tree-label{flex:1}
+.vam-tree-badge{font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(0,200,232,.12);color:var(--cyan);font-weight:600}
+.flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.flow-card{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:14px;padding:22px;position:relative;overflow:hidden;transition:all .25s}
+.flow-card:hover{border-color:rgba(0,200,232,.3);transform:translateY(-3px);background:rgba(0,200,232,.03)}
+.flow-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .25s}
+.flow-card:hover::after{opacity:1}
+.flow-num{font-family:var(--fd);font-size:42px;font-weight:800;color:rgba(0,200,232,.08);line-height:1;position:absolute;top:10px;right:14px}
+.flow-icon{width:36px;height:36px;border-radius:9px;background:rgba(0,200,232,.1);border:1px solid rgba(0,200,232,.15);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px}
+.flow-title{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.flow-desc{font-size:12.5px;color:var(--dim);line-height:1.6}
+.ins-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.ins-article{background:rgba(9,18,42,.9);border:1px solid var(--bdr);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.ins-article:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.ins-article-img{width:100%;height:160px;object-fit:cover;display:block;transition:transform .4s}
+.ins-article:hover .ins-article-img{transform:scale(1.04)}
+.ins-article-body{padding:18px}
+.ins-article-tag{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--cyan);margin-bottom:7px;font-weight:600}
+.ins-article-title{font-family:var(--fd);font-weight:700;font-size:14px;color:var(--navy);line-height:1.3;margin-bottom:8px}
+.ins-article-link{font-size:12px;color:var(--cyan);font-weight:500}
+@media(max-width:1100px){.flow-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.flow-grid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../css/theme-v2.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../../index-v2.html" class="nlogo">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#ngpages_treasu)" stroke-width="2.2"/>
+        <line x1="13" y1="11" x2="13" y2="25" stroke="url(#ngpages_treasu)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="23" y1="11" x2="23" y2="25" stroke="url(#ngpages_treasu)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="13" y1="18" x2="23" y2="18" stroke="url(#ngpages_treasu)" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ngpages_treasu" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/>
+        </linearGradient></defs>
+      </svg>
+      <span class="lwm">Hexatech</span>
+    </a>
+    <ul class="nlinks">
+      <li>
+        <button class="nt" onclick="location.href='../../products.html'">Products <span class="nc">▾</span></button>
+        <div class="dd dd-mega">
+          <div class="dd-sidebar">
+            <div class="dd-sidebar-title">Product Suite</div>
+            <button class="dd-cat active" data-panel="corepages_treasu"><div class="dd-cat-icon">🏛️</div><span class="dd-cat-label">Core Banking</span></button>
+            <button class="dd-cat" data-panel="lendingpages_treasu"><div class="dd-cat-icon">📈</div><span class="dd-cat-label">Lending</span></button>
+            <button class="dd-cat" data-panel="cardspages_treasu"><div class="dd-cat-icon">💳</div><span class="dd-cat-label">Cards</span></button>
+            <button class="dd-cat" data-panel="digitalpages_treasu"><div class="dd-cat-icon">📱</div><span class="dd-cat-label">Digital Engagement</span></button>
+            <button class="dd-cat" data-panel="wealthpages_treasu"><div class="dd-cat-icon">💼</div><span class="dd-cat-label">Wealth &amp; Capital</span></button>
+            <button class="dd-cat" data-panel="treasurypages_treasu"><div class="dd-cat-icon">🏦</div><span class="dd-cat-label">Treasury</span></button>
+          </div>
+          <div class="dd-panels">
+            <div class="dd-panel active" id="dd-corepages_treasu">
+              <div class="dd-panel-title">Core Banking</div>
+              <div class="dd-links">
+                <a href="../../pages/core-banking/consumer-core-banking.html" class="dd-link">Consumer Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/core-banking/corporate-core-banking.html" class="dd-link">Corporate Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/core-banking/central-core-banking.html" class="dd-link">Central Core Banking <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-lendingpages_treasu">
+              <div class="dd-panel-title">Lending</div>
+              <div class="dd-links">
+                <a href="../../pages/lending/consumer-originations.html" class="dd-link">Consumer Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/consumer-loan-management.html" class="dd-link">Consumer Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/sme-corporate-originations.html" class="dd-link">SME &amp; Corporate Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/sme-corporate-loan-management.html" class="dd-link">SME Corporate Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/lending/debt-collections.html" class="dd-link">Debt Collections <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-cardspages_treasu">
+              <div class="dd-panel-title">Cards</div>
+              <div class="dd-links">
+                <a href="../../pages/cards/consumer-cards.html" class="dd-link">Consumer Cards <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/cards/corporate-cards.html" class="dd-link">Corporate Cards <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-digitalpages_treasu">
+              <div class="dd-panel-title">Digital Engagement</div>
+              <div class="dd-links">
+                <a href="../../pages/digital-engagement/consumers-sme.html" class="dd-link">Digital Engagement — Consumers &amp; SME <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/digital-engagement/corporate-exchange.html" class="dd-link">CBX — Corporate Exchange <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-wealthpages_treasu">
+              <div class="dd-panel-title">Wealth &amp; Capital Markets</div>
+              <div class="dd-links">
+                <a href="../../pages/wealth-capital-markets/wealth-management.html" class="dd-link">Wealth Management <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/wealth-capital-markets/financial-advisor.html" class="dd-link">Financial Advisor <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/wealth-capital-markets/brokerage.html" class="dd-link">Brokerage <span class="dd-link-arrow">↗</span></a>
+                <a href="../../pages/wealth-capital-markets/custody.html" class="dd-link">Custody <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-treasurypages_treasu">
+              <div class="dd-panel-title">Treasury &amp; Payments</div>
+              <div class="dd-links">
+                <a href="../../pages/treasury-payments/virtual-accounts-management.html" class="dd-link">Virtual Accounts Management <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Solutions <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#94a3b8;font-weight:700;padding:8px 12px 6px">By Segment</div>
+          <a href="#" class="ddi"><span class="ddn">🏦</span>Commercial Banks</a>
+          <a href="#" class="ddi"><span class="ddn">📱</span>Digital &amp; Neo Banks</a>
+          <a href="#" class="ddi"><span class="ddn">💼</span>NBFCs &amp; Fintechs</a>
+          <a href="#" class="ddi"><span class="ddn">🌍</span>Central Banks</a>
+        </div></div>
+      </li>
+      <li><a href="../../technology.html">Technology</a></li>
+      <li><a href="../../partners.html">Partners</a></li>
+      <li>
+        <a href="#">Resources <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="#" class="ddi"><span class="ddn">📊</span>Analyst Recognitions</a>
+          <a href="#" class="ddi"><span class="ddn">🏆</span>Awards</a>
+          <a href="#" class="ddi"><span class="ddn">📅</span>Events</a>
+          <a href="#" class="ddi"><span class="ddn">📰</span>Newsroom</a>
+        </div></div>
+      </li>
+      <li>
+        <a href="#">About Us <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="../../about/our-story.html" class="ddi"><span class="ddn">📖</span>Our Story</a>
+          <a href="../../about/our-leadership.html" class="ddi"><span class="ddn">👥</span>Our Leadership</a>
+          <a href="../../about/design-thinking-dna.html" class="ddi"><span class="ddn">🎯</span>Design Thinking DNA</a>
+          <div class="dddiv"></div>
+          <a href="../../about/our-investors.html" class="ddi"><span class="ddn">📈</span>Investors</a>
+          <a href="../../about/social-impact.html" class="ddi"><span class="ddn">🌱</span>Social Impact</a>
+          <a href="../../about/careers.html" class="ddi"><span class="ddn">💼</span>Careers</a>
+        </div></div>
+      </li>
+    </ul>
+    <div class="nav-acts-area">
+      <a href="#" style="padding:7px 16px;border-radius:7px;font-size:14px;font-weight:500;color:#475569;border:1px solid #e2e8f0;transition:all .15s;font-family:var(--fb);background:#fff;text-decoration:none">Sign In</a>
+      <a href="#contact" class="btn bp" style="padding:8px 20px;font-size:14px">Get Started →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="pg-hero">
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="#">Products</a><span class="breadcrumb-sep">›</span>
+      <a href="#">Treasury &amp; Payments</a><span class="breadcrumb-sep">›</span>
+      <span>Virtual Accounts Management</span>
+    </div>
+    <div class="hero-badge"><span class="hero-badge-dot"></span>eHEX Platform · Treasury &amp; Payments Module</div>
+    <h1>Virtual Accounts Management<br><span class="gt">Intelligent Flows for Precise Cash Visibility</span></h1>
+    <p class="lead">Enable real-time, architecture-level virtual account structures that flow payment reconciliation between corporates and their banking partners — with full intraday cash visibility across every entity.</p>
+    <div class="hero-acts">
+      <a href="#contact" class="btn bp">Request a Demo →</a>
+      <a href="#" class="btn bg2">Download Brochure ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">MFB / Core banking platforms</div></div>
+      <div class="hstat"><div class="hstat-n">28</div><div class="hstat-l">Countries live</div></div>
+      <div class="hstat"><div class="hstat-n">142</div><div class="hstat-l">FIs</div></div>
+      <div class="hstat"><div class="hstat-n">60</div><div class="hstat-l">Clients</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OVERVIEW ══════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Overview</span>
+    <h2 class="sec-title">From Incoming Payments to Clear Cash Positions</h2>
+    <p class="sec-sub">The fastest path from settlement to insight — virtual accounts that tell you exactly where every dollar sits, in real time.</p>
+
+    <div class="overview-grid" style="margin-top:52px">
+      <div class="overview-text">
+        <p>Virtual Accounts Management (VAM) enables banks and their corporate clients to create sophisticated account structures that mirror their organizational hierarchies — without the cost or complexity of opening real accounts for every entity.</p>
+        <p><strong>Hexatech Virtual Accounts Management</strong> is a fully composable VAM platform built on the eHEX architecture. It enables banks to offer their corporate treasury clients real-time cash visibility, automated reconciliation, and intelligent fund routing — all managed from a single, unified control plane.</p>
+        <p>From onboarding a multi-subsidiary corporate to reconciling thousands of daily inbound payments, every workflow is automated, auditable, and always-on.</p>
+        <div style="margin-top:28px"><a href="#contact" class="bl">Talk to a Treasury Expert →</a></div>
+      </div>
+
+      <div>
+        <!-- Visual: Virtual Account Structure -->
+        <div class="vam-vis">
+          <div class="vam-vis-top">
+            <div class="vam-vis-title">Virtual Accounts</div>
+            <div class="vam-row">
+              <div class="vam-cell"><div class="vam-cell-n">$4.2B</div><div class="vam-cell-l">Total Pooled</div></div>
+              <div class="vam-cell"><div class="vam-cell-n">99.8%</div><div class="vam-cell-l">Recon Rate</div></div>
+            </div>
+            <div class="vam-row">
+              <div class="vam-cell"><div class="vam-cell-n">1.4ms</div><div class="vam-cell-l">Avg Routing</div></div>
+              <div class="vam-cell"><div class="vam-cell-n">∞</div><div class="vam-cell-l">VA Depth</div></div>
+            </div>
+          </div>
+          <div class="vam-tree">
+            <div class="vam-tree-row root">
+              <div class="vam-tree-ico">🏦</div>
+              <div class="vam-tree-label">Master Physical Account</div>
+              <div class="vam-tree-badge">LIVE</div>
+            </div>
+            <div class="vam-tree-row" style="padding-left:32px">
+              <div class="vam-tree-ico">📁</div>
+              <div class="vam-tree-label">Header VA — Group Treasury</div>
+              <div class="vam-tree-badge" style="background:rgba(26,111,212,.15);color:#6ab4ff">HEADER</div>
+            </div>
+            <div class="vam-tree-row" style="padding-left:48px">
+              <div class="vam-tree-ico">💼</div>
+              <div class="vam-tree-label">VA — Subsidiary A</div>
+              <div style="font-size:10px;color:var(--cyan)">$1.24M</div>
+            </div>
+            <div class="vam-tree-row" style="padding-left:48px">
+              <div class="vam-tree-ico">💼</div>
+              <div class="vam-tree-label">VA — Subsidiary B</div>
+              <div style="font-size:10px;color:var(--cyan)">$880K</div>
+            </div>
+            <div class="vam-tree-row" style="padding-left:32px">
+              <div class="vam-tree-ico">📁</div>
+              <div class="vam-tree-label">Header VA — Collections</div>
+              <div class="vam-tree-badge" style="background:rgba(26,111,212,.15);color:#6ab4ff">HEADER</div>
+            </div>
+            <div class="vam-tree-row" style="padding-left:48px">
+              <div class="vam-tree-ico">📥</div>
+              <div class="vam-tree-label">VA — Receivables Pool</div>
+              <div style="font-size:10px;color:var(--cyan)">$2.06M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 feature icons below overview -->
+    <div class="flow-grid" style="margin-top:52px">
+      <div class="flow-card">
+        <div class="flow-num">01</div>
+        <div class="flow-icon">🏗️</div>
+        <div class="flow-title">Structural Account Organisation</div>
+        <div class="flow-desc">Mirror complex corporate hierarchies with unlimited-depth virtual account trees linked to a single physical account.</div>
+      </div>
+      <div class="flow-card">
+        <div class="flow-num">02</div>
+        <div class="flow-icon">🔄</div>
+        <div class="flow-title">STP-Enhanced Reconciliation</div>
+        <div class="flow-desc">Achieve near-100% straight-through payment reconciliation using intelligent routing rules and reference matching.</div>
+      </div>
+      <div class="flow-card">
+        <div class="flow-num">03</div>
+        <div class="flow-icon">🌐</div>
+        <div class="flow-title">Multi-Bank Account Access</div>
+        <div class="flow-desc">Consolidate virtual account structures across multiple banking relationships in a single treasury view.</div>
+      </div>
+      <div class="flow-card">
+        <div class="flow-num">04</div>
+        <div class="flow-icon">📊</div>
+        <div class="flow-title">Real-Time Cash Visibility</div>
+        <div class="flow-desc">Intraday balance and transaction feeds across every virtual account — no more end-of-day reconciliation surprises.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAPABILITIES ACCORDION ════════════════════════════════════════ -->
+<section class="page-sec mid" style="position:relative;overflow:hidden">
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,232,.07),transparent 68%);top:-80px;right:-60px;pointer-events:none"></div>
+  <div class="inner" style="position:relative;z-index:1">
+    <span class="sec-label">Capabilities</span>
+    <h2 class="sec-title">Accept and Optimise Payments at Scale</h2>
+    <p class="sec-sub">Seven end-to-end capability pillars that enable banks to offer world-class virtual account services to their corporate clients.</p>
+
+    <div class="acc-list">
+
+      <div class="acc-item open">
+        <button class="acc-btn"><span>1. Self-Service Account Management</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Empower corporate clients to self-create, configure, and manage their virtual account structures directly — without bank operations involvement.
+          <ul>
+            <li>Self-service VA creation via web portal and API</li>
+            <li>Corporate-defined hierarchy and naming conventions</li>
+            <li>Real-time account status and balance monitoring</li>
+            <li>Role-based access control for treasury teams</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span>2. Real-Time Balance &amp; Ledgering</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Sub-second balance updates across every virtual account level — from transaction leaf nodes to the master physical account — with full ledger integrity.
+          <ul>
+            <li>Real-time credit and debit posting at every VA level</li>
+            <li>Intraday liquidity position reporting</li>
+            <li>Automated interest calculation per VA level</li>
+            <li>Full audit trail on every balance movement</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span>3. Multi-Identifier Transaction Processing</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Route and reconcile payments using any combination of account numbers, payment references, IBAN structures, or custom identifiers defined by the corporate.
+          <ul>
+            <li>IBAN, sort code, and custom reference routing</li>
+            <li>Multi-bank payment instruction handling</li>
+            <li>Configurable routing rule engine</li>
+            <li>Exception management and manual override</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span>4. Intelligent Reconciliations</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          AI-powered reconciliation engine matches inbound payments to open receivables with 99.8% straight-through rates — automatically resolving exceptions using configurable matching logic.
+          <ul>
+            <li>Multi-attribute payment matching (reference, amount, date, counterparty)</li>
+            <li>Fuzzy matching for partial and near-match reconciliation</li>
+            <li>Automated exception queuing and resolution workflow</li>
+            <li>Reconciliation analytics and hit-rate reporting</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span>5. Intelligent Interest Management</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Sophisticated interest calculation at every level of the virtual account hierarchy — supporting notional pooling, zero balancing, and interest netting arrangements.
+          <ul>
+            <li>Notional pooling with tier-based interest rates</li>
+            <li>Zero-balance sweeping automation</li>
+            <li>Interest netting across credit and debit positions</li>
+            <li>Automated interest accrual and posting</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span>6. Comprehensive Charging &amp; Billing</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Configurable fee engine supporting transaction-based, account-based, and value-based charging structures — fully automated and audit-ready.
+          <ul>
+            <li>Per-transaction, per-account, and volume-based fee structures</li>
+            <li>Automated monthly billing and invoice generation</li>
+            <li>Revenue sharing arrangements with corporates</li>
+            <li>Fee transparency reporting for clients</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span>7. Embedded Banking &amp; EaaS</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          Expose virtual account capabilities as embedded banking APIs — enabling corporates and fintechs to build VAM-powered products for their own customers.
+          <ul>
+            <li>Embedded finance API for corporate treasury portals</li>
+            <li>EaaS (Everything-as-a-Service) packaging for fintech partners</li>
+            <li>White-label virtual account portal for corporates</li>
+            <li>Webhook events for real-time payment notifications</li>
+          </ul>
+          <div style="margin-top:16px;padding:14px;background:rgba(0,200,232,.05);border:1px solid rgba(0,200,232,.15);border-radius:10px;font-size:13px;color:var(--muted)">
+            <strong style="color:var(--navy)">The Advantage:</strong> Transform your Virtual Account infrastructure into a revenue-generating API product for fintechs and corporates building on your platform.
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY CHOOSE ══════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Why Choose</span>
+    <h2 class="sec-title">Why Banks Choose eHEX Virtual Accounts Management</h2>
+    <p class="sec-sub">Six platform differentiators that make Hexatech the partner of choice for banks building world-class virtual account services.</p>
+
+    <div class="feat-cards" style="margin-top:48px">
+
+      <div class="feat-card">
+        <div class="feat-card-icon">🏛️</div>
+        <div class="feat-card-title">True Cloud-Native Architecture</div>
+        <div class="feat-card-desc">Built from the ground up on microservices — every VAM function independently deployable, scalable, and upgradeable with zero-downtime releases.</div>
+        <div class="feat-card-diff">The Advantage:</div>
+        <ul class="feat-card-pts">
+          <li>Horizontal auto-scaling for payment peaks</li>
+          <li>Zero-downtime deployments</li>
+          <li>Modular feature activation</li>
+        </ul>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card-icon">🤖</div>
+        <div class="feat-card-title">Very Comprehensive CBO Module Support</div>
+        <div class="feat-card-desc">Complete Correspondent Banking Operations module with full SWIFT connectivity, correspondent bank management, and automated nostro reconciliation.</div>
+        <div class="feat-card-diff">The Advantage:</div>
+        <ul class="feat-card-pts">
+          <li>SWIFT MT and MX message support</li>
+          <li>Automated nostro reconciliation</li>
+          <li>ISO 20022-native processing</li>
+        </ul>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card-icon">⚡</div>
+        <div class="feat-card-title">300-Per-Industry Prompts</div>
+        <div class="feat-card-desc">Pre-built VAM configurations and routing templates for 300+ industry-specific payment patterns — dramatically reducing implementation time.</div>
+        <div class="feat-card-diff">The Advantage:</div>
+        <ul class="feat-card-pts">
+          <li>Industry-specific VA templates</li>
+          <li>Pre-built reconciliation rules</li>
+          <li>Rapid corporate onboarding</li>
+        </ul>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card-icon">📊</div>
+        <div class="feat-card-title">Adequate &amp; Reliable Analytics</div>
+        <div class="feat-card-desc">Real-time treasury analytics dashboards giving banks and their corporate clients instant visibility into cash positions, payment flows, and reconciliation status.</div>
+        <div class="feat-card-diff">The Advantage:</div>
+        <ul class="feat-card-pts">
+          <li>Live cash position dashboards</li>
+          <li>Payment flow heatmaps</li>
+          <li>Predictive liquidity forecasting</li>
+        </ul>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card-icon">🌐</div>
+        <div class="feat-card-title">Advanced Cross-Interoperable Linkage</div>
+        <div class="feat-card-desc">Seamless interoperability across payment schemes, core banking platforms, and treasury management systems — connecting your entire payment ecosystem.</div>
+        <div class="feat-card-diff">The Advantage:</div>
+        <ul class="feat-card-pts">
+          <li>Multi-core banking connectivity</li>
+          <li>TMS and ERP integration APIs</li>
+          <li>Cross-scheme payment routing</li>
+        </ul>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card-icon">🔒</div>
+        <div class="feat-card-title">Unified Commercial Intellect</div>
+        <div class="feat-card-desc">AI-powered commercial intelligence layer providing dynamic pricing, relationship-based interest rate management, and proactive client opportunity identification.</div>
+        <div class="feat-card-diff">The Advantage:</div>
+        <ul class="feat-card-pts">
+          <li>Dynamic interest rate management</li>
+          <li>Cross-sell opportunity detection</li>
+          <li>Client relationship profitability scoring</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════════════════════════ -->
+<section class="page-sec mid">
+  <div class="inner">
+    <span class="sec-label">FAQ</span>
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <div class="faq-wrap">
+      <div class="acc-list">
+
+        <div class="acc-item">
+          <button class="acc-btn"><span>What are virtual accounts and how do they help corporates manage accounts?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Virtual accounts are unique account identifiers linked to a single physical bank account. They allow corporates to create an unlimited number of virtual sub-accounts that mirror their organizational structure — enabling precise cash allocation, automated reconciliation, and real-time visibility without the cost of opening multiple physical accounts.</div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn"><span>What types of virtual account structures does the solution support?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">The platform supports single-level, multi-level, and unlimited-depth hierarchical virtual account structures. Supported configurations include collections pooling, subsidiary management, project-based accounts, and notional pooling arrangements. Each structure can span multiple legal entities and currencies.</div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn"><span>How does reconciliation work and what matching rates can we expect?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Our AI-powered reconciliation engine uses multi-attribute matching (reference number, amount, date, counterparty) with fuzzy logic for near-matches. Banks typically achieve 98–99.8% straight-through reconciliation rates within the first 90 days. Unmatched items are automatically routed to a configurable exception queue with AI-suggested resolution actions.</div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn"><span>Can it support multi-institution banking and BaaS scenarios?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Yes. The platform supports multi-bank virtual account consolidation, enabling corporates to see positions across multiple banking relationships in a single view. For BaaS scenarios, the platform exposes all VAM capabilities as APIs, allowing banks to embed virtual account services directly into corporate treasury platforms and fintech products.</div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn"><span>What compliance is required with self-tracking of each client?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">The platform maintains a full, immutable audit trail of every virtual account event — creation, modification, balance movement, and interest calculation. All client activity is captured in compliance-ready formats supporting AML monitoring, regulatory reporting, and internal audit requirements across all supported jurisdictions.</div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn"><span>What is the typical deployment timeline for implementation?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Standard VAM implementations go live in 8–14 weeks depending on the complexity of the virtual account hierarchy and number of core banking integrations required. Our pre-built connectors for major core banking platforms (Temenos, Finacle, Flexcube, and our own eHEX core) significantly reduce integration timelines.</div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn"><span>What are the most frequently asked reports and key implementation metrics?</span><span class="acc-icon">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Standard out-of-the-box reports include: daily cash position by VA level, reconciliation hit-rate trends, exception aging report, interest accrual summary, transaction volume by VA, and client profitability report. All reports are available in real-time via dashboard and scheduled via email delivery.</div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSIGHTS ════════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Insights</span>
+    <h2 class="sec-title">Stay Informed with the Latest Insights</h2>
+    <div class="ins-grid-3">
+
+      <div class="ins-article">
+        <img src="https://placehold.co/400x160/071228/00c8e8" alt="" class="ins-article-img">
+        <div class="ins-article-body">
+          <div class="ins-article-tag">Guide · Treasury</div>
+          <div class="ins-article-title">How to Effectively Manage Virtual Accounts at Scale with Multi-Layer Hierarchy</div>
+          <a href="#" class="ins-article-link">Read more →</a>
+        </div>
+      </div>
+
+      <div class="ins-article">
+        <img src="https://placehold.co/400x160/091228/00c8e8" alt="" class="ins-article-img">
+        <div class="ins-article-body">
+          <div class="ins-article-tag">Research · 2026</div>
+          <div class="ins-article-title">Virtual Accounts Set to Be the Next Big Thing in Corporate Banking This Decade</div>
+          <a href="#" class="ins-article-link">Read more →</a>
+        </div>
+      </div>
+
+      <div class="ins-article">
+        <img src="https://placehold.co/400x160/0a1535/00c8e8" alt="" class="ins-article-img">
+        <div class="ins-article-body">
+          <div class="ins-article-tag">Trend · 2026</div>
+          <div class="ins-article-title">ATS Helpers Now Handle Over Virtual Account Operations for 2026 Banking Clients</div>
+          <a href="#" class="ins-article-link">Read more →</a>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="#" class="btn bg2">View All Insights →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ════════════════════════════════════════════════════════ -->
+<section class="page-sec mid" id="contact">
+  <div class="inner">
+    <div class="contact-grid">
+      <div>
+        <h2 class="sec-title" style="text-align:left;margin-bottom:30px">Start a Conversation</h2>
+        <div class="contact-form-wrap">
+          <div class="cftitle">Request a personalised demo</div>
+          <div class="cfsubtitle">Our treasury solutions team will arrange a tailored walkthrough within one business day.</div>
+          <div class="cform">
+            <div class="frow">
+              <div class="ff"><label>First Name*</label><input type="text" placeholder="First Name"></div>
+              <div class="ff"><label>Last Name*</label><input type="text" placeholder="Last Name"></div>
+            </div>
+            <div class="frow">
+              <div class="ff"><label>Company Name*</label><input type="text" placeholder="Company Name"></div>
+              <div class="ff"><label>Designation*</label><input type="text" placeholder="Designation"></div>
+            </div>
+            <div class="frow">
+              <div class="ff"><label>Country</label>
+                <select>
+                  <option>Nigeria</option><option>Kenya</option><option>South Africa</option>
+                  <option>UAE</option><option>Singapore</option><option>UK</option><option>Other</option>
+                </select>
+              </div>
+              <div class="ff"><label>Phone</label><input type="text" placeholder="+234"></div>
+            </div>
+            <div class="ff"><label>Official Email ID only*</label><input type="email" placeholder="your@company.com"></div>
+            <div class="ff"><label>Queries</label><textarea placeholder="Tell us about your virtual account requirements..." style="min-height:80px"></textarea></div>
+            <div class="privacy-note">By submitting you agree to Hexatech's <a href="#">Privacy Policy</a>. We will never share your data.</div>
+            <a href="#" class="btn bp" style="width:100%;justify-content:center;padding:14px;margin-top:4px">Submit →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative">
+        <img src="https://placehold.co/600x700/0d1f4a/00c8e8" alt="Expert" style="width:100%;border-radius:18px;object-fit:cover;height:100%;min-height:500px">
+        <div style="position:absolute;bottom:24px;left:24px;right:24px;background:rgba(6,9,26,.88);backdrop-filter:blur(14px);border:1px solid var(--bdr);border-radius:14px;padding:20px">
+          <div style="font-family:var(--fd);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:3px">Adaeze Okonkwo</div>
+          <div style="font-size:12px;color:var(--cyan);margin-bottom:8px">Head of Treasury &amp; Payments Solutions, Africa</div>
+          <div style="font-size:12px;color:var(--dim);line-height:1.6">Adaeze leads Hexatech's treasury and virtual accounts practice across Africa and the Middle East, with 14 years of experience in corporate treasury technology at Tier 1 financial institutions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER STRIP ═══════════════════════════════════════════════ -->
+<section style="background:#f8fafc;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:24px 0">
+  <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <div style="font-size:15px;color:var(--muted)">Stay updated with the latest at Hexatech</div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <input type="email" placeholder="Official Email ID only*" style="background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;color:var(--navy);font-family:var(--fb);font-size:14px;outline:none;min-width:240px">
+      <a href="#" class="btn bp" style="padding:10px 22px">Submit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:22px 0">
+    <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="font-size:15px;color:#64748b">Stay updated with the latest at Hexatech</div>
+      <div style="display:flex;gap:10px">
+        <input type="email" placeholder="Work Email*" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 16px;font-size:14px;color:#0d1f4a;outline:none;min-width:240px;transition:border-color .2s;font-family:'DM Sans',sans-serif">
+        <a href="#" class="btn bp" style="padding:10px 22px;font-size:14px">Submit</a>
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <div class="ftop">
+      <div class="fbrand">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#fgv2)" stroke-width="2.2"/>
+            <line x1="13" y1="11" x2="13" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="23" y1="11" x2="23" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="13" y1="18" x2="23" y2="18" stroke="url(#fgv2)" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="fgv2" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/></linearGradient></defs>
+          </svg>
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#0d1f4a">Hexatech</span>
+        </div>
+        <p>The composable Open Finance Platform for banks, fintechs, and financial institutions worldwide.</p>
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <div class="fsb">𝕏</div><div class="fsb">in</div><div class="fsb">▶</div>
+        </div>
+      </div>
+      <div class="fcols">
+        <div class="fcol"><h4>Products</h4><ul>
+          <li><a href="../../pages/core-banking/consumer-core-banking.html">Consumer Core Banking</a></li>
+          <li><a href="../../pages/core-banking/corporate-core-banking.html">Corporate Core Banking</a></li>
+          <li><a href="../../pages/lending/consumer-originations.html">Consumer Originations</a></li>
+          <li><a href="../../pages/cards/consumer-cards.html">Consumer Cards</a></li>
+          <li><a href="../../pages/wealth-capital-markets/wealth-management.html">Wealth Management</a></li>
+          <li><a href="../../products.html">View All Products</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Solutions</h4><ul>
+          <li><a href="#">Commercial Banks</a></li>
+          <li><a href="#">Digital Banks</a></li>
+          <li><a href="#">NBFCs &amp; Fintechs</a></li>
+          <li><a href="#">Central Banks</a></li>
+          <li><a href="#">Insurance Companies</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Technology</h4><ul>
+          <li><a href="../../technology.html">Overview</a></li>
+          <li><a href="../../partners.html">Partners</a></li>
+          <li><a href="../../docs/index.html">Developer Portal</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Security</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Company</h4><ul>
+          <li><a href="../../about/our-story.html">About Us</a></li>
+          <li><a href="../../about/our-leadership.html">Leadership</a></li>
+          <li><a href="../../about/careers.html">Careers</a></li>
+          <li><a href="../../about/our-investors.html">Investors</a></li>
+          <li><a href="../../about/social-impact.html">Social Impact</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 Hexatech Inc. All rights reserved.</p>
+      <div class="fleg">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.acc-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var item=btn.closest('.acc-item');
+      var list=btn.closest('.acc-list');
+      var isOpen=item.classList.contains('open');
+      if(list) list.querySelectorAll('.acc-item').forEach(function(i){i.classList.remove('open');});
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>

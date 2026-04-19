@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology — Hexatech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TECHNOLOGY PAGE  –  additional component styles
+═══════════════════════════════════════════════ */
+
+/* ── Hero ── */
+.t-hero{
+  position:relative; min-height:58vh; display:flex; align-items:center;
+  background:linear-gradient(135deg,#07102a 0%,#06091a 55%,#0a1228 100%);
+  padding:130px 0 84px; overflow:hidden;
+}
+.t-hero::before{
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(0,200,232,.18) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:radial-gradient(ellipse 65% 100% at 58% 50%,black 0%,transparent 100%);
+  pointer-events:none;
+}
+.t-hero-net{
+  position:absolute; right:0; top:0; bottom:0; width:44%;
+  background:linear-gradient(135deg,#08112a,#0c1a3e);
+  overflow:hidden;
+}
+.t-hero-net::before{
+  content:''; position:absolute; inset:0; z-index:1;
+  background:linear-gradient(to right,#07102a 0%,rgba(7,16,42,.3) 45%,transparent 100%),
+             linear-gradient(to top,#07102a 0%,transparent 28%);
+}
+.t-hero-content{position:relative;z-index:2;max-width:590px}
+.t-breadcrumb{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--dim);margin-bottom:18px}
+.t-breadcrumb a{color:var(--dim);transition:color .2s} .t-breadcrumb a:hover{color:var(--cyan)}
+.t-breadcrumb span{color:var(--cyan)}
+.t-hero h1{font-family:var(--fd);font-size:clamp(38px,4.8vw,62px);font-weight:800;color:var(--navy);line-height:1.04;letter-spacing:-2px;margin-bottom:18px}
+.t-hero p{font-size:16px;color:var(--muted);line-height:1.8;max-width:510px}
+
+/* ── Stats ── */
+.t-stats{display:flex;gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin-top:0}
+.t-stat{flex:1;background:#070e26;padding:26px 36px;text-align:center;transition:background .2s}
+.t-stat:hover{background:#f8fafc}
+.t-stat-n{font-family:var(--fd);font-size:40px;font-weight:800;background:var(--gt);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px}
+.t-stat-l{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.6px}
+
+/* ── Impact 4-col ── */
+.t-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.t-impact-card{
+  background:rgba(255,255,255,.03);border:1px solid var(--bdr);
+  border-radius:16px;padding:28px 22px;position:relative;overflow:hidden;
+  transition:all .25s;
+}
+.t-impact-card:hover{border-color:rgba(0,200,232,.3);transform:translateY(-4px);background:rgba(0,200,232,.03)}
+.t-impact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:.25s}
+.t-impact-card:hover::before{opacity:1}
+.t-impact-ico{width:44px;height:44px;border-radius:11px;background:rgba(0,200,232,.1);border:1px solid rgba(0,200,232,.18);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.t-impact-title{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:9px;line-height:1.2}
+.t-impact-desc{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ── eMACH props row ── */
+.t-emach-props{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin:36px 0}
+.t-emach-prop{background:#070e26;padding:24px;transition:background .2s}
+.t-emach-prop:hover{background:#f8fafc}
+.t-emach-prop-ico{width:32px;height:32px;border-radius:8px;background:rgba(0,200,232,.1);border:1px solid rgba(0,200,232,.18);display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:12px}
+.t-emach-prop-title{font-family:var(--fd);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.t-emach-prop-desc{font-size:13px;color:var(--dim);line-height:1.65}
+
+/* ── Pillars 5-col ── */
+.t-pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px}
+.t-pillar{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:14px;padding:24px 18px;transition:all .22s;position:relative;overflow:hidden}
+.t-pillar:hover{border-color:rgba(0,200,232,.3);transform:translateY(-3px);background:rgba(0,200,232,.03)}
+.t-pillar::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:.22s;border-radius:2px 2px 0 0}
+.t-pillar:hover::after{opacity:1}
+.t-pillar.highlight{border-color:rgba(0,200,232,.22);background:rgba(0,200,232,.03)}
+.t-pillar.highlight::after{opacity:1}
+.t-pillar-ico{width:36px;height:36px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:12px}
+.t-pillar-title{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:9px}
+.t-pillar-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+.t-pillar-list li{font-size:12px;color:var(--dim);display:flex;align-items:flex-start;gap:6px}
+.t-pillar-list li::before{content:"✓";color:var(--cyan);font-size:9px;margin-top:3px;flex-shrink:0}
+
+/* ── Purple Fabric ── */
+.t-pf{
+  background:linear-gradient(135deg,#06091a,#080f26);
+  border:1px solid var(--bdr);border-radius:20px;padding:48px;
+  position:relative;overflow:hidden;margin-top:0;
+}
+.t-pf::before{
+  content:'';position:absolute;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(110,50,220,.13),transparent 68%);
+  top:-80px;right:-80px;pointer-events:none;
+}
+.t-pf-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border:1px solid rgba(110,50,220,.3);border-radius:100px;font-size:11px;color:#b07fff;font-weight:600;background:rgba(110,50,220,.08);margin-bottom:20px}
+.t-pf-badge-dot{width:6px;height:6px;border-radius:50%;background:#9060ef;display:block}
+.t-pf-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.t-pf-title{font-family:var(--fd);font-size:clamp(26px,3vw,42px);font-weight:800;color:var(--navy);letter-spacing:-1px;line-height:1.1;margin-bottom:14px}
+.t-pf-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:10px}
+.t-pf-stacks-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#b07fff;font-weight:700;margin-bottom:14px}
+.t-pf-stacks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.t-pf-stack{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:10px;padding:14px 15px;display:flex;align-items:flex-start;gap:10px;transition:all .2s}
+.t-pf-stack:hover{border-color:rgba(110,50,220,.3);background:rgba(110,50,220,.06)}
+.t-pf-stack-ico{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#7c3cf8,#1a6fd4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.t-pf-stack-title{font-size:12.5px;color:var(--navy);font-weight:600;margin-bottom:2px}
+.t-pf-stack-desc{font-size:11px;color:var(--dim);line-height:1.4}
+
+/* ── Platform tabs ── */
+.t-plat-tabs{display:flex;gap:4px;background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:10px;padding:4px;width:fit-content;margin-bottom:32px}
+.t-plat-btn{padding:9px 26px;font-size:14px;font-weight:600;cursor:pointer;border-radius:7px;border:none;font-family:var(--fd);color:var(--dim);background:transparent;transition:all .2s;white-space:nowrap}
+.t-plat-btn.active{background:var(--grad);color:#fff}
+.t-plat-btn:hover:not(.active){color:var(--navy);background:rgba(255,255,255,.05)}
+.t-plat-panel{display:none} .t-plat-panel.active{display:block}
+.t-plat-card{display:grid;grid-template-columns:280px 1fr;border:1px solid var(--bdr);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02)}
+.t-plat-left{padding:32px;border-right:1px solid var(--bdr)}
+.t-plat-logorow{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.t-plat-logobadge{width:34px;height:34px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:13px;font-weight:800;color:#fff}
+.t-plat-logoname{font-family:var(--fd);font-size:19px;font-weight:800;color:var(--navy)}
+.t-plat-tagline{font-size:12px;color:var(--dim);font-style:italic;margin-bottom:14px}
+.t-plat-desc{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.t-plat-right{padding:28px}
+.t-caps-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--cyan);font-weight:700;margin-bottom:16px}
+.t-caps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.t-cap{display:flex;align-items:flex-start;gap:9px}
+.t-cap-ico{font-size:15px;flex-shrink:0;margin-top:1px}
+.t-cap-name{font-family:var(--fd);font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.t-cap-desc{font-size:12px;color:var(--dim);line-height:1.5}
+
+/* ── ISO / Security ── */
+.t-iso-split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+.t-iso-main{background:rgba(0,200,232,.05);border:1px solid rgba(0,200,232,.15);border-radius:16px;padding:28px;display:flex;gap:18px;align-items:flex-start}
+.t-iso-badge{min-width:66px;height:66px;border-radius:12px;background:var(--grad);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--fd);font-size:10px;font-weight:800;color:#fff;line-height:1.2;padding:6px;flex-shrink:0;text-align:center}
+.t-iso-main-title{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.t-iso-main-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.t-iso-main-list{margin-top:12px;display:flex;flex-direction:column;gap:5px;list-style:none}
+.t-iso-main-list li{font-size:12.5px;color:var(--muted);display:flex;align-items:flex-start;gap:7px}
+.t-iso-main-list li::before{content:"✓";color:var(--cyan);font-size:9px;margin-top:3px;flex-shrink:0}
+.t-iso-grid-wrap{display:flex;flex-direction:column;gap:12px}
+.t-iso-grid-title{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.t-iso-grid-sub{font-size:12.5px;color:var(--dim);margin-bottom:12px}
+.t-iso-certs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.t-iso-cert{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:11px;padding:16px}
+.t-iso-cert-id{font-family:var(--fd);font-size:14px;font-weight:800;background:var(--gt);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.t-iso-cert-name{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.t-iso-cert-desc{font-size:12px;color:var(--muted);line-height:1.55}
+
+/* ── Contact ── */
+.t-contact-grid{display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;border:1px solid var(--bdr)}
+.t-contact-form{padding:48px;background:#fff}
+.t-contact-img{position:relative;overflow:hidden;min-height:500px}
+.t-contact-img img{width:100%;height:100%;object-fit:cover;display:block}
+.t-contact-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(9,15,37,.25),transparent)}
+.t-input{background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:8px;padding:11px 14px;color:var(--navy);font-family:var(--fb);font-size:14px;outline:none;width:100%;transition:border-color .2s}
+.t-input:focus{border-color:var(--cyan)}
+.t-input::placeholder{color:var(--dim)}
+.t-label{font-size:10.5px;color:var(--dim);font-weight:500;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:5px}
+.t-field{display:flex;flex-direction:column;gap:4px}
+.t-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ── Responsive ── */
+@media(max-width:1100px){
+  .t-impact{grid-template-columns:1fr 1fr}
+  .t-pillars{grid-template-columns:1fr 1fr}
+  .t-emach-props{grid-template-columns:1fr 1fr}
+  .t-iso-split{grid-template-columns:1fr}
+  .t-pf-body{grid-template-columns:1fr}
+  .t-plat-card{grid-template-columns:1fr}
+  .t-plat-left{border-right:none;border-bottom:1px solid var(--bdr)}
+  .t-contact-grid{grid-template-columns:1fr}
+  .t-contact-img{display:none}
+  .t-hero-net{display:none}
+  .t-hero-content{max-width:100%}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}.nlinks{display:none}
+  .inner{padding:0 20px}.nav-inner{padding:0 20px}
+  .t-hero{padding:100px 0 60px}
+  .t-impact,.t-pillars,.t-caps,.t-emach-props{grid-template-columns:1fr}
+  .t-iso-certs{grid-template-columns:1fr 1fr}
+  .t-pf-stacks{grid-template-columns:1fr}
+  .t-stats{flex-direction:column}
+  .t-row{grid-template-columns:1fr}
+}
+</style>
+<link rel="stylesheet" href="css/theme-v2.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index-v2.html" class="nlogo">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#ngtechnology)" stroke-width="2.2"/>
+        <line x1="13" y1="11" x2="13" y2="25" stroke="url(#ngtechnology)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="23" y1="11" x2="23" y2="25" stroke="url(#ngtechnology)" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="13" y1="18" x2="23" y2="18" stroke="url(#ngtechnology)" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="ngtechnology" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/>
+        </linearGradient></defs>
+      </svg>
+      <span class="lwm">Hexatech</span>
+    </a>
+    <ul class="nlinks">
+      <li>
+        <button class="nt" onclick="location.href='products.html'">Products <span class="nc">▾</span></button>
+        <div class="dd dd-mega">
+          <div class="dd-sidebar">
+            <div class="dd-sidebar-title">Product Suite</div>
+            <button class="dd-cat active" data-panel="coretechnology"><div class="dd-cat-icon">🏛️</div><span class="dd-cat-label">Core Banking</span></button>
+            <button class="dd-cat" data-panel="lendingtechnology"><div class="dd-cat-icon">📈</div><span class="dd-cat-label">Lending</span></button>
+            <button class="dd-cat" data-panel="cardstechnology"><div class="dd-cat-icon">💳</div><span class="dd-cat-label">Cards</span></button>
+            <button class="dd-cat" data-panel="digitaltechnology"><div class="dd-cat-icon">📱</div><span class="dd-cat-label">Digital Engagement</span></button>
+            <button class="dd-cat" data-panel="wealthtechnology"><div class="dd-cat-icon">💼</div><span class="dd-cat-label">Wealth &amp; Capital</span></button>
+            <button class="dd-cat" data-panel="treasurytechnology"><div class="dd-cat-icon">🏦</div><span class="dd-cat-label">Treasury</span></button>
+          </div>
+          <div class="dd-panels">
+            <div class="dd-panel active" id="dd-coretechnology">
+              <div class="dd-panel-title">Core Banking</div>
+              <div class="dd-links">
+                <a href="pages/core-banking/consumer-core-banking.html" class="dd-link">Consumer Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/core-banking/corporate-core-banking.html" class="dd-link">Corporate Core Banking <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/core-banking/central-core-banking.html" class="dd-link">Central Core Banking <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-lendingtechnology">
+              <div class="dd-panel-title">Lending</div>
+              <div class="dd-links">
+                <a href="pages/lending/consumer-originations.html" class="dd-link">Consumer Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/consumer-loan-management.html" class="dd-link">Consumer Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/sme-corporate-originations.html" class="dd-link">SME &amp; Corporate Originations <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/sme-corporate-loan-management.html" class="dd-link">SME Corporate Loan Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/lending/debt-collections.html" class="dd-link">Debt Collections <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-cardstechnology">
+              <div class="dd-panel-title">Cards</div>
+              <div class="dd-links">
+                <a href="pages/cards/consumer-cards.html" class="dd-link">Consumer Cards <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/cards/corporate-cards.html" class="dd-link">Corporate Cards <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-digitaltechnology">
+              <div class="dd-panel-title">Digital Engagement</div>
+              <div class="dd-links">
+                <a href="pages/digital-engagement/consumers-sme.html" class="dd-link">Digital Engagement — Consumers &amp; SME <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/digital-engagement/corporate-exchange.html" class="dd-link">CBX — Corporate Exchange <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-wealthtechnology">
+              <div class="dd-panel-title">Wealth &amp; Capital Markets</div>
+              <div class="dd-links">
+                <a href="pages/wealth-capital-markets/wealth-management.html" class="dd-link">Wealth Management <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/financial-advisor.html" class="dd-link">Financial Advisor <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/brokerage.html" class="dd-link">Brokerage <span class="dd-link-arrow">↗</span></a>
+                <a href="pages/wealth-capital-markets/custody.html" class="dd-link">Custody <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+            <div class="dd-panel" id="dd-treasurytechnology">
+              <div class="dd-panel-title">Treasury &amp; Payments</div>
+              <div class="dd-links">
+                <a href="pages/treasury-payments/virtual-accounts-management.html" class="dd-link">Virtual Accounts Management <span class="dd-link-arrow">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Solutions <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#94a3b8;font-weight:700;padding:8px 12px 6px">By Segment</div>
+          <a href="#" class="ddi"><span class="ddn">🏦</span>Commercial Banks</a>
+          <a href="#" class="ddi"><span class="ddn">📱</span>Digital &amp; Neo Banks</a>
+          <a href="#" class="ddi"><span class="ddn">💼</span>NBFCs &amp; Fintechs</a>
+          <a href="#" class="ddi"><span class="ddn">🌍</span>Central Banks</a>
+        </div></div>
+      </li>
+      <li><a href="technology.html">Technology</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li>
+        <a href="#">Resources <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="#" class="ddi"><span class="ddn">📊</span>Analyst Recognitions</a>
+          <a href="#" class="ddi"><span class="ddn">🏆</span>Awards</a>
+          <a href="#" class="ddi"><span class="ddn">📅</span>Events</a>
+          <a href="#" class="ddi"><span class="ddn">📰</span>Newsroom</a>
+        </div></div>
+      </li>
+      <li>
+        <a href="#">About Us <span class="nc">▾</span></a>
+        <div class="dd"><div class="dd-simple">
+          <a href="about/our-story.html" class="ddi"><span class="ddn">📖</span>Our Story</a>
+          <a href="about/our-leadership.html" class="ddi"><span class="ddn">👥</span>Our Leadership</a>
+          <a href="about/design-thinking-dna.html" class="ddi"><span class="ddn">🎯</span>Design Thinking DNA</a>
+          <div class="dddiv"></div>
+          <a href="about/our-investors.html" class="ddi"><span class="ddn">📈</span>Investors</a>
+          <a href="about/social-impact.html" class="ddi"><span class="ddn">🌱</span>Social Impact</a>
+          <a href="about/careers.html" class="ddi"><span class="ddn">💼</span>Careers</a>
+        </div></div>
+      </li>
+    </ul>
+    <div class="nav-acts-area">
+      <a href="#" style="padding:7px 16px;border-radius:7px;font-size:14px;font-weight:500;color:#475569;border:1px solid #e2e8f0;transition:all .15s;font-family:var(--fb);background:#fff;text-decoration:none">Sign In</a>
+      <a href="#contact" class="btn bp" style="padding:8px 20px;font-size:14px">Get Started →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+<section class="t-hero">
+  <div class="t-hero-net">
+    <canvas id="netCanvas" style="position:absolute;inset:0;width:100%;height:100%;opacity:.75"></canvas>
+  </div>
+  <div class="inner">
+    <div class="t-hero-content">
+      <div class="t-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Technology</span>
+      </div>
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--cyan);font-weight:700;margin-bottom:14px">Technology</div>
+      <h1>Powering the Future of<br>Financial Services</h1>
+      <p>Designed for agility, scale and resilience — Hexatech brings best-in-class financial technology capabilities that help financial institutions modernise smarter, move faster, and compete in an era defined by rapid digital disruption.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══════════════════════════════════════════════════════════════ -->
+<section style="background:#f8fafc;padding:0 0 64px">
+  <div class="inner">
+    <div class="t-stats">
+      <div class="t-stat">
+        <div class="t-stat-n">700</div>
+        <div class="t-stat-l">Microservices</div>
+      </div>
+      <div class="t-stat">
+        <div class="t-stat-n">3,061</div>
+        <div class="t-stat-l">APIs</div>
+      </div>
+      <div class="t-stat">
+        <div class="t-stat-n">942</div>
+        <div class="t-stat-l">Clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BUILT FOR CHANGE ════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Architecture Principles</span>
+    <h2 class="sec-title">Built for Change. Designed for Impact.</h2>
+    <p class="sec-sub">Our technology is not just modern — it is composable, intelligent, and built to create immediate business value and deliver measurable global impact for every implementation.</p>
+
+    <div class="t-impact">
+      <div class="t-impact-card">
+        <div class="t-impact-ico">🔮</div>
+        <div class="t-impact-title">Built for the Future</div>
+        <div class="t-impact-desc">An architecture that evolves without disruption — composable microservices, open APIs, and cloud-native deployment ensure your technology investment stays relevant for decades, not years. Future-proof by design.</div>
+      </div>
+      <div class="t-impact-card">
+        <div class="t-impact-ico">🎯</div>
+        <div class="t-impact-title">Designed for Real Outcomes</div>
+        <div class="t-impact-desc">Platforms purpose-built to accelerate real business outcomes — faster product launch, reduced operational cost, improved STP rates, increasing customer satisfaction, and accelerating your innovations to market.</div>
+      </div>
+      <div class="t-impact-card">
+        <div class="t-impact-ico">👤</div>
+        <div class="t-impact-title">User-Centric by Design</div>
+        <div class="t-impact-desc">Designed from the outside in — every interaction, workflow, and API is designed with the experience of the banker, the developer, and the end-customer at the absolute forefront of every design decision we make.</div>
+      </div>
+      <div class="t-impact-card">
+        <div class="t-impact-ico">🌱</div>
+        <div class="t-impact-title">Technology That Enables Growth</div>
+        <div class="t-impact-desc">Scale from 100K to 100M customers on the same platform. Take bold bets on new markets and segments today knowing the underlying technology will grow alongside you without compromise or rearchitecting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ eHEX PLATFORM ══════════════════════════════════════════════════════ -->
+<section class="page-sec mid">
+  <div class="inner">
+    <span class="sec-label">Platform Core</span>
+    <h2 class="sec-title">eHEX Platform</h2>
+    <p class="sec-sub">When Hexatech's foundational eHEX architecture meets composable Open Finance — it creates a unified, comprehensive, and composable Open Finance Platform.</p>
+
+    <div class="t-emach-props">
+      <div class="t-emach-prop">
+        <div class="t-emach-prop-ico">⚡</div>
+        <div class="t-emach-prop-title">Excellence at the Core</div>
+        <div class="t-emach-prop-desc">Sub-millisecond transaction processing with five-nines availability and active-active multi-region deployment for mission-critical banking operations at any scale.</div>
+      </div>
+      <div class="t-emach-prop">
+        <div class="t-emach-prop-ico">🧩</div>
+        <div class="t-emach-prop-title">Composable Platform</div>
+        <div class="t-emach-prop-desc">Deploy only the domains you need, on your timeline, without disrupting what is already live. Every product is independently deployable, scalable, and upgradeable from a single platform core.</div>
+      </div>
+      <div class="t-emach-prop">
+        <div class="t-emach-prop-ico">🤖</div>
+        <div class="t-emach-prop-title">Contextual Intelligence</div>
+        <div class="t-emach-prop-desc">AI and machine learning embedded at the platform layer — not bolted on. Predictive, prescriptive, and generative AI capabilities built natively into every banking workflow and interaction.</div>
+      </div>
+      <div class="t-emach-prop">
+        <div class="t-emach-prop-ico">🏛️</div>
+        <div class="t-emach-prop-title">Two-Tier Architecture</div>
+        <div class="t-emach-prop-desc">Separation of Corebanking and Channels tiers enables independent innovation at each layer — modernise channels without touching core, or evolve core without disrupting the customer experience.</div>
+      </div>
+    </div>
+
+    <!-- Pillars -->
+    <span class="sec-label" style="display:block;text-align:center;margin-top:64px">Architecture Pillars</span>
+    <h2 class="sec-title">Pillars of Modern Financial Architecture</h2>
+    <p class="sec-sub">Five foundational technology pillars that make the eHEX platform capable of powering any banking product at any scale, anywhere in the world.</p>
+
+    <div class="t-pillars">
+      <div class="t-pillar">
+        <div class="t-pillar-ico">⚡</div>
+        <div class="t-pillar-title">Events</div>
+        <ul class="t-pillar-list">
+          <li>Domain event streaming at hyperscale</li>
+          <li>Real-time notifications</li>
+          <li>Guaranteed message delivery</li>
+          <li>Event sourcing patterns</li>
+          <li>Industry-specific events</li>
+        </ul>
+      </div>
+      <div class="t-pillar">
+        <div class="t-pillar-ico">🔧</div>
+        <div class="t-pillar-title">Microservices</div>
+        <ul class="t-pillar-list">
+          <li>700+ composable services</li>
+          <li>Independent deployability</li>
+          <li>Zero-downtime upgrades</li>
+          <li>Domain-driven boundaries</li>
+          <li>Technology-agnostic runtimes</li>
+        </ul>
+      </div>
+      <div class="t-pillar">
+        <div class="t-pillar-ico">🔗</div>
+        <div class="t-pillar-title">API</div>
+        <ul class="t-pillar-list">
+          <li>3,061+ open REST APIs</li>
+          <li>OpenAPI 3.0 documented</li>
+          <li>Easy integration</li>
+          <li>Partner ecosystem access</li>
+          <li>Rate limiting and throttling</li>
+        </ul>
+      </div>
+      <div class="t-pillar highlight">
+        <div class="t-pillar-ico">☁️</div>
+        <div class="t-pillar-title">Cloud</div>
+        <ul class="t-pillar-list">
+          <li>Multi-cloud certified</li>
+          <li>Cloud-native Kubernetes</li>
+          <li>Infrastructure-as-code</li>
+          <li>Auto-scaling and elasticity</li>
+          <li>Disaster recovery built-in</li>
+        </ul>
+      </div>
+      <div class="t-pillar">
+        <div class="t-pillar-ico">📱</div>
+        <div class="t-pillar-title">Headless</div>
+        <ul class="t-pillar-list">
+          <li>Channel-agnostic backend</li>
+          <li>Customer service APIs</li>
+          <li>Channel isolation</li>
+          <li>Rapid UX deployment</li>
+          <li>Headless re-platforming</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PURPLE FABRIC ═══════════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <div class="t-pf">
+      <div class="t-pf-badge"><span class="t-pf-badge-dot"></span>Purple Fabric</div>
+      <div class="t-pf-body">
+        <div>
+          <div class="t-pf-title">Purple Fabric</div>
+          <p class="t-pf-desc">Purple Fabric is an enterprise-grade open finance fabric that allows you to configure and run measurable business impact across your entire banking technology estate — composable, intelligent, and always-on.</p>
+          <p class="t-pf-desc" style="margin-bottom:24px">It provides the connective tissue between core systems, channels, partners, and data — orchestrating workflows, policies, and intelligence at scale without disrupting existing operations.</p>
+          <a href="#" class="btn bp">Explore Purple Fabric →</a>
+        </div>
+        <div>
+          <div class="t-pf-stacks-label">4 Technology Stacks</div>
+          <div class="t-pf-stacks">
+            <div class="t-pf-stack">
+              <div class="t-pf-stack-ico">🚀</div>
+              <div>
+                <div class="t-pf-stack-title">Faster Time-to-Value</div>
+                <div class="t-pf-stack-desc">Accelerated delivery with enterprise-grade robustness</div>
+              </div>
+            </div>
+            <div class="t-pf-stack">
+              <div class="t-pf-stack-ico">⬇️</div>
+              <div>
+                <div class="t-pf-stack-title">Lower Carmo Rates</div>
+                <div class="t-pf-stack-desc">Reduced infrastructure and operations cost</div>
+              </div>
+            </div>
+            <div class="t-pf-stack">
+              <div class="t-pf-stack-ico">🔗</div>
+              <div>
+                <div class="t-pf-stack-title">Ecosystem Connectivity</div>
+                <div class="t-pf-stack-desc">Open integration to 500+ ecosystem partners</div>
+              </div>
+            </div>
+            <div class="t-pf-stack">
+              <div class="t-pf-stack-ico">📋</div>
+              <div>
+                <div class="t-pf-stack-title">Comprehensive Compliance</div>
+                <div class="t-pf-stack-desc">Automated regulatory compliance at every layer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUR TECHNOLOGY PLATFORMS ═══════════════════════════════════════════ -->
+<section class="page-sec mid">
+  <div class="inner">
+    <span class="sec-label">Platform Portfolio</span>
+    <h2 class="sec-title">Our Technology Platforms</h2>
+    <p class="sec-sub">From platform architecture to intelligent automation — our technology platforms are best-in-class across every banking domain and use case.</p>
+
+    <div class="t-plat-tabs" id="tPlatTabs">
+      <button class="t-plat-btn active" data-panel="paramount">Paramount</button>
+      <button class="t-plat-btn" data-panel="purplefabric">Purple Fabric</button>
+      <button class="t-plat-btn" data-panel="sigma">Sigma</button>
+    </div>
+
+    <!-- Paramount / iTurmeric -->
+    <div class="t-plat-panel active" id="tpanel-paramount">
+      <div class="t-plat-card">
+        <div class="t-plat-left">
+          <div class="t-plat-logorow">
+            <div class="t-plat-logobadge">iT</div>
+            <div class="t-plat-logoname">iTurmeric</div>
+          </div>
+          <div class="t-plat-tagline">Enterprise Composability and Integration Platform</div>
+          <div class="t-plat-desc">Hexatech eHEX is powered by the iTurmeric technology — facilitating composable content of your platform. Accelerate integration velocity, reduce operational complexity, and orchestrate banking workflows at enterprise scale.</div>
+          <a href="#" class="btn bg2" style="font-size:13px;padding:9px 20px">Learn More →</a>
+        </div>
+        <div class="t-plat-right">
+          <div class="t-caps-label">Key Capabilities</div>
+          <div class="t-caps">
+            <div class="t-cap">
+              <div class="t-cap-ico">📁</div>
+              <div><div class="t-cap-name">Accelerated Record Storage</div><div class="t-cap-desc">High-performance event store for banking transactions at any volume.</div></div>
+            </div>
+            <div class="t-cap">
+              <div class="t-cap-ico">⚙️</div>
+              <div><div class="t-cap-name">Low-Code Configuration</div><div class="t-cap-desc">Visual workflow builder — configure complex banking processes without code.</div></div>
+            </div>
+            <div class="t-cap">
+              <div class="t-cap-ico">🔍</div>
+              <div><div class="t-cap-name">Visual Background</div><div class="t-cap-desc">Real-time operational dashboards with full system observability.</div></div>
+            </div>
+            <div class="t-cap">
+              <div class="t-cap-ico">🔄</div>
+              <div><div class="t-cap-name">Business Agility</div><div class="t-cap-desc">Rapid deployment of new banking products and process changes.</div></div>
+            </div>
+            <div class="t-cap">
+              <div class="t-cap-ico">✅</div>
+              <div><div class="t-cap-name">Licence Centre</div><div class="t-cap-desc">Unified licence and entitlement management across all platform modules.</div></div>
+            </div>
+            <div class="t-cap">
+              <div class="t-cap-ico">🗂️</div>
+              <div><div class="t-cap-name">Repository Management</div><div class="t-cap-desc">Version-controlled microservices repository with automated CI/CD pipelines.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Purple Fabric -->
+    <div class="t-plat-panel" id="tpanel-purplefabric">
+      <div class="t-plat-card">
+        <div class="t-plat-left">
+          <div class="t-plat-logorow">
+            <div class="t-plat-logobadge" style="background:linear-gradient(135deg,#7c3cf8,#1a6fd4)">PF</div>
+            <div class="t-plat-logoname">Purple Fabric</div>
+          </div>
+          <div class="t-plat-tagline">Open Business Impact Platform</div>
+          <div class="t-plat-desc">Purple Fabric is an enterprise-grade open finance fabric — configurable to run measurable business impact, orchestrating policies, workflows, and partner integrations with intelligent routing across your entire estate.</div>
+          <a href="#" class="btn bg2" style="font-size:13px;padding:9px 20px">Learn More →</a>
+        </div>
+        <div class="t-plat-right">
+          <div class="t-caps-label">Key Capabilities</div>
+          <div class="t-caps">
+            <div class="t-cap"><div class="t-cap-ico">🔗</div><div><div class="t-cap-name">Open API Gateway</div><div class="t-cap-desc">Managed API gateway with rate limiting, versioning, and analytics.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">⚡</div><div><div class="t-cap-name">Event Streaming</div><div class="t-cap-desc">Real-time event mesh connecting all banking systems and channels.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">🛡️</div><div><div class="t-cap-name">Policy Engine</div><div class="t-cap-desc">Business rules and compliance policy enforcement at the integration layer.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">📊</div><div><div class="t-cap-name">Analytics Layer</div><div class="t-cap-desc">Cross-platform business intelligence and operational metrics.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">🌐</div><div><div class="t-cap-name">Ecosystem Hub</div><div class="t-cap-desc">Managed connectivity to 500+ banking ecosystem partners.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">🔄</div><div><div class="t-cap-name">Workflow Orchestration</div><div class="t-cap-desc">Visual process designer for complex multi-party banking workflows.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sigma -->
+    <div class="t-plat-panel" id="tpanel-sigma">
+      <div class="t-plat-card">
+        <div class="t-plat-left">
+          <div class="t-plat-logorow">
+            <div class="t-plat-logobadge" style="background:linear-gradient(135deg,#1a6fd4,#00c8e8)">Σ</div>
+            <div class="t-plat-logoname">Sigma</div>
+          </div>
+          <div class="t-plat-tagline">Enterprise Intelligence &amp; Analytics Platform</div>
+          <div class="t-plat-desc">Sigma powers the AI and data intelligence layer of the eHEX platform — delivering real-time analytics, predictive decisioning, and explainable AI across all banking operations with bank-grade governance.</div>
+          <a href="#" class="btn bg2" style="font-size:13px;padding:9px 20px">Learn More →</a>
+        </div>
+        <div class="t-plat-right">
+          <div class="t-caps-label">Key Capabilities</div>
+          <div class="t-caps">
+            <div class="t-cap"><div class="t-cap-ico">🤖</div><div><div class="t-cap-name">AI Model Management</div><div class="t-cap-desc">Deploy, monitor, and retrain ML models across all banking use cases.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">📈</div><div><div class="t-cap-name">Predictive Analytics</div><div class="t-cap-desc">Forward-looking insights for risk, churn, fraud, and growth.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">🧠</div><div><div class="t-cap-name">Generative AI</div><div class="t-cap-desc">LLM-powered assistant for bankers, customers, and operations.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">🔍</div><div><div class="t-cap-name">Explainable AI</div><div class="t-cap-desc">Audit-ready AI decisions with full decision trail and bias monitoring.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">📊</div><div><div class="t-cap-name">Real-Time Dashboards</div><div class="t-cap-desc">Live KPI and operational dashboards for every business function.</div></div></div>
+            <div class="t-cap"><div class="t-cap-ico">🔒</div><div><div class="t-cap-name">Data Governance</div><div class="t-cap-desc">Centralised data catalogue, lineage, and privacy controls.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ ENTERPRISE SECURITY ═════════════════════════════════════════════════ -->
+<section class="page-sec dark">
+  <div class="inner">
+    <span class="sec-label">Security &amp; Compliance</span>
+    <h2 class="sec-title">Enterprise-Grade Security.<br>Responsible AI. Built-In Trust.</h2>
+    <p class="sec-sub">Hexatech's technology ecosystem is designed and continuously tested to ensure security, privacy and responsible AI are embedded into everything — as a first principle, not an afterthought.</p>
+
+    <div class="t-iso-split">
+      <!-- ISO 42001 main -->
+      <div class="t-iso-main">
+        <div class="t-iso-badge">ISO<br>42001</div>
+        <div>
+          <div class="t-iso-main-title">Responsible AI Governance at the Core</div>
+          <div class="t-iso-main-desc">
+            Hexatech holds ISO/IEC 42001 certification — the world's first AI Management Systems (AIMS) standard — covering all aspects of Artificial Intelligence Governance including safety, reliability, transparency, and fairness across all AI used in our products.
+          </div>
+          <ul class="t-iso-main-list">
+            <li>Full audit trail across every AI decision made on the platform</li>
+            <li>ISO 9001 assurance — Bias detection and mitigation controls</li>
+            <li>AI governance board oversight and accountability structures</li>
+            <li>Continuous human oversight on all high-risk AI decisions</li>
+            <li>Customer-facing AI explainability available on demand</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: cert grid -->
+      <div class="t-iso-grid-wrap">
+        <div class="t-iso-grid-title">The Global Non-Prec Certification Stack</div>
+        <div class="t-iso-grid-sub">A comprehensive certification framework implementing the highest international standards across all operations and domains.</div>
+        <div class="t-iso-certs">
+          <div class="t-iso-cert">
+            <div class="t-iso-cert-id">ISO 42001</div>
+            <div class="t-iso-cert-name">AI Management</div>
+            <div class="t-iso-cert-desc">Ethical, compliant, and responsible AI governance.</div>
+          </div>
+          <div class="t-iso-cert">
+            <div class="t-iso-cert-id">ISO 27017</div>
+            <div class="t-iso-cert-name">Cloud Security</div>
+            <div class="t-iso-cert-desc">Cloud service security and provider controls.</div>
+          </div>
+          <div class="t-iso-cert">
+            <div class="t-iso-cert-id">ISO 27001</div>
+            <div class="t-iso-cert-name">Info Security</div>
+            <div class="t-iso-cert-desc">Information security management and controls.</div>
+          </div>
+          <div class="t-iso-cert">
+            <div class="t-iso-cert-id">PCI / PA</div>
+            <div class="t-iso-cert-name">Payment Security</div>
+            <div class="t-iso-cert-desc">Payment application data security standard.</div>
+          </div>
+          <div class="t-iso-cert">
+            <div class="t-iso-cert-id">ISO 22301</div>
+            <div class="t-iso-cert-name">Business Continuity</div>
+            <div class="t-iso-cert-desc">Business continuity management and resilience.</div>
+          </div>
+          <div class="t-iso-cert">
+            <div class="t-iso-cert-id">ISO 31981</div>
+            <div class="t-iso-cert-name">Risk Management</div>
+            <div class="t-iso-cert-desc">Enterprise risk management framework.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ════════════════════════════════════════════════════════════ -->
+<section class="page-sec mid" id="contact">
+  <div class="inner">
+    <h2 class="sec-title" style="margin-bottom:44px">Start a Conversation</h2>
+    <div class="t-contact-grid">
+      <div class="t-contact-form">
+        <div style="font-family:var(--fd);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:6px">Tell us about your technology goals</div>
+        <div style="font-size:14px;color:var(--dim);margin-bottom:28px">Our solutions engineering team will connect within one business day.</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="t-row">
+            <div class="t-field"><label class="t-label">First Name*</label><input class="t-input" type="text" placeholder="First Name*"></div>
+            <div class="t-field"><label class="t-label">Last Name*</label><input class="t-input" type="text" placeholder="Last Name*"></div>
+          </div>
+          <div class="t-row">
+            <div class="t-field"><label class="t-label">Company Name*</label><input class="t-input" type="text" placeholder="Company Name*"></div>
+            <div class="t-field"><label class="t-label">Designation*</label><input class="t-input" type="text" placeholder="Designation*"></div>
+          </div>
+          <div class="t-row">
+            <div class="t-field">
+              <label class="t-label">Country</label>
+              <select class="t-input" style="background:#fff">
+                <option>Nigeria</option><option>Kenya</option><option>South Africa</option>
+                <option>UAE</option><option>Singapore</option><option>UK</option><option>Other</option>
+              </select>
+            </div>
+            <div class="t-field"><label class="t-label">Phone</label><input class="t-input" type="text" placeholder="+234"></div>
+          </div>
+          <div class="t-field"><label class="t-label">Official Email*</label><input class="t-input" type="email" placeholder="your@company.com"></div>
+          <div class="t-field"><label class="t-label">Queries</label><textarea class="t-input" placeholder="Queries" style="min-height:80px;resize:vertical"></textarea></div>
+          <a href="#" class="btn bp" style="width:100%;justify-content:center;padding:13px;font-size:15px;margin-top:4px">Submit →</a>
+        </div>
+      </div>
+      <div class="t-contact-img">
+        <img src="https://placehold.co/700x800/0d1f4a/00c8e8" alt="Technology team">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══════════════════════════════════════════════════════════ -->
+<section style="background:#f8fafc;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:24px 0">
+  <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <div style="font-size:15px;color:var(--muted)">Stay updated with the latest at Hexatech</div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <input type="email" placeholder="Phone Email*" style="background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;color:var(--navy);font-family:var(--fb);font-size:14px;outline:none;min-width:240px">
+      <a href="#" class="btn bp" style="padding:10px 22px">Submit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:22px 0">
+    <div class="inner" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="font-size:15px;color:#64748b">Stay updated with the latest at Hexatech</div>
+      <div style="display:flex;gap:10px">
+        <input type="email" placeholder="Work Email*" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 16px;font-size:14px;color:#0d1f4a;outline:none;min-width:240px;transition:border-color .2s;font-family:'DM Sans',sans-serif">
+        <a href="#" class="btn bp" style="padding:10px 22px;font-size:14px">Submit</a>
+      </div>
+    </div>
+  </div>
+  <div class="inner">
+    <div class="ftop">
+      <div class="fbrand">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,1 33,9 33,27 18,35 3,27 3,9" fill="none" stroke="url(#fgv2)" stroke-width="2.2"/>
+            <line x1="13" y1="11" x2="13" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="23" y1="11" x2="23" y2="25" stroke="url(#fgv2)" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="13" y1="18" x2="23" y2="18" stroke="url(#fgv2)" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="fgv2" x1="3" y1="1" x2="33" y2="35" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c8e8"/><stop offset="100%" stop-color="#1a6fd4"/></linearGradient></defs>
+          </svg>
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#0d1f4a">Hexatech</span>
+        </div>
+        <p>The composable Open Finance Platform for banks, fintechs, and financial institutions worldwide.</p>
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <div class="fsb">𝕏</div><div class="fsb">in</div><div class="fsb">▶</div>
+        </div>
+      </div>
+      <div class="fcols">
+        <div class="fcol"><h4>Products</h4><ul>
+          <li><a href="pages/core-banking/consumer-core-banking.html">Consumer Core Banking</a></li>
+          <li><a href="pages/core-banking/corporate-core-banking.html">Corporate Core Banking</a></li>
+          <li><a href="pages/lending/consumer-originations.html">Consumer Originations</a></li>
+          <li><a href="pages/cards/consumer-cards.html">Consumer Cards</a></li>
+          <li><a href="pages/wealth-capital-markets/wealth-management.html">Wealth Management</a></li>
+          <li><a href="products.html">View All Products</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Solutions</h4><ul>
+          <li><a href="#">Commercial Banks</a></li>
+          <li><a href="#">Digital Banks</a></li>
+          <li><a href="#">NBFCs &amp; Fintechs</a></li>
+          <li><a href="#">Central Banks</a></li>
+          <li><a href="#">Insurance Companies</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Technology</h4><ul>
+          <li><a href="technology.html">Overview</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="docs/index.html">Developer Portal</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Security</a></li>
+        </ul></div>
+        <div class="fcol"><h4>Company</h4><ul>
+          <li><a href="about/our-story.html">About Us</a></li>
+          <li><a href="about/our-leadership.html">Leadership</a></li>
+          <li><a href="about/careers.html">Careers</a></li>
+          <li><a href="about/our-investors.html">Investors</a></li>
+          <li><a href="about/social-impact.html">Social Impact</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 Hexatech Inc. All rights reserved.</p>
+      <div class="fleg">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+
+  /* ── Platform tab switching ── */
+  var tabBtns = document.querySelectorAll('#tPlatTabs .t-plat-btn');
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.t-plat-panel').forEach(function(p){ p.classList.remove('active'); });
+      var t = document.getElementById('tpanel-' + btn.dataset.panel);
+      if(t) t.classList.add('active');
+    });
+  });
+
+  /* ── Animated node network (hero right panel) ── */
+  var canvas = document.getElementById('netCanvas');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    function resize(){
+      canvas.width  = canvas.offsetWidth  || 600;
+      canvas.height = canvas.offsetHeight || 600;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var nodes = [];
+    for(var i = 0; i < 42; i++){
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - .5) * .45,
+        vy: (Math.random() - .5) * .45,
+        r: Math.random() * 2 + 1.5
+      });
+    }
+
+    function draw(){
+      var W = canvas.width, H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+      for(var i = 0; i < nodes.length; i++){
+        var a = nodes[i];
+        a.x += a.vx; a.y += a.vy;
+        if(a.x < 0 || a.x > W) a.vx *= -1;
+        if(a.y < 0 || a.y > H) a.vy *= -1;
+        for(var j = i + 1; j < nodes.length; j++){
+          var b = nodes[j];
+          var dx = a.x - b.x, dy = a.y - b.y;
+          var d  = Math.sqrt(dx*dx + dy*dy);
+          if(d < 130){
+            ctx.strokeStyle = 'rgba(0,200,232,' + (1 - d/130) * .3 + ')';
+            ctx.lineWidth = .8;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,200,232,.6)';
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+})();
+</script>
+</body>
+</html>
