@@ -28,9 +28,9 @@ export default function Footer() {
       <div className="fnews glass" style={{ margin: '0 auto 60px', maxWidth: '1100px', borderRadius: '20px', border: '1px solid var(--border)' }}>
         <div className="d-inner fnews-inner">
           <div style={{fontSize:'16px', fontWeight: 600, color: 'var(--navy)'}}>Stay ahead with our banking insights</div>
-          <div style={{display:'flex', gap:'12px'}}>
+          <div className="fnews-form">
             <input type="email" className="fnews-input" placeholder="Work Email*" />
-            <button className="btn-prim" style={{padding:'10px 24px', fontSize:'14px'}}>Subscribe</button>
+            <button className="btn-prim">Subscribe</button>
           </div>
         </div>
       </div>

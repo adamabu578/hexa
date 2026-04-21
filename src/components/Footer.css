@@ -20,8 +20,19 @@ footer{background:#fff;border-top:1px solid var(--border);padding:60px 0 32px}
 .fnews-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .fnews-input{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:14px;color:var(--navy);outline:none;min-width:240px;font-family:var(--fb);transition:border-color .2s}
 .fnews-input:focus{border-color:var(--blue)}
+.fnews-form { display: flex; gap: 12px; }
+.fnews-form .btn-prim { padding: 10px 24px; font-size: 14px; }
 
 @media(max-width:768px){
-  .ftop{grid-template-columns:1fr}
-  .fcols{grid-template-columns:1fr 1fr}
+  .ftop{grid-template-columns:1fr; gap: 40px;}
+  .fcols{grid-template-columns:1fr 1fr; gap: 24px;}
+  .fnews-inner{flex-direction: column; text-align: center;}
+  .fnews-form { flex-direction: column; width: 100%; }
+  .fnews-input{width: 100%;}
+  .fnews-form .btn-prim { width: 100%; justify-content: center; }
+  .fbot{flex-direction: column; text-align: center;}
+}
+
+@media(max-width:480px){
+  .fcols{grid-template-columns:1fr;}
 }
