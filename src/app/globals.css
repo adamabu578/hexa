@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════
+   HEXATECH — Global Styles
+   ═══════════════════════════════════════════════════════ */
+
+/* Reset & tokens */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:#fff;
+  color:#1a2540;
+  font-family: var(--fb), system-ui, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
+
+:root{
+  --navy:   #0d1f4a;
+  --navy2:  #091228;
+  --blue:   #1a6fd4;
+  --cyan:   #00c8e8;
+  --text:   #1e293b;
+  --muted:  #64748b;
+  --light:  #f8fafc;
+  --border: #e2e8f0;
+  --white:  #ffffff;
+  --grad:   linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --radius: 12px;
+  --r-lg: 24px;
+  
+  /* Font Aliases for backward compatibility */
+  --font-syne: var(--fd);
+  --font-dm-sans: var(--fb);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(13, 31, 74, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ══════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════ */
+.btn-prim{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:9px;background:var(--navy);color:#fff;font-size:15px;font-weight:600;font-family:var(--fb);border:none;cursor:pointer;transition:all .2s}
+.btn-prim:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,111,212,.3)}
+.btn-out{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:9px;background:transparent;color:var(--navy);font-size:15px;font-weight:600;font-family:var(--fb);border:1.5px solid #cbd5e1;cursor:pointer;transition:all .2s}
+.btn-out:hover{border-color:var(--navy);background:#f8fafc}
+.btn-link{display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:600;color:var(--blue);transition:gap .15s}
+.btn-link:hover{gap:8px}
+.btn-cyan{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:9px;background:var(--grad);color:#fff;font-size:15px;font-weight:600;font-family:var(--fb);border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(0,200,232,.25)}
+.btn-cyan:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,200,232,.35)}
+
+/* ══════════════════════════════════════
+   SECTION WRAPPERS
+   ══════════════════════════════════════ */
+.d-sec{padding:96px 0}
+.d-sec.gray{background:#f8fafc}
+.d-sec.navy{background:var(--navy)}
+.d-sec.navy *{color:#fff}
+.d-inner{max-width:1200px;margin:0 auto;padding:0 40px}
+.d-sec-label{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--blue);font-weight:700;display:block;margin-bottom:12px}
+.d-sec-title{font-family:var(--fd);font-size:clamp(28px,3.5vw,46px);font-weight:800;color:var(--navy);letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px}
+.d-sec-sub{font-size:17px;color:var(--muted);line-height:1.8;max-width:600px}
+.d-sec-title.center,.d-sec-sub.center{text-align:center;margin-left:auto;margin-right:auto}
+
+/* ══════════════════════════════════════
+   ADDITIONAL GLOBAL SHARED STYLES
+   ══════════════════════════════════════ */
+
+/* Form Elements */
+input, select, textarea {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--navy);
+  outline: none;
+  font-family: var(--fb);
+  transition: border-color .2s;
+}
+input:focus {
+  border-color: var(--blue);
+}
+
+/* Utilities */
+.hl {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media(max-width: 768px) {
+  .d-inner { padding: 0 20px; }
+  .d-sec { padding: 60px 0; }
+  .d-sec-title { font-size: 32px; line-height: 1.2; }
+  .btn-prim, .btn-cyan, .btn-out { padding: 10px 20px; font-size: 14px; }
+}
