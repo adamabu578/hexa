@@ -1,12 +1,12 @@
 "use client";
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { BarChart, User, Landmark, TrendingDown, Zap, Bot, Puzzle, Blocks, Globe, ArrowRight } from 'lucide-react';
 import "./page.css";
 
 export default function Home() {
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -17,9 +17,9 @@ export default function Home() {
     }
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
   };
 
   const float = {
@@ -28,7 +28,7 @@ export default function Home() {
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   };
@@ -75,7 +75,7 @@ export default function Home() {
             className="d-hero-visual"
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <motion.div {...float}>
               <div className="mockup-bar">

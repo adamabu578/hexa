@@ -1,3 +1,4 @@
+import React from 'react';
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -20,7 +21,7 @@ export const metadata = {
   description: "Streamline digital banking transformation with Hexatech's composable, AI-powered platform. Deploy faster, scale further, comply everywhere.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${displayFont.variable} ${bodyFont.variable}`}>
