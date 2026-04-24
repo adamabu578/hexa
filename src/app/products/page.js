@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Landmark, TrendingUp, CreditCard, Smartphone, Briefcase, Building, ArrowRight, ArrowUpRight } from 'lucide-react';
 import "./products.css";
 
@@ -72,8 +73,8 @@ export default function Products() {
 
   const filteredCategories = categories.map(cat => ({
     ...cat,
-    products: cat.products.filter(p => 
-      p.title.toLowerCase().includes(search.toLowerCase()) || 
+    products: cat.products.filter(p =>
+      p.title.toLowerCase().includes(search.toLowerCase()) ||
       p.desc.toLowerCase().includes(search.toLowerCase())
     )
   })).filter(cat => cat.products.length > 0);
@@ -89,13 +90,13 @@ export default function Products() {
           <h1>Our Products<br /><span className="hl">Portfolio</span></h1>
           <p>Explore our comprehensive suite of composable banking modules — each purpose-built for a specific domain, each designed to work seamlessly together.</p>
           <div className="idx-search">
-            <input 
-              type="text" 
-              placeholder="Search products…" 
+            <input
+              type="text"
+              placeholder="Search products…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Link href="/" className="btn-prim">Browse All <ArrowRight size={16} style={{display:'inline', marginLeft:'4px', marginBottom:'-2px'}} /></Link>
+            <Link href="/" className="btn-prim">Browse All <ArrowRight size={16} style={{ display: 'inline', marginLeft: '4px', marginBottom: '-2px' }} /></Link>
           </div>
           <div className="idx-stats">
             <div><div className="idx-stat-n">2B+</div><div className="idx-stat-l">Transactions / year</div></div>
@@ -119,7 +120,7 @@ export default function Products() {
                   <Link href={p.href} className="idx-card" key={i}>
                     <div className="idx-card-top">
                       <div className="idx-card-title">{p.title}</div>
-                      <span className="idx-card-arrow"><ArrowUpRight size={18} style={{display:'inline'}} /></span>
+                      <span className="idx-card-arrow"><ArrowUpRight size={18} style={{ display: 'inline' }} /></span>
                     </div>
                     <div className="idx-card-desc">{p.desc}</div>
                     <div className="idx-card-stats">{p.stats}</div>

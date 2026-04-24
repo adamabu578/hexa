@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Handshake, Rocket, Zap, ShieldCheck, TrendingUp, Megaphone } from 'lucide-react';
 
 const partnerTypes = {
@@ -41,8 +43,13 @@ export default function Partners() {
         <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,200,232,.12)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:radial-gradient(ellipse_70%_100%_at_60%_50%,black_0%,transparent_100%)] pointer-events-none"></div>
         <div className="absolute right-[-80px] top-1/2 -translate-y-1/2 w-[580px] h-[580px] rounded-full bg-[radial-gradient(circle,rgba(0,200,232,.12)_0%,transparent_68%)] pointer-events-none"></div>
         
-        <div className="d-inner relative z-10 w-full">
-          <div className="relative z-10 max-w-[600px]">
+        <div className="d-inner w-full flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 w-full max-w-full lg:max-w-[550px]"
+          >
             <div className="text-[12px] text-white/50 mb-5 flex items-center gap-[6px]">
               <Link href="/" className="hover:text-[var(--cyan)] transition-colors duration-200">Home</Link>
               <span className="text-[var(--cyan)]">›</span>
@@ -56,7 +63,18 @@ export default function Partners() {
               Join Hexatech&apos;s partner ecosystem to co-create intelligent banking solutions, accelerate digital transformation programs, and drive scalable growth across global financial institutions.
             </p>
             <Link href="#become-partner" className="inline-flex py-[14px] px-[32px] text-[15px] font-bold rounded-[30px] border border-transparent shadow-[0_4px_14px_rgba(0,200,232,0.3)] hover:shadow-[0_6px_20px_rgba(0,200,232,0.4)] hover:-translate-y-[2px] transition-all bg-[var(--grad)] text-white font-[family-name:var(--fd)] no-underline mx-auto">Become a Partner →</Link>
-          </div>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-[45%] flex justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-[480px] aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,200,232,0.15)] border border-[rgba(0,200,232,0.2)] group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#06091a]/80 to-transparent opacity-60 z-10"></div>
+              <Image src="/images/partner_network.png" alt="Partner Network" fill className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -167,11 +185,11 @@ export default function Partners() {
           <div className="flex overflow-hidden select-none mt-10 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] hover-pause">
             <div className="flex items-center gap-5 w-max animate-scroll-pt hover:[animation-play-state:paused]">
               {partnerTypes[activePartnerType].logos.map((logo, i) => (
-                <div className="bg-white/5 border border-white/10 rounded-xl py-5 px-8 flex items-center justify-center font-[family-name:var(--fd)] text-[14px] font-bold text-[#64748b] text-center whitespace-nowrap cursor-pointer transition-all duration-300 hover:border-[var(--cyan)] hover:text-white hover:bg-[rgba(0,200,232,0.1)] hover:-translate-y-0.5" key={`p1-${i}`}>{logo}</div>
+                <div className="bg-white border border-[var(--border)] rounded-xl py-5 px-8 flex items-center justify-center font-[family-name:var(--fd)] text-[14.5px] font-extrabold text-[var(--muted)] text-center whitespace-nowrap cursor-pointer transition-all duration-300 hover:border-[var(--cyan)] hover:text-[var(--navy)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1" key={`p1-${i}`}>{logo}</div>
               ))}
               {/* Duplicate for infinite loop */}
               {partnerTypes[activePartnerType].logos.map((logo, i) => (
-                <div className="bg-white/5 border border-white/10 rounded-xl py-5 px-8 flex items-center justify-center font-[family-name:var(--fd)] text-[14px] font-bold text-[#64748b] text-center whitespace-nowrap cursor-pointer transition-all duration-300 hover:border-[var(--cyan)] hover:text-white hover:bg-[rgba(0,200,232,0.1)] hover:-translate-y-0.5" key={`p2-${i}`}>{logo}</div>
+                <div className="bg-white border border-[var(--border)] rounded-xl py-5 px-8 flex items-center justify-center font-[family-name:var(--fd)] text-[14.5px] font-extrabold text-[var(--muted)] text-center whitespace-nowrap cursor-pointer transition-all duration-300 hover:border-[var(--cyan)] hover:text-[var(--navy)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1" key={`p2-${i}`}>{logo}</div>
               ))}
             </div>
           </div>

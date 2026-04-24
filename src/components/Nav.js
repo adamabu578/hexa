@@ -73,41 +73,43 @@ export default function Nav() {
             <Link href="/products" className="flex items-center gap-1.5 px-3.5 py-2 text-[15px] font-semibold font-[family-name:var(--fb)] text-[var(--muted)] hover:text-[var(--navy)] hover:bg-[#0d1f4a0a] rounded-lg transition-all cursor-pointer">
               Products <ChevronDown size={14} className="text-[var(--blue)] opacity-80 transition-transform duration-300 group-hover/nav:rotate-180" />
             </Link>
-            <div className="absolute top-[calc(100%+12px)] left-[-100px] min-w-[760px] bg-white/95 backdrop-blur-[20px] border border-[var(--navy)]/10 rounded-2xl shadow-xl flex overflow-hidden opacity-0 invisible translate-y-3 scale-95 transition-all duration-300 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:scale-100 pointer-events-none group-hover/nav:pointer-events-auto">
-              <div className="w-[240px] bg-white border-r border-[var(--border)] p-4">
-                <div className="text-[11px] uppercase tracking-[1.5px] text-[var(--muted)] font-bold px-3 pb-4 mb-2 border-b border-[var(--border)]">Product Suite</div>
-                {panels.map(p => (
-                  <button 
-                    key={p.id}
-                    className={`flex items-center gap-3 w-full p-2.5 rounded-xl cursor-pointer text-left transition-all ${activePanel === p.id ? 'bg-[var(--light)] text-[var(--blue)]' : 'text-[var(--text)] hover:bg-[var(--light)] hover:text-[var(--blue)]'}`}
-                    onMouseEnter={() => setActivePanel(p.id)}
-                  >
-                    <div className={`w-[34px] h-[34px] rounded-[10px] bg-white border border-[var(--border)] flex items-center justify-center text-[16px] shadow-sm transition-all ${activePanel === p.id ? 'bg-[var(--light)] border-[var(--blue)] scale-110' : ''}`}>
-                      {p.icon}
-                    </div>
-                    <span className="text-[14.5px] font-semibold">{p.label}</span>
-                  </button>
-                ))}
-              </div>
-              <div className="flex-1 p-6 min-h-[400px] bg-white relative">
-                <AnimatePresence mode="wait">
-                  <motion.div 
-                    key={activePanel}
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="text-[12px] uppercase tracking-[1.5px] text-[var(--muted)] font-bold mb-5">{panels.find(p => p.id === activePanel)?.title}</div>
-                    <div className="grid gap-2">
-                      {panels.find(p => p.id === activePanel)?.links.map((l, i) => (
-                        <Link key={i} href={l.href} className="group/link flex items-center justify-between p-2.5 rounded-xl text-[14px] font-medium text-[var(--text)] hover:bg-[var(--light)] hover:text-[var(--blue)] hover:translate-x-1 transition-all">
-                          {l.text} <ArrowUpRight size={14} className="opacity-0 group-hover/link:opacity-100 transition-all translate-x-[-4px] group-hover/link:translate-x-0" />
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+            <div className="absolute top-full left-[-100px] pt-3 opacity-0 invisible translate-y-3 scale-95 transition-all duration-300 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:scale-100 pointer-events-none group-hover/nav:pointer-events-auto">
+              <div className="min-w-[760px] bg-white/95 backdrop-blur-[20px] border border-[var(--navy)]/10 rounded-2xl shadow-xl flex overflow-hidden">
+                <div className="w-[240px] bg-white border-r border-[var(--border)] p-4">
+                  <div className="text-[11px] uppercase tracking-[1.5px] text-[var(--muted)] font-bold px-3 pb-4 mb-2 border-b border-[var(--border)]">Product Suite</div>
+                  {panels.map(p => (
+                    <button 
+                      key={p.id}
+                      className={`flex items-center gap-3 w-full p-2.5 rounded-xl cursor-pointer text-left transition-all ${activePanel === p.id ? 'bg-[var(--light)] text-[var(--blue)]' : 'text-[var(--text)] hover:bg-[var(--light)] hover:text-[var(--blue)]'}`}
+                      onMouseEnter={() => setActivePanel(p.id)}
+                    >
+                      <div className={`w-[34px] h-[34px] rounded-[10px] bg-white border border-[var(--border)] flex items-center justify-center text-[16px] shadow-sm transition-all ${activePanel === p.id ? 'bg-[var(--light)] border-[var(--blue)] scale-110' : ''}`}>
+                        {p.icon}
+                      </div>
+                      <span className="text-[14.5px] font-semibold">{p.label}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="flex-1 p-6 min-h-[400px] bg-white relative">
+                  <AnimatePresence mode="wait">
+                    <motion.div 
+                      key={activePanel}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="text-[12px] uppercase tracking-[1.5px] text-[var(--muted)] font-bold mb-5">{panels.find(p => p.id === activePanel)?.title}</div>
+                      <div className="grid gap-2">
+                        {panels.find(p => p.id === activePanel)?.links.map((l, i) => (
+                          <Link key={i} href={l.href} className="group/link flex items-center justify-between p-2.5 rounded-xl text-[14px] font-medium text-[var(--text)] hover:bg-[var(--light)] hover:text-[var(--blue)] hover:translate-x-1 transition-all">
+                            {l.text} <ArrowUpRight size={14} className="opacity-0 group-hover/link:opacity-100 transition-all translate-x-[-4px] group-hover/link:translate-x-0" />
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
           </li>
@@ -116,24 +118,26 @@ export default function Nav() {
             <Link href="#" className="flex items-center gap-1.5 px-3.5 py-2 text-[15px] font-semibold font-[family-name:var(--fb)] text-[var(--muted)] hover:text-[var(--navy)] hover:bg-[#0d1f4a0a] rounded-lg transition-all cursor-pointer">
               Solutions <ChevronDown size={14} className="text-[var(--blue)] opacity-80 transition-transform duration-300 group-hover/nav:rotate-180" />
             </Link>
-            <div className="absolute top-[calc(100%+12px)] min-w-[240px] bg-white/95 backdrop-blur-[20px] border border-[var(--navy)]/10 rounded-2xl shadow-xl flex overflow-hidden opacity-0 invisible translate-y-3 scale-95 transition-all duration-300 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:scale-100 pointer-events-none group-hover/nav:pointer-events-auto">
-              <div className="bg-white p-3 min-w-[240px] w-full">
-                <div className="text-[10px] uppercase tracking-[2px] text-slate-400 font-bold py-2 px-3">By Segment</div>
-                <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Building size={16} strokeWidth={1.5} /></span>Commercial Banks
-                </Link>
-                <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Smartphone size={16} strokeWidth={1.5} /></span>Digital & Neo Banks
-                </Link>
-                <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Briefcase size={16} strokeWidth={1.5} /></span>NBFCs & Fintechs
-                </Link>
-                <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Globe size={16} strokeWidth={1.5} /></span>Central Banks
-                </Link>
-                <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Shield size={16} strokeWidth={1.5} /></span>Insurance Companies
-                </Link>
+            <div className="absolute top-full pt-3 opacity-0 invisible translate-y-3 scale-95 transition-all duration-300 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:scale-100 pointer-events-none group-hover/nav:pointer-events-auto">
+              <div className="min-w-[240px] bg-white/95 backdrop-blur-[20px] border border-[var(--navy)]/10 rounded-2xl shadow-xl flex overflow-hidden">
+                <div className="bg-white p-3 min-w-[240px] w-full">
+                  <div className="text-[10px] uppercase tracking-[2px] text-slate-400 font-bold py-2 px-3">By Segment</div>
+                  <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Building size={16} strokeWidth={1.5} /></span>Commercial Banks
+                  </Link>
+                  <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Smartphone size={16} strokeWidth={1.5} /></span>Digital & Neo Banks
+                  </Link>
+                  <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Briefcase size={16} strokeWidth={1.5} /></span>NBFCs & Fintechs
+                  </Link>
+                  <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Globe size={16} strokeWidth={1.5} /></span>Central Banks
+                  </Link>
+                  <Link href="#" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Shield size={16} strokeWidth={1.5} /></span>Insurance Companies
+                  </Link>
+                </div>
               </div>
             </div>
           </li>
@@ -145,17 +149,19 @@ export default function Nav() {
             <Link href="#" className="flex items-center gap-1.5 px-3.5 py-2 text-[15px] font-semibold font-[family-name:var(--fb)] text-[var(--muted)] hover:text-[var(--navy)] hover:bg-[#0d1f4a0a] rounded-lg transition-all cursor-pointer">
               About Us <ChevronDown size={14} className="text-[var(--blue)] opacity-80 transition-transform duration-300 group-hover/nav:rotate-180" />
             </Link>
-            <div className="absolute top-[calc(100%+12px)] min-w-[240px] bg-white/95 backdrop-blur-[20px] border border-[var(--navy)]/10 rounded-2xl shadow-xl flex overflow-hidden opacity-0 invisible translate-y-3 scale-95 transition-all duration-300 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:scale-100 pointer-events-none group-hover/nav:pointer-events-auto">
-              <div className="bg-white p-3 min-w-[240px] w-full">
-                <Link href="/about/our-story" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><BookOpen size={16} strokeWidth={1.5} /></span>Our Story
-                </Link>
-                <Link href="/about/our-leadership" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Users size={16} strokeWidth={1.5} /></span>Our Leadership
-                </Link>
-                <Link href="/about/design-thinking-dna" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
-                  <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Target size={16} strokeWidth={1.5} /></span>Design Thinking DNA
-                </Link>
+            <div className="absolute top-full pt-3 opacity-0 invisible translate-y-3 scale-95 transition-all duration-300 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:scale-100 pointer-events-none group-hover/nav:pointer-events-auto">
+              <div className="min-w-[240px] bg-white/95 backdrop-blur-[20px] border border-[var(--navy)]/10 rounded-2xl shadow-xl flex overflow-hidden">
+                <div className="bg-white p-3 min-w-[240px] w-full">
+                  <Link href="/about/our-story" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><BookOpen size={16} strokeWidth={1.5} /></span>Our Story
+                  </Link>
+                  <Link href="/about/our-leadership" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Users size={16} strokeWidth={1.5} /></span>Our Leadership
+                  </Link>
+                  <Link href="/about/design-thinking-dna" className="flex items-center gap-3 p-2.5 rounded-xl text-[var(--text)] text-[14px] font-medium hover:bg-[var(--light)] hover:text-[var(--blue)] transition-all group/item">
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-[var(--light)] border border-[var(--border)] flex items-center justify-center transition-all group-hover/item:bg-white group-hover/item:border-[var(--blue)] group-hover/item:scale-110 group-hover/item:-rotate-3"><Target size={16} strokeWidth={1.5} /></span>Design Thinking DNA
+                  </Link>
+                </div>
               </div>
             </div>
           </li>
