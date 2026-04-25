@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Landmark, TrendingUp, CreditCard, Smartphone, Briefcase, Building, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import "./products.css";
 
 const categories = [
@@ -142,15 +143,19 @@ export default function Products() {
                 <span className="idx-cat-icon">{cat.icon}</span>
                 <h3 className="idx-cat-title">{cat.title}</h3>
               </div>
-              <div className="idx-cards">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                 {cat.products.map((p, i) => (
-                  <Link href={p.href} className="idx-card" key={i}>
-                    <div className="idx-card-top">
-                      <div className="idx-card-title">{p.title}</div>
-                      <span className="idx-card-arrow"><ArrowUpRight size={18} style={{ display: 'inline' }} /></span>
-                    </div>
-                    <div className="idx-card-desc">{p.desc}</div>
-                    <div className="idx-card-stats">{p.stats}</div>
+                  <Link href={p.href} key={i}>
+                    <Card className="h-full border border-[var(--border)] shadow-sm hover:shadow-md transition-all duration-300 bg-white hover:-translate-y-1 hover:border-[var(--cyan)] group">
+                      <CardHeader className="pb-2 flex flex-row items-start justify-between space-y-0">
+                        <CardTitle className="text-[17px] font-bold text-[var(--navy)] font-[family-name:var(--fd)]">{p.title}</CardTitle>
+                        <ArrowUpRight size={18} className="text-[var(--cyan)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </CardHeader>
+                      <CardContent>
+                        <CardDescription className="text-[14px] leading-relaxed text-[var(--muted)] mb-4">{p.desc}</CardDescription>
+                        <div className="text-[11.5px] font-semibold text-[var(--blue)] uppercase tracking-wider">{p.stats}</div>
+                      </CardContent>
+                    </Card>
                   </Link>
                 ))}
               </div>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 import { BarChart, User, Landmark, TrendingDown, Zap, Bot, Puzzle, Blocks, Globe, ArrowRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import "./page.css";
 
 export default function Home() {
@@ -131,17 +132,25 @@ export default function Home() {
               { ico: <BarChart size={28} strokeWidth={1.5} style={{ color: 'var(--cyan)' }} />, title: 'Real-Time Data Visibility', desc: 'Securely manage positions for intraday visibility and data portability.' },
             ].map((f, i) => (
               <motion.div
-                className="d-feat"
                 key={i}
-                whileHover={{ y: -5, boxShadow: 'var(--shadow-md)' }}
+                whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
+                className="h-full"
               >
-                <div className="d-feat-ico">{f.ico}</div>
-                <div className="d-feat-title">{f.title}</div>
-                <div className="d-feat-desc">{f.desc}</div>
+                <Card className="h-full border border-[var(--border)] shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                  <CardHeader className="pb-3">
+                    <div className="mb-4 w-12 h-12 rounded-xl bg-[rgba(0,200,232,0.1)] flex items-center justify-center">
+                      {f.ico}
+                    </div>
+                    <CardTitle className="text-[18px] font-bold text-[var(--navy)] font-[family-name:var(--fd)]">{f.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-[15px] leading-relaxed text-[var(--muted)]">{f.desc}</CardDescription>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>

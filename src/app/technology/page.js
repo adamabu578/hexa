@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Target, User, Leaf, Zap, Puzzle, Bot, Landmark, Rocket, TrendingDown, Network, ClipboardCheck, Database, Settings, Search, RefreshCcw, CheckCircle, Server, Shield, BarChart, Globe, Workflow, TrendingUp, Brain, PieChart, Lock, ChevronRight, ArrowRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function Technology() {
   const [activeTab, setActiveTab] = useState('paramount');
@@ -113,27 +114,43 @@ export default function Technology() {
           <h2 className="font-[family-name:var(--fd)] text-[clamp(26px,3vw,44px)] font-extrabold tracking-[-1.5px] leading-[1.1] text-center mb-3.5">Built for Change. Designed for Impact.</h2>
           <p className="text-[17px] leading-[1.8] text-center max-w-[640px] mx-auto mb-[52px] text-white/70">Our technology is not just modern — it is composable, intelligent, and built to create immediate business value and deliver measurable global impact for every implementation.</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[14px] mt-12">
-            <div className="bg-white/5 border border-white/10 rounded-2xl py-[28px] px-[22px] relative overflow-hidden transition-all duration-300 text-left hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)]">
-              <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-4"><Sparkles strokeWidth={1.5} size={28} /></div>
-              <div className="font-[family-name:var(--fd)] text-[16px] font-bold text-white mb-[9px] leading-tight">Built for the Future</div>
-              <div className="text-[14px] text-white/60 leading-[1.75]">An architecture that evolves without disruption — composable microservices, open APIs, and cloud-native deployment ensure your technology investment stays relevant for decades, not years. Future-proof by design.</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl py-[28px] px-[22px] relative overflow-hidden transition-all duration-300 text-left hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)]">
-              <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-4"><Target strokeWidth={1.5} size={28} /></div>
-              <div className="font-[family-name:var(--fd)] text-[16px] font-bold text-white mb-[9px] leading-tight">Designed for Real Outcomes</div>
-              <div className="text-[14px] text-white/60 leading-[1.75]">Platforms purpose-built to accelerate real business outcomes — faster product launch, reduced operational cost, improved STP rates, increasing customer satisfaction, and accelerating your innovations to market.</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl py-[28px] px-[22px] relative overflow-hidden transition-all duration-300 text-left hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)]">
-              <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-4"><User strokeWidth={1.5} size={28} /></div>
-              <div className="font-[family-name:var(--fd)] text-[16px] font-bold text-white mb-[9px] leading-tight">User-Centric by Design</div>
-              <div className="text-[14px] text-white/60 leading-[1.75]">Designed from the outside in — every interaction, workflow, and API is designed with the experience of the banker, the developer, and the end-customer at the absolute forefront of every design decision we make.</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl py-[28px] px-[22px] relative overflow-hidden transition-all duration-300 text-left hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)]">
-              <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-4"><Leaf strokeWidth={1.5} size={28} /></div>
-              <div className="font-[family-name:var(--fd)] text-[16px] font-bold text-white mb-[9px] leading-tight">Technology That Enables Growth</div>
-              <div className="text-[14px] text-white/60 leading-[1.75]">Scale from 100K to 100M customers on the same platform. Take bold bets on new markets and segments today knowing the underlying technology will grow alongside you without compromise or rearchitecting.</div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            <Card className="bg-white/5 border-white/10 text-white hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)] transition-all duration-300">
+              <CardHeader className="pb-2">
+                <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-2"><Sparkles strokeWidth={1.5} size={24} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[16px] font-bold text-white leading-tight">Built for the Future</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-white/60 leading-[1.75]">An architecture that evolves without disruption — composable microservices, open APIs, and cloud-native deployment ensure your technology investment stays relevant for decades, not years. Future-proof by design.</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/5 border-white/10 text-white hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)] transition-all duration-300">
+              <CardHeader className="pb-2">
+                <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-2"><Target strokeWidth={1.5} size={24} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[16px] font-bold text-white leading-tight">Designed for Real Outcomes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-white/60 leading-[1.75]">Platforms purpose-built to accelerate real business outcomes — faster product launch, reduced operational cost, improved STP rates, increasing customer satisfaction, and accelerating your innovations to market.</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/5 border-white/10 text-white hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)] transition-all duration-300">
+              <CardHeader className="pb-2">
+                <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-2"><User strokeWidth={1.5} size={24} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[16px] font-bold text-white leading-tight">User-Centric by Design</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-white/60 leading-[1.75]">Designed from the outside in — every interaction, workflow, and API is designed with the experience of the banker, the developer, and the end-customer at the absolute forefront of every design decision we make.</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/5 border-white/10 text-white hover:border-[rgba(0,200,232,0.3)] hover:-translate-y-1 hover:bg-[rgba(0,200,232,0.03)] transition-all duration-300">
+              <CardHeader className="pb-2">
+                <div className="w-[44px] h-[44px] rounded-[11px] bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[20px] mb-2"><Leaf strokeWidth={1.5} size={24} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[16px] font-bold text-white leading-tight">Technology That Enables Growth</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-white/60 leading-[1.75]">Scale from 100K to 100M customers on the same platform. Take bold bets on new markets and segments today knowing the underlying technology will grow alongside you without compromise or rearchitecting.</CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -144,27 +161,43 @@ export default function Technology() {
           <h2 className="font-[family-name:var(--fd)] text-[clamp(26px,3vw,44px)] font-extrabold tracking-[-1.5px] leading-[1.1] text-center mb-3.5">eHEX Platform</h2>
           <p className="text-[17px] leading-[1.8] text-center max-w-[640px] mx-auto mb-[52px]">When Hexatech&apos;s foundational eHEX architecture meets composable Open Finance — it creates a unified, comprehensive, and composable Open Finance Platform.</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-[var(--border)] border border-[var(--border)] rounded-[14px] overflow-hidden my-9">
-            <div className="bg-white p-6 transition-colors duration-200 text-left">
-              <div className="w-8 h-8 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-3"><Zap strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
-              <div className="font-[family-name:var(--fd)] text-[14px] font-bold text-[var(--navy)] mb-2">Excellence at the Core</div>
-              <div className="text-[13px] text-[var(--muted)] leading-[1.65]">Sub-millisecond transaction processing with five-nines availability and active-active multi-region deployment for mission-critical banking operations at any scale.</div>
-            </div>
-            <div className="bg-white p-6 transition-colors duration-200 text-left">
-              <div className="w-8 h-8 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-3"><Puzzle strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
-              <div className="font-[family-name:var(--fd)] text-[14px] font-bold text-[var(--navy)] mb-2">Composable Platform</div>
-              <div className="text-[13px] text-[var(--muted)] leading-[1.65]">Deploy only the domains you need, on your timeline, without disrupting what is already live. Every product is independently deployable, scalable, and upgradeable from a single platform core.</div>
-            </div>
-            <div className="bg-white p-6 transition-colors duration-200 text-left">
-              <div className="w-8 h-8 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-3"><Bot strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
-              <div className="font-[family-name:var(--fd)] text-[14px] font-bold text-[var(--navy)] mb-2">Contextual Intelligence</div>
-              <div className="text-[13px] text-[var(--muted)] leading-[1.65]">AI and machine learning embedded at the platform layer — not bolted on. Predictive, prescriptive, and generative AI capabilities built natively into every banking workflow and interaction.</div>
-            </div>
-            <div className="bg-white p-6 transition-colors duration-200 text-left">
-              <div className="w-8 h-8 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-3"><Landmark strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
-              <div className="font-[family-name:var(--fd)] text-[14px] font-bold text-[var(--navy)] mb-2">Two-Tier Architecture</div>
-              <div className="text-[13px] text-[var(--muted)] leading-[1.65]">Separation of Corebanking and Channels tiers enables independent innovation at each layer — modernise channels without touching core, or evolve core without disrupting the customer experience.</div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-9">
+            <Card className="bg-white border-[var(--border)] shadow-sm hover:shadow-md transition-shadow duration-300 text-left">
+              <CardHeader className="pb-2">
+                <div className="w-10 h-10 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-2"><Zap strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[15px] font-bold text-[var(--navy)]">Excellence at the Core</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-[var(--muted)] leading-[1.65]">Sub-millisecond transaction processing with five-nines availability and active-active multi-region deployment for mission-critical banking operations at any scale.</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border-[var(--border)] shadow-sm hover:shadow-md transition-shadow duration-300 text-left">
+              <CardHeader className="pb-2">
+                <div className="w-10 h-10 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-2"><Puzzle strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[15px] font-bold text-[var(--navy)]">Composable Platform</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-[var(--muted)] leading-[1.65]">Deploy only the domains you need, on your timeline, without disrupting what is already live. Every product is independently deployable, scalable, and upgradeable from a single platform core.</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border-[var(--border)] shadow-sm hover:shadow-md transition-shadow duration-300 text-left">
+              <CardHeader className="pb-2">
+                <div className="w-10 h-10 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-2"><Bot strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[15px] font-bold text-[var(--navy)]">Contextual Intelligence</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-[var(--muted)] leading-[1.65]">AI and machine learning embedded at the platform layer — not bolted on. Predictive, prescriptive, and generative AI capabilities built natively into every banking workflow and interaction.</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border-[var(--border)] shadow-sm hover:shadow-md transition-shadow duration-300 text-left">
+              <CardHeader className="pb-2">
+                <div className="w-10 h-10 rounded-lg bg-[rgba(0,200,232,0.1)] border border-[rgba(0,200,232,0.18)] flex items-center justify-center text-[14px] mb-2"><Landmark strokeWidth={1.5} size={20} className="text-[var(--cyan)]" /></div>
+                <CardTitle className="font-[family-name:var(--fd)] text-[15px] font-bold text-[var(--navy)]">Two-Tier Architecture</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[14px] text-[var(--muted)] leading-[1.65]">Separation of Corebanking and Channels tiers enables independent innovation at each layer — modernise channels without touching core, or evolve core without disrupting the customer experience.</CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
