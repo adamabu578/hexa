@@ -59,7 +59,7 @@ export default function Technology() {
       <section className="relative min-h-[58vh] flex items-center bg-gradient-to-br from-[#07102a] via-[#06091a] via-55% to-[#0a1228] pt-[100px] md:pt-[130px] pb-[60px] md:pb-[84px] overflow-hidden text-left">
         <div className="absolute inset-0 bg-[radial-gradient(rgba(0,200,232,.18)_1px,transparent_1px)] [background-size:34px_34px] [mask-image:radial-gradient(ellipse_65%_100%_at_58%_50%,black_0%,transparent_100%)] pointer-events-none"></div>
         <div className="d-inner w-full flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -67,14 +67,14 @@ export default function Technology() {
           >
             <div className="flex items-center gap-[7px] text-[12px] text-[var(--muted)] mb-[18px]">
               <Link href="/" className="hover:text-[var(--cyan)] transition-colors duration-200">Home</Link>
-              <span className="text-[var(--cyan)]"><ChevronRight size={14} style={{display:'inline'}} /></span>
+              <span className="text-[var(--cyan)]"><ChevronRight size={14} style={{ display: 'inline' }} /></span>
               <span>Technology</span>
             </div>
             <div className="text-[11px] uppercase tracking-[3px] text-[var(--cyan)] font-bold mb-[14px]">Technology</div>
             <h1 className="font-[family-name:var(--fd)] text-[clamp(38px,4.8vw,62px)] font-extrabold text-white leading-[1.04] tracking-[-2px] mb-[18px]">Powering the Future of<br />Financial Services</h1>
             <p className="text-[16px] text-white/70 leading-[1.8] max-w-[510px]">Designed for agility, scale and resilience — Hexatech brings best-in-class financial technology capabilities that help financial institutions modernise smarter, move faster, and compete in an era defined by rapid digital disruption.</p>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -82,7 +82,7 @@ export default function Technology() {
           >
             <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group">
               <div className="absolute inset-0 bg-gradient-to-t from-[#06091a] to-transparent opacity-40 z-10"></div>
-              <Image src="/images/tech_architecture.png" alt="Technology Architecture" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
+              <Image src="/images/hero2.jpg" alt="Technology Architecture" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
             </div>
           </motion.div>
         </div>
@@ -177,7 +177,7 @@ export default function Technology() {
               <div>
                 <div className="font-[family-name:var(--fd)] text-[clamp(26px,3vw,42px)] font-extrabold text-white tracking-[-1px] leading-[1.1] mb-3.5">Purple Fabric</div>
                 <p className="text-[15px] text-white/70 leading-[1.8] mb-[28px]">Purple Fabric is an enterprise-grade open finance fabric that allows you to configure and run measurable business impact across your entire banking technology estate — composable, intelligent, and always-on.</p>
-                <Link href="#" className="btn-cyan">Explore Purple Fabric <ArrowRight size={16} style={{display:'inline', marginLeft: '4px', marginBottom: '-2px'}} /></Link>
+                <Link href="#" className="btn-cyan">Explore Purple Fabric <ArrowRight size={16} style={{ display: 'inline', marginLeft: '4px', marginBottom: '-2px' }} /></Link>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-6 lg:mt-0">
                 {[
@@ -206,8 +206,8 @@ export default function Technology() {
           <h2 className="font-[family-name:var(--fd)] text-[clamp(26px,3vw,44px)] font-extrabold tracking-[-1.5px] leading-[1.1] text-center mb-[32px]">Our Technology Platforms</h2>
           <div className="flex flex-wrap items-center justify-center gap-1 bg-[#f1f5f9] border border-[var(--border)] rounded-[10px] p-1 w-fit mb-8 mx-auto">
             {Object.keys(platforms).map(key => (
-              <button 
-                key={key} 
+              <button
+                key={key}
                 className={`py-[9px] px-[26px] text-[14px] font-semibold cursor-pointer rounded-[7px] border-none font-[family-name:var(--fd)] transition-all duration-200 whitespace-nowrap ${activeTab === key ? 'bg-[var(--grad)] text-white' : 'text-[var(--muted)] bg-transparent'}`}
                 onClick={() => setActiveTab(key)}
               >
@@ -224,7 +224,7 @@ export default function Technology() {
               </div>
               <div className="text-[12px] text-[var(--muted)] italic mb-3.5">{platforms[activeTab].tagline}</div>
               <div className="text-[13.5px] text-[var(--muted)] leading-[1.7] mb-[24px]">{platforms[activeTab].desc}</div>
-              <Link href="#" className="btn-out">Learn More <ArrowRight size={16} style={{display:'inline', marginLeft: '4px', marginBottom: '-2px'}} /></Link>
+              <Link href="#" className="btn-out">Learn More <ArrowRight size={16} style={{ display: 'inline', marginLeft: '4px', marginBottom: '-2px' }} /></Link>
             </div>
             <div className="p-7">
               <div className="text-[10px] uppercase tracking-[2px] text-[var(--blue)] font-bold mb-4">Key Capabilities</div>

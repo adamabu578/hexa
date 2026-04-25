@@ -37,129 +37,54 @@ export default function Home() {
   return (
     <main>
       {/* HERO */}
-      <section className="d-hero">
-        <div className="d-inner">
+      <section className="d-hero relative overflow-hidden" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(0, 200, 232, 0.08) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(26, 111, 212, 0.05) 0%, transparent 50%)' }}>
+        <div className="d-inner relative z-10 flex flex-col items-center gap-12 text-center">
+          
+          {/* TEXT - TOP */}
           <motion.div
-            className="d-hero-content"
+            className="w-full max-w-4xl d-hero-content"
             variants={container}
             initial="hidden"
             animate="show"
+            style={{ textAlign: 'center', margin: '0 auto' }}
           >
-            <motion.div variants={item} className="d-hero-badge">
+            <motion.div variants={item} className="d-hero-badge" style={{ display: 'inline-flex', marginBottom: '24px' }}>
               <span className="d-hero-badge-dot"></span>
               eHEX Platform · 700+ Microservices · 3,061 APIs
             </motion.div>
 
-            <motion.h1 variants={item}>
+            <motion.h1 variants={item} style={{ fontSize: 'clamp(42px, 5.5vw, 72px)', color: 'var(--navy)' }}>
               The #1 composable Open Finance Platform
             </motion.h1>
 
-            <motion.div variants={item} className="hl" style={{ fontSize: 'clamp(24px, 4vw, 42px)', fontWeight: 800, marginBottom: '40px', fontFamily: 'var(--fd)' }}>
+            <motion.div variants={item} style={{ fontSize: 'clamp(26px, 3.5vw, 42px)', fontWeight: 800, marginBottom: '30px', fontFamily: 'var(--fd)', color: 'transparent', backgroundClip: 'text', WebkitBackgroundClip: 'text', backgroundImage: 'var(--grad)' }}>
               for banks &amp; fintechs
             </motion.div>
 
-            <motion.div variants={item} className="d-hero-sub">
+            <motion.div variants={item} className="d-hero-sub" style={{ margin: '0 auto 40px auto', color: 'var(--muted)', fontSize: '18px', maxWidth: '640px' }}>
               <p>Streamline digital banking transformation with Hexatech's composable, AI-powered platform.</p>
               <p style={{ marginTop: '12px' }}>Deploy faster, scale further, and comply everywhere.</p>
             </motion.div>
 
-            <motion.div variants={item} className="d-hero-acts">
+            <motion.div variants={item} className="d-hero-acts" style={{ justifyContent: 'center', marginBottom: 0 }}>
               <Link href="#contact" className="btn-prim">Get Started <ArrowRight size={16} style={{ display: 'inline', marginLeft: '4px', marginBottom: '-2px' }} /></Link>
               <Link href="/products" className="btn-out">Explore Products</Link>
             </motion.div>
           </motion.div>
-        </div>
 
-        {/* Dashboard mockup */}
-        <div className="d-inner" style={{ paddingTop: 0 }}>
+          {/* IMAGE - BOTTOM */}
           <motion.div
-            className="d-hero-visual"
-            initial={{ opacity: 0, y: 80 }}
+            className="w-full max-w-5xl"
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <motion.div {...float}>
-              <div className="mockup-bar">
-                <div className="mockup-dots">
-                  <div className="mockup-dot" style={{ background: '#ff5f56' }}></div>
-                  <div className="mockup-dot" style={{ background: '#ffbd2e' }}></div>
-                  <div className="mockup-dot" style={{ background: '#27c93f' }}></div>
-                </div>
-                <div className="mockup-url">app.hexatech.io/dashboard · Operations</div>
-              </div>
-              <div className="mockup-body">
-                <div className="mockup-sidebar">
-                  <div className="mockup-sb-logo">
-                    <div className="mockup-sb-logo-box">H</div>
-                    <div className="mockup-sb-logo-name">Hexatech</div>
-                  </div>
-                  <div className="mockup-sb-section">Core Banking</div>
-                  <div className="mockup-sb-item active"><span className="mockup-sb-ico"><BarChart size={14} style={{ display: 'inline' }} /></span>Dashboard</div>
-                  <div className="mockup-sb-item"><span className="mockup-sb-ico"><User size={14} style={{ display: 'inline' }} /></span>Customers</div>
-                  <div className="mockup-sb-item"><span className="mockup-sb-ico"><Landmark size={14} style={{ display: 'inline' }} /></span>Accounts</div>
-                  <div className="mockup-sb-item"><span className="mockup-sb-ico"><TrendingDown size={14} style={{ display: 'inline' }} /></span>Loans</div>
-                </div>
-                <div className="mockup-main">
-                  <div className="mockup-toprow">
-                    <div className="mockup-page-title">Real-time Overview</div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                      <motion.div
-                        animate={{ opacity: [0.5, 1, 0.5] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="mockup-badge green"
-                      >
-                        ● All systems live
-                      </motion.div>
-                    </div>
-                  </div>
-
-                  <div className="mockup-kpi-row">
-                    {[
-                      { label: 'AUM Today', val: '$2.4B', up: '↑4.2%' },
-                      { label: 'Accounts', val: '148K', up: '↑12%' },
-                      { label: 'Uptime', val: '99.98%', up: '↑' },
-                      { label: 'Response', val: '1.2ms', up: '' }
-                    ].map((kpi, i) => (
-                      <motion.div
-                        key={i}
-                        className="mockup-kpi"
-                        whileHover={{ scale: 1.02, borderColor: 'var(--blue)' }}
-                      >
-                        <div className="mockup-kpi-n">{kpi.val}{kpi.up && <span className="up">{kpi.up}</span>}</div>
-                        <div className="mockup-kpi-l">{kpi.label}</div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <div className="mockup-chart">
-                    {[45, 65, 40, 80, 55, 48, 72, 58, 90, 62, 85, 68].map((h, i) => (
-                      <motion.div
-                        key={i}
-                        className={`bar ${h > 60 ? 'hi' : ''}`}
-                        initial={{ height: 0 }}
-                        animate={{ height: `${h}%` }}
-                        transition={{ duration: 1, delay: 0.8 + (i * 0.05) }}
-                      />
-                    ))}
-                  </div>
-
-                  <div className="mockup-table">
-                    <div className="mockup-th"><span>Transaction</span><span>Amount</span><span>Status</span></div>
-                    <div className="mockup-tr">
-                      <span className="name">NIP Transfer</span>
-                      <span>₦245,000</span>
-                      <span><div className="mockup-status s-active">Settled</div></span>
-                    </div>
-                    <div className="mockup-tr">
-                      <span className="name">Loan Disbursement</span>
-                      <span>₦12.5M</span>
-                      <span><div className="mockup-status s-active">Settled</div></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-[0_30px_100px_rgba(13,31,74,0.15)] border border-[var(--border)] group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#06091a]/5 to-transparent z-10"></div>
+              <Image src="/images/hero.jpg" alt="Hero Dashboard" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
+            </div>
           </motion.div>
+
         </div>
       </section>
 

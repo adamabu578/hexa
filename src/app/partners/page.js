@@ -42,9 +42,9 @@ export default function Partners() {
       <section className="relative min-h-[62vh] flex items-center bg-gradient-to-br from-[#07102a] via-[#06091a] via-55% to-[#091228] overflow-hidden pt-[110px] md:pt-[120px] pb-[60px] md:pb-[80px] text-left">
         <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,200,232,.12)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:radial-gradient(ellipse_70%_100%_at_60%_50%,black_0%,transparent_100%)] pointer-events-none"></div>
         <div className="absolute right-[-80px] top-1/2 -translate-y-1/2 w-[580px] h-[580px] rounded-full bg-[radial-gradient(circle,rgba(0,200,232,.12)_0%,transparent_68%)] pointer-events-none"></div>
-        
+
         <div className="d-inner w-full flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -64,7 +64,7 @@ export default function Partners() {
             </p>
             <Link href="#become-partner" className="inline-flex py-[14px] px-[32px] text-[15px] font-bold rounded-[30px] border border-transparent shadow-[0_4px_14px_rgba(0,200,232,0.3)] hover:shadow-[0_6px_20px_rgba(0,200,232,0.4)] hover:-translate-y-[2px] transition-all bg-[var(--grad)] text-white font-[family-name:var(--fd)] no-underline mx-auto">Become a Partner →</Link>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -72,7 +72,7 @@ export default function Partners() {
           >
             <div className="relative w-full max-w-[480px] aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,200,232,0.15)] border border-[rgba(0,200,232,0.2)] group">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#06091a]/80 to-transparent opacity-60 z-10"></div>
-              <Image src="/images/partner_network.png" alt="Partner Network" fill className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
+              <Image src="/images/hero3.jpg" alt="Partner Network" fill className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
             </div>
           </motion.div>
         </div>
@@ -169,11 +169,11 @@ export default function Partners() {
         <div className="d-inner">
           <span className="text-[11px] uppercase tracking-[3px] text-[var(--cyan)] font-semibold block mb-3 text-center">Partner Types</span>
           <h2 className="font-[family-name:var(--fd)] text-[clamp(26px,3vw,44px)] font-extrabold tracking-[-1.5px] leading-[1.1] text-center mb-[32px]">Our Partner Network</h2>
-          
+
           <div className="flex flex-wrap items-center justify-center gap-1 bg-[#f1f5f9] border border-[var(--border)] rounded-[10px] p-1 w-fit mb-8 mx-auto">
             {Object.keys(partnerTypes).map(key => (
-              <button 
-                key={key} 
+              <button
+                key={key}
                 className={`py-[9px] px-5 text-[13px] font-semibold cursor-pointer rounded-[7px] border-none font-[family-name:var(--fd)] transition-all duration-200 whitespace-nowrap ${activePartnerType === key ? 'bg-[var(--grad)] text-white' : 'text-[var(--muted)] bg-transparent'}`}
                 onClick={() => setActivePartnerType(key)}
               >

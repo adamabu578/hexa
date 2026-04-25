@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Landmark, TrendingUp, CreditCard, Smartphone, Briefcase, Building, ArrowRight, ArrowUpRight } from 'lucide-react';
 import "./products.css";
 
@@ -81,29 +82,55 @@ export default function Products() {
 
   return (
     <main>
-      <section className="idx-hero">
-        <div className="d-inner idx-hero-inner">
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', border: '1px solid rgba(0,200,232,.3)', borderRadius: '100px', fontSize: '11px', color: 'var(--cyan)', fontWeight: 600, background: 'rgba(0,200,232,.06)', marginBottom: '22px' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--cyan)', display: 'block' }}></span>
-            eHEX Platform · Product Suite
-          </div>
-          <h1>Our Products<br /><span className="hl">Portfolio</span></h1>
-          <p>Explore our comprehensive suite of composable banking modules — each purpose-built for a specific domain, each designed to work seamlessly together.</p>
-          <div className="idx-search">
-            <input
-              type="text"
-              placeholder="Search products…"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <Link href="/" className="btn-prim">Browse All <ArrowRight size={16} style={{ display: 'inline', marginLeft: '4px', marginBottom: '-2px' }} /></Link>
-          </div>
-          <div className="idx-stats">
-            <div><div className="idx-stat-n">2B+</div><div className="idx-stat-l">Transactions / year</div></div>
-            <div><div className="idx-stat-n">140+</div><div className="idx-stat-l">Global clients</div></div>
-            <div><div className="idx-stat-n">40+</div><div className="idx-stat-l">Countries</div></div>
-            <div><div className="idx-stat-n">1,300+</div><div className="idx-stat-l">Implementations</div></div>
-          </div>
+      <section className="d-hero relative overflow-hidden" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(0, 200, 232, 0.08) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(26, 111, 212, 0.05) 0%, transparent 50%)' }}>
+        <div className="d-inner relative z-10 flex flex-col items-center gap-12 text-center" style={{ padding: '100px 0 60px' }}>
+          
+          <motion.div
+            className="w-full max-w-4xl d-hero-content"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ textAlign: 'center', margin: '0 auto' }}
+          >
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', border: '1px solid rgba(0,200,232,.3)', borderRadius: '100px', fontSize: '11px', color: 'var(--cyan)', fontWeight: 600, background: 'rgba(0,200,232,.06)', marginBottom: '22px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--cyan)', display: 'block' }}></span>
+              eHEX Platform · Product Suite
+            </div>
+            <h1 style={{ fontSize: 'clamp(42px, 5.5vw, 72px)', color: 'var(--navy)', fontFamily: 'var(--fd)', fontWeight: 800, marginBottom: '20px', lineHeight: 1.1 }}>
+              Our Products<br /><span style={{ color: 'transparent', backgroundClip: 'text', WebkitBackgroundClip: 'text', backgroundImage: 'var(--grad)' }}>Portfolio</span>
+            </h1>
+            <p style={{ margin: '0 auto 40px auto', color: 'var(--muted)', fontSize: '18px', maxWidth: '640px', lineHeight: 1.8 }}>
+              Explore our comprehensive suite of composable banking modules — each purpose-built for a specific domain, each designed to work seamlessly together.
+            </p>
+            <div className="idx-search" style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '40px' }}>
+              <input
+                type="text"
+                placeholder="Search products…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{ padding: '14px 24px', borderRadius: '30px', border: '1px solid var(--border)', fontSize: '15px', minWidth: '280px' }}
+              />
+            </div>
+            <div className="idx-stats" style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
+              <div><div className="idx-stat-n" style={{ fontSize: '32px', fontWeight: 800, color: 'var(--navy)' }}>2B+</div><div className="idx-stat-l" style={{ fontSize: '12px', color: 'var(--muted)', textTransform: 'uppercase' }}>Transactions / year</div></div>
+              <div><div className="idx-stat-n" style={{ fontSize: '32px', fontWeight: 800, color: 'var(--navy)' }}>140+</div><div className="idx-stat-l" style={{ fontSize: '12px', color: 'var(--muted)', textTransform: 'uppercase' }}>Global clients</div></div>
+              <div><div className="idx-stat-n" style={{ fontSize: '32px', fontWeight: 800, color: 'var(--navy)' }}>40+</div><div className="idx-stat-l" style={{ fontSize: '12px', color: 'var(--muted)', textTransform: 'uppercase' }}>Countries</div></div>
+              <div><div className="idx-stat-n" style={{ fontSize: '32px', fontWeight: 800, color: 'var(--navy)' }}>1,300+</div><div className="idx-stat-l" style={{ fontSize: '12px', color: 'var(--muted)', textTransform: 'uppercase' }}>Implementations</div></div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="w-full max-w-5xl mt-8"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+          >
+            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-[0_30px_100px_rgba(13,31,74,0.15)] border border-[var(--border)] group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#06091a]/5 to-transparent z-10"></div>
+              <Image src="/images/hero1.jpg" alt="Products Portfolio" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
